@@ -26,6 +26,10 @@ import pique.analysis.ITool;
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
 import pique.model.Finding;
+import pique.model.ModelNode;
+import pique.model.QualityModel;
+import pique.model.QualityModelImport;
+import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
 import java.io.BufferedReader;
@@ -34,9 +38,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +52,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 	//Expected set of CWEs this tool will find instances of. Certainly a better way to do this, but this is fast and 
 	//I already had the list written out
-	final String[] cweList = {"CWE-22", 
+	/**final String[] cweList = {"CWE-22", 
 			"CWE-755", 
 			"CWE-20", 
 			"CWE-119", 
@@ -70,10 +76,12 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			"CWE-120", 
 			"CWE-362", 
 			"CWE-200", 
-			"CWE-617"};
+			"CWE-617"};*/
+	
 			
 	public CVEBinToolWrapper() {
 		super("cve-bin-tool", null);
+		
 	}
 
 	// Methods
@@ -187,17 +195,38 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 		// Creates and returns a set of CWE diagnostics without findings
 		private Map<String, Diagnostic> initializeDiagnostics() {
+			ArrayList<String> cweList = identifyCWEs();
+			
 			Map<String, Diagnostic> diagnostics = new HashMap<>();
 
 			for (String cwe : cweList) { // TODO: add descriptions for CWEs
-				String id = "CVE-" + helperFunctions.addDashtoCWEName(cwe);
 				String description = "CVE findings of " + cwe;
-				Diagnostic diag = new Diagnostic(id, description, "cve-bin-tool");
-				diagnostics.put(id, diag);
+				Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
+				diagnostics.put(cwe, diag);
 			}
 
 			return diagnostics;
 		}	
+		
+		private ArrayList<String> identifyCWEs() {
+			// identify all relevant diagnostics from the model structure
+			ArrayList<String> cweList = new ArrayList<String>();
+		
+			// load the qm structure
+			Properties prop = PiqueProperties.getProperties();
+			Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
+			QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
+	        QualityModel qmDescription = qmImport.importQualityModel();
+	        
+	        // for each diagnostic in the model, if it is associated with this tool, 
+	        // add it to the list of cwes
+	        for (ModelNode x : qmDescription.getDiagnostics().values()) {
+	        	if (((Diagnostic)x).getToolName().equals("cve-bin-tool")) {
+	        		cweList.add(x.getName());
+	        	}
+	        }
+	        return cweList;
+		}
 		
 		//maps low-critical to numeric values based on the highest value for each range.
 		private Integer severityToInt(String severity) {
