@@ -1,0 +1,5830 @@
+{
+  "name" : "Binary Security Quality Model CWE-699",
+  "additionalData" : { },
+  "global_config" : {
+    "benchmark_strategy" : "calibration.BinaryBenchmarker",
+    "normalizer_strategy" : "evaluation.NoNormalizer"
+  },
+  "factors" : {
+    "tqi" : {
+      "Binary Security Quality" : {
+        "description" : "A measure of how secure a binary is relevant to benchmarked binaries from stakeholder perspective."
+      }
+    },
+    "quality_aspects" : {
+      "Confidentiality" : {
+        "description" : "Information is not made available or disclosed to unauthorized individuals, entities, or processes."
+      },
+      "Integrity" : {
+        "description" : "Data or processes cannot be modified in an unauthorized way."
+      },
+      "Availability" : {
+        "description" : "Data and processes should be available at all times when deemed necessary."
+      },
+      "Authenticity" : {
+        "description" : "Identity of individuals, entities, or processes is verified correctly."
+      },
+      "Authorization" : {
+        "description" : "individuals, entities, or processes only have access to data and processes they should."
+      },
+      "Non-repudiation" : {
+        "description" : "Individuals, entities, or processes may not deny any actions they performed."
+      }
+    },
+    "product_factors" : {
+      "Category CWE-1228" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1228" : { },
+          "CWE-242" : { },
+          "CWE-474" : { },
+          "CWE-475" : { },
+          "CWE-477" : { },
+          "CWE-676" : { },
+          "CWE-695" : { },
+          "CWE-749" : { }
+        }
+      },
+      "Category CWE-1210" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1210" : { },
+          "CWE-117" : { },
+          "CWE-222" : { },
+          "CWE-223" : { },
+          "CWE-224" : { },
+          "CWE-532" : { },
+          "CWE-778" : { },
+          "CWE-779" : { }
+        }
+      },
+      "Category CWE-1211" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1211" : { },
+          "CWE-288" : { },
+          "CWE-290" : { },
+          "CWE-294" : { },
+          "CWE-295" : { },
+          "CWE-296" : { },
+          "CWE-299" : { },
+          "CWE-303" : { },
+          "CWE-304" : { },
+          "CWE-305" : { },
+          "CWE-306" : { },
+          "CWE-307" : { },
+          "CWE-308" : { },
+          "CWE-309" : { },
+          "CWE-322" : { },
+          "CWE-603" : { },
+          "CWE-645" : { },
+          "CWE-804" : { },
+          "CWE-836" : { }
+        }
+      },
+      "Category CWE-1212" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1212" : { },
+          "CWE-425" : { },
+          "CWE-551" : { },
+          "CWE-612" : { },
+          "CWE-639" : { },
+          "CWE-939" : { },
+          "CWE-842" : { },
+          "CWE-1220" : { }
+        }
+      },
+      "Category CWE-1006" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1006" : { },
+          "CWE-478" : { },
+          "CWE-487" : { },
+          "CWE-489" : { },
+          "CWE-546" : { },
+          "CWE-547" : { },
+          "CWE-561" : { },
+          "CWE-562" : { },
+          "CWE-563" : { },
+          "CWE-581" : { },
+          "CWE-586" : { },
+          "CWE-605" : { },
+          "CWE-621" : { },
+          "CWE-627" : { },
+          "CWE-628" : { },
+          "CWE-694" : { },
+          "CWE-1041" : { },
+          "CWE-1043" : { },
+          "CWE-1044" : { },
+          "CWE-1045" : { },
+          "CWE-1046" : { },
+          "CWE-1048" : { },
+          "CWE-1049" : { },
+          "CWE-1050" : { },
+          "CWE-1063" : { },
+          "CWE-1065" : { },
+          "CWE-1066" : { },
+          "CWE-1067" : { },
+          "CWE-1070" : { },
+          "CWE-1071" : { },
+          "CWE-1072" : { },
+          "CWE-1073" : { },
+          "CWE-1079" : { },
+          "CWE-1082" : { },
+          "CWE-1084" : { },
+          "CWE-1085" : { },
+          "CWE-1087" : { },
+          "CWE-1089" : { },
+          "CWE-1091" : { },
+          "CWE-1092" : { },
+          "CWE-1094" : { },
+          "CWE-1097" : { },
+          "CWE-1098" : { },
+          "CWE-1099" : { },
+          "CWE-1101" : { },
+          "CWE-1102" : { },
+          "CWE-1103" : { },
+          "CWE-1104" : { },
+          "CWE-1106" : { },
+          "CWE-1107" : { },
+          "CWE-1108" : { },
+          "CWE-1109" : { },
+          "CWE-1113" : { },
+          "CWE-1114" : { },
+          "CWE-1115" : { },
+          "CWE-1116" : { },
+          "CWE-1117" : { },
+          "CWE-1126" : { },
+          "CWE-1127" : { },
+          "CWE-1235" : { }
+        }
+      },
+      "Category CWE-438" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-438" : { },
+          "CWE-115" : { },
+          "CWE-179" : { },
+          "CWE-408" : { },
+          "CWE-437" : { },
+          "CWE-439" : { },
+          "CWE-440" : { },
+          "CWE-444" : { },
+          "CWE-480" : { },
+          "CWE-483" : { },
+          "CWE-484" : { },
+          "CWE-551" : { },
+          "CWE-698" : { },
+          "CWE-733" : { },
+          "CWE-783" : { },
+          "CWE-835" : { },
+          "CWE-837" : { },
+          "CWE-841" : { },
+          "CWE-1025" : { },
+          "CWE-1037" : { }
+        }
+      },
+      "Category CWE-840" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-840" : { },
+          "CWE-283" : { },
+          "CWE-288" : { },
+          "CWE-639" : { },
+          "CWE-640" : { },
+          "CWE-708" : { },
+          "CWE-770" : { },
+          "CWE-826" : { },
+          "CWE-837" : { },
+          "CWE-841" : { }
+        }
+      },
+      "Category CWE-417" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-417" : { },
+          "CWE-322" : { },
+          "CWE-346" : { },
+          "CWE-385" : { },
+          "CWE-419" : { },
+          "CWE-420" : { },
+          "CWE-425" : { },
+          "CWE-515" : { },
+          "CWE-924" : { },
+          "CWE-940" : { },
+          "CWE-941" : { }
+        }
+      },
+      "Category CWE-1226" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1043" : { },
+          "CWE-1047" : { },
+          "CWE-1055" : { },
+          "CWE-1056" : { },
+          "CWE-1060" : { },
+          "CWE-1064" : { },
+          "CWE-1074" : { },
+          "CWE-1075" : { },
+          "CWE-1080" : { },
+          "CWE-1086" : { },
+          "CWE-1095" : { },
+          "CWE-1119" : { },
+          "CWE-1121" : { },
+          "CWE-1122" : { },
+          "CWE-1123" : { },
+          "CWE-1124" : { },
+          "CWE-1125" : { }
+        }
+      },
+      "Category CWE-557" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-363" : { },
+          "CWE-364" : { },
+          "CWE-365" : { },
+          "CWE-366" : { },
+          "CWE-367" : { },
+          "CWE-368" : { },
+          "CWE-386" : { },
+          "CWE-421" : { },
+          "CWE-567" : { },
+          "CWE-585" : { },
+          "CWE-663" : { },
+          "CWE-820" : { },
+          "CWE-821" : { },
+          "CWE-1058" : { },
+          "CWE-1088" : { }
+        }
+      },
+      "Category CWE-255" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-255" : { },
+          "CWE-256" : { },
+          "CWE-257" : { },
+          "CWE-260" : { },
+          "CWE-261" : { },
+          "CWE-262" : { },
+          "CWE-263" : { },
+          "CWE-324" : { },
+          "CWE-521" : { },
+          "CWE-523" : { },
+          "CWE-549" : { },
+          "CWE-620" : { },
+          "CWE-640" : { },
+          "CWE-798" : { },
+          "CWE-916" : { }
+        }
+      },
+      "Category CWE-310" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-310" : { },
+          "CWE-261" : { },
+          "CWE-324" : { },
+          "CWE-325" : { },
+          "CWE-328" : { },
+          "CWE-331" : { },
+          "CWE-334" : { },
+          "CWE-335" : { },
+          "CWE-338" : { },
+          "CWE-347" : { },
+          "CWE-916" : { },
+          "CWE-1240" : { }
+        }
+      },
+      "Category CWE-320" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-320" : { },
+          "CWE-321" : { },
+          "CWE-322" : { },
+          "CWE-323" : { },
+          "CWE-324" : { }
+        }
+      },
+      "Category CWE-1214" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1214" : { },
+          "CWE-322" : { },
+          "CWE-346" : { },
+          "CWE-347" : { },
+          "CWE-348" : { },
+          "CWE-349" : { },
+          "CWE-351" : { },
+          "CWE-353" : { },
+          "CWE-354" : { },
+          "CWE-494" : { },
+          "CWE-565" : { },
+          "CWE-649" : { },
+          "CWE-829" : { },
+          "CWE-924" : { }
+        }
+      },
+      "Category CWE-19" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-19" : { },
+          "CWE-130" : { },
+          "CWE-166" : { },
+          "CWE-167" : { },
+          "CWE-168" : { },
+          "CWE-178" : { },
+          "CWE-182" : { },
+          "CWE-186" : { },
+          "CWE-229" : { },
+          "CWE-233" : { },
+          "CWE-237" : { },
+          "CWE-241" : { },
+          "CWE-409" : { },
+          "CWE-471" : { },
+          "CWE-472" : { },
+          "CWE-601" : { },
+          "CWE-611" : { },
+          "CWE-624" : { },
+          "CWE-625" : { },
+          "CWE-776" : { },
+          "CWE-1024" : { }
+        }
+      },
+      "Category CWE-137" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-137" : { },
+          "CWE-76" : { },
+          "CWE-78" : { },
+          "CWE-79" : { },
+          "CWE-88" : { },
+          "CWE-89" : { },
+          "CWE-90" : { },
+          "CWE-91" : { },
+          "CWE-93" : { },
+          "CWE-94" : { },
+          "CWE-96" : { },
+          "CWE-117" : { },
+          "CWE-140" : { },
+          "CWE-170" : { },
+          "CWE-188" : { },
+          "CWE-462" : { },
+          "CWE-463" : { },
+          "CWE-464" : { },
+          "CWE-641" : { },
+          "CWE-643" : { },
+          "CWE-652" : { },
+          "CWE-791" : { },
+          "CWE-795" : { },
+          "CWE-838" : { },
+          "CWE-917" : { },
+          "CWE-1236" : { }
+        }
+      },
+      "Category CWE-1225" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1225" : { },
+          "CWE-1053" : { },
+          "CWE-1068" : { },
+          "CWE-1110" : { },
+          "CWE-1111" : { },
+          "CWE-1112" : { },
+          "CWE-1118" : { }
+        }
+      },
+      "Category CWE-1219" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1219" : { },
+          "CWE-23" : { },
+          "CWE-36" : { },
+          "CWE-41" : { },
+          "CWE-59" : { },
+          "CWE-66" : { },
+          "CWE-378" : { },
+          "CWE-379" : { },
+          "CWE-426" : { },
+          "CWE-427" : { },
+          "CWE-428" : { }
+        }
+      },
+      "Category CWE-1227" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1227" : { },
+          "CWE-1054" : { },
+          "CWE-1057" : { },
+          "CWE-1062" : { },
+          "CWE-1083" : { },
+          "CWE-1090" : { },
+          "CWE-1100" : { },
+          "CWE-1105" : { }
+        }
+      },
+      "Category CWE-389" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-389" : { },
+          "CWE-209" : { },
+          "CWE-248" : { },
+          "CWE-252" : { },
+          "CWE-253" : { },
+          "CWE-390" : { },
+          "CWE-391" : { },
+          "CWE-392" : { },
+          "CWE-393" : { },
+          "CWE-394" : { },
+          "CWE-395" : { },
+          "CWE-396" : { },
+          "CWE-397" : { },
+          "CWE-544" : { },
+          "CWE-584" : { },
+          "CWE-600" : { },
+          "CWE-617" : { },
+          "CWE-756" : { },
+          "CWE-1069" : { }
+        }
+      },
+      "Category CWE-569" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-569" : { },
+          "CWE-480" : { },
+          "CWE-570" : { },
+          "CWE-571" : { },
+          "CWE-588" : { },
+          "CWE-595" : { },
+          "CWE-783" : { }
+        }
+      },
+      "Category CWE-429" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-429" : { },
+          "CWE-430" : { },
+          "CWE-431" : { },
+          "CWE-432" : { },
+          "CWE-433" : { },
+          "CWE-434" : { },
+          "CWE-479" : { }
+        }
+      },
+      "Category CWE-199" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-199" : { },
+          "CWE-201" : { },
+          "CWE-204" : { },
+          "CWE-205" : { },
+          "CWE-208" : { },
+          "CWE-209" : { },
+          "CWE-212" : { },
+          "CWE-213" : { },
+          "CWE-214" : { },
+          "CWE-215" : { },
+          "CWE-312" : { },
+          "CWE-319" : { },
+          "CWE-359" : { },
+          "CWE-497" : { },
+          "CWE-524" : { },
+          "CWE-532" : { },
+          "CWE-540" : { },
+          "CWE-921" : { },
+          "CWE-1230" : { }
+        }
+      },
+      "Category CWE-452" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-452" : { },
+          "CWE-226" : { },
+          "CWE-454" : { },
+          "CWE-455" : { },
+          "CWE-459" : { },
+          "CWE-460" : { },
+          "CWE-1051" : { },
+          "CWE-1052" : { },
+          "CWE-1188" : { }
+        }
+      },
+      "Category CWE-1215" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1215" : { },
+          "CWE-112" : { },
+          "CWE-129" : { },
+          "CWE-179" : { },
+          "CWE-183" : { },
+          "CWE-184" : { },
+          "CWE-606" : { },
+          "CWE-641" : { },
+          "CWE-1173" : { }
+        }
+      },
+      "Category CWE-1216" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1216" : { },
+          "CWE-645" : { }
+        }
+      },
+      "Category CWE-1218" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1218" : { },
+          "CWE-120" : { },
+          "CWE-123" : { },
+          "CWE-124" : { },
+          "CWE-125" : { },
+          "CWE-131" : { },
+          "CWE-786" : { },
+          "CWE-787" : { },
+          "CWE-788" : { },
+          "CWE-805" : { }
+        }
+      },
+      "Category CWE-189" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-189" : { },
+          "CWE-128" : { },
+          "CWE-190" : { },
+          "CWE-191" : { },
+          "CWE-192" : { },
+          "CWE-193" : { },
+          "CWE-197" : { },
+          "CWE-198" : { },
+          "CWE-369" : { },
+          "CWE-681" : { },
+          "CWE-839" : { },
+          "CWE-1077" : { }
+        }
+      },
+      "Category CWE-275" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-275" : { },
+          "CWE-276" : { },
+          "CWE-277" : { },
+          "CWE-278" : { },
+          "CWE-279" : { },
+          "CWE-280" : { },
+          "CWE-281" : { },
+          "CWE-618" : { },
+          "CWE-766" : { },
+          "CWE-767" : { }
+        }
+      },
+      "Category CWE-465" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-465" : { },
+          "CWE-466" : { },
+          "CWE-467" : { },
+          "CWE-468" : { },
+          "CWE-469" : { },
+          "CWE-476" : { },
+          "CWE-587" : { },
+          "CWE-588" : { },
+          "CWE-763" : { },
+          "CWE-822" : { },
+          "CWE-823" : { },
+          "CWE-824" : { },
+          "CWE-825" : { }
+        }
+      },
+      "Category CWE-265" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-265" : { },
+          "CWE-243" : { },
+          "CWE-250" : { },
+          "CWE-266" : { },
+          "CWE-267" : { },
+          "CWE-268" : { },
+          "CWE-270" : { },
+          "CWE-272" : { },
+          "CWE-273" : { },
+          "CWE-274" : { },
+          "CWE-280" : { },
+          "CWE-501" : { },
+          "CWE-580" : { },
+          "CWE-648" : { }
+        }
+      },
+      "Category CWE-1213" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1213" : { },
+          "CWE-331" : { },
+          "CWE-334" : { },
+          "CWE-335" : { },
+          "CWE-338" : { },
+          "CWE-341" : { },
+          "CWE-342" : { },
+          "CWE-343" : { },
+          "CWE-1241" : { }
+        }
+      },
+      "Category CWE-411" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-411" : { },
+          "CWE-412" : { },
+          "CWE-413" : { },
+          "CWE-414" : { },
+          "CWE-609" : { },
+          "CWE-764" : { },
+          "CWE-765" : { },
+          "CWE-832" : { },
+          "CWE-833" : { }
+        }
+      },
+      "Category CWE-399" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-399" : { },
+          "CWE-73" : { },
+          "CWE-403" : { },
+          "CWE-410" : { },
+          "CWE-470" : { },
+          "CWE-502" : { },
+          "CWE-619" : { },
+          "CWE-641" : { },
+          "CWE-694" : { },
+          "CWE-763" : { },
+          "CWE-770" : { },
+          "CWE-771" : { },
+          "CWE-772" : { },
+          "CWE-826" : { },
+          "CWE-908" : { },
+          "CWE-909" : { },
+          "CWE-910" : { },
+          "CWE-911" : { },
+          "CWE-914" : { },
+          "CWE-915" : { },
+          "CWE-920" : { },
+          "CWE-1188" : { }
+        }
+      },
+      "Category CWE-387" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-387" : { },
+          "CWE-364" : { },
+          "CWE-432" : { },
+          "CWE-828" : { },
+          "CWE-831" : { }
+        }
+      },
+      "Category CWE-371" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-371" : { },
+          "CWE-15" : { },
+          "CWE-372" : { },
+          "CWE-374" : { },
+          "CWE-375" : { },
+          "CWE-1265" : { }
+        }
+      },
+      "Category CWE-133" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-133" : { },
+          "CWE-134" : { },
+          "CWE-135" : { },
+          "CWE-597" : { }
+        }
+      },
+      "Category CWE-136" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-136" : { },
+          "CWE-681" : { },
+          "CWE-843" : { }
+        }
+      },
+      "Category CWE-355" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-355" : { },
+          "CWE-317" : { },
+          "CWE-356" : { },
+          "CWE-357" : { },
+          "CWE-447" : { },
+          "CWE-448" : { },
+          "CWE-449" : { },
+          "CWE-450" : { },
+          "CWE-549" : { },
+          "CWE-1007" : { },
+          "CWE-1021" : { }
+        }
+      },
+      "Category CWE-1217" : {
+        "description" : "",
+        "children" : {
+          "CWE-Unknown-Other" : { },
+          "CWE-1217" : { },
+          "CWE-488" : { },
+          "CWE-613" : { },
+          "CWE-841" : { }
+        }
+      }
+    }
+  },
+  "measures" : {
+  "CWE-Unknown-Other" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-Unknown-Other" : { }
+      }
+    },
+    "CWE-1228" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1228" : { }
+      }
+    },
+    "CWE-1210" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1210" : { }
+      }
+    },
+    "CWE-1211" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1211" : { }
+      }
+    },
+    "CWE-1212" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1212" : { }
+      }
+    },
+    "CWE-1006" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1006" : { }
+      }
+    },
+    "CWE-438" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-438" : { }
+      }
+    },
+    "CWE-840" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-840" : { }
+      }
+    },
+    "CWE-417" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-417" : { }
+      }
+    },
+    "CWE-1226" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1226" : { }
+      }
+    },
+    "CWE-557" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-557" : { }
+      }
+    },
+    "CWE-255" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-255" : { }
+      }
+    },
+    "CWE-310" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-310" : { }
+      }
+    },
+    "CWE-320" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-320" : { }
+      }
+    },
+    "CWE-1214" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1214" : { }
+      }
+    },
+    "CWE-19" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-19" : { }
+      }
+    },
+    "CWE-137" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-137" : { }
+      }
+    },
+    "CWE-1225" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1225" : { }
+      }
+    },
+    "CWE-1219" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1219" : { }
+      }
+    },
+    "CWE-1227" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1227" : { }
+      }
+    },
+    "CWE-389" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-389" : { }
+      }
+    },
+    "CWE-569" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-569" : { }
+      }
+    },
+    "CWE-429" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-429" : { }
+      }
+    },
+    "CWE-199" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-199" : { }
+      }
+    },
+    "CWE-452" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-452" : { }
+      }
+    },
+    "CWE-1215" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1215" : { }
+      }
+    },
+    "CWE-1216" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1216" : { }
+      }
+    },
+    "CWE-1218" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1218" : { }
+      }
+    },
+    "CWE-189" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-189" : { }
+      }
+    },
+    "CWE-275" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-275" : { }
+      }
+    },
+    "CWE-465" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-465" : { }
+      }
+    },
+    "CWE-265" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-265" : { }
+      }
+    },
+    "CWE-1213" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1213" : { }
+      }
+    },
+    "CWE-411" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-411" : { }
+      }
+    },
+    "CWE-399" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-399" : { }
+      }
+    },
+    "CWE-387" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-387" : { }
+      }
+    },
+    "CWE-371" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-371" : { }
+      }
+    },
+    "CWE-133" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-133" : { }
+      }
+    },
+    "CWE-136" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-136" : { }
+      }
+    },
+    "CWE-355" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-355" : { }
+      }
+    },
+    "CWE-1217" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1217" : { }
+      }
+    },
+    "CWE-242" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-242" : { }
+      }
+    },
+    "CWE-474" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-474" : { }
+      }
+    },
+    "CWE-475" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-475" : { }
+      }
+    },
+    "CWE-477" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-477" : { }
+      }
+    },
+    "CWE-676" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-676" : { }
+      }
+    },
+    "CWE-695" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-695" : { }
+      }
+    },
+    "CWE-749" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-749" : { }
+      }
+    },
+    "CWE-117" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-117" : { }
+      }
+    },
+    "CWE-222" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-222" : { }
+      }
+    },
+    "CWE-223" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-223" : { }
+      }
+    },
+    "CWE-224" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-224" : { }
+      }
+    },
+    "CWE-532" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-532" : { }
+      }
+    },
+    "CWE-778" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-778" : { }
+      }
+    },
+    "CWE-779" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-779" : { }
+      }
+    },
+    "CWE-288" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-288" : { }
+      }
+    },
+    "CWE-290" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-290" : { }
+      }
+    },
+    "CWE-294" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-294" : { }
+      }
+    },
+    "CWE-295" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-295" : { }
+      }
+    },
+    "CWE-296" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-296" : { }
+      }
+    },
+    "CWE-299" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-299" : { }
+      }
+    },
+    "CWE-303" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-303" : { }
+      }
+    },
+    "CWE-304" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-304" : { }
+      }
+    },
+    "CWE-305" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-305" : { }
+      }
+    },
+    "CWE-306" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-306" : { }
+      }
+    },
+    "CWE-307" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-307" : { }
+      }
+    },
+    "CWE-308" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-308" : { }
+      }
+    },
+    "CWE-309" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-309" : { }
+      }
+    },
+    "CWE-322" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-322" : { }
+      }
+    },
+    "CWE-603" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-603" : { }
+      }
+    },
+    "CWE-645" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-645" : { }
+      }
+    },
+    "CWE-804" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-804" : { }
+      }
+    },
+    "CWE-836" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-836" : { }
+      }
+    },
+    "CWE-425" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-425" : { }
+      }
+    },
+    "CWE-551" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-551" : { }
+      }
+    },
+    "CWE-612" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-612" : { }
+      }
+    },
+    "CWE-639" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-639" : { }
+      }
+    },
+    "CWE-939" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-939" : { }
+      }
+    },
+    "CWE-842" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-842" : { }
+      }
+    },
+    "CWE-1220" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1220" : { }
+      }
+    },
+    "CWE-478" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-478" : { }
+      }
+    },
+    "CWE-487" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-487" : { }
+      }
+    },
+    "CWE-489" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-489" : { }
+      }
+    },
+    "CWE-546" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-546" : { }
+      }
+    },
+    "CWE-547" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-547" : { }
+      }
+    },
+    "CWE-561" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-561" : { }
+      }
+    },
+    "CWE-562" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-562" : { }
+      }
+    },
+    "CWE-563" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-563" : { }
+      }
+    },
+    "CWE-581" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-581" : { }
+      }
+    },
+    "CWE-586" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-586" : { }
+      }
+    },
+    "CWE-605" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-605" : { }
+      }
+    },
+    "CWE-621" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-621" : { }
+      }
+    },
+    "CWE-627" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-627" : { }
+      }
+    },
+    "CWE-628" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-628" : { }
+      }
+    },
+    "CWE-694" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-694" : { }
+      }
+    },
+    "CWE-1041" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1041" : { }
+      }
+    },
+    "CWE-1043" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1043" : { }
+      }
+    },
+    "CWE-1044" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1044" : { }
+      }
+    },
+    "CWE-1045" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1045" : { }
+      }
+    },
+    "CWE-1046" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1046" : { }
+      }
+    },
+    "CWE-1048" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1048" : { }
+      }
+    },
+    "CWE-1049" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1049" : { }
+      }
+    },
+    "CWE-1050" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1050" : { }
+      }
+    },
+    "CWE-1063" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1063" : { }
+      }
+    },
+    "CWE-1065" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1065" : { }
+      }
+    },
+    "CWE-1066" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1066" : { }
+      }
+    },
+    "CWE-1067" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1067" : { }
+      }
+    },
+    "CWE-1070" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1070" : { }
+      }
+    },
+    "CWE-1071" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1071" : { }
+      }
+    },
+    "CWE-1072" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1072" : { }
+      }
+    },
+    "CWE-1073" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1073" : { }
+      }
+    },
+    "CWE-1079" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1079" : { }
+      }
+    },
+    "CWE-1082" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1082" : { }
+      }
+    },
+    "CWE-1084" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1084" : { }
+      }
+    },
+    "CWE-1085" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1085" : { }
+      }
+    },
+    "CWE-1087" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1087" : { }
+      }
+    },
+    "CWE-1089" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1089" : { }
+      }
+    },
+    "CWE-1091" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1091" : { }
+      }
+    },
+    "CWE-1092" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1092" : { }
+      }
+    },
+    "CWE-1094" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1094" : { }
+      }
+    },
+    "CWE-1097" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1097" : { }
+      }
+    },
+    "CWE-1098" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1098" : { }
+      }
+    },
+    "CWE-1099" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1099" : { }
+      }
+    },
+    "CWE-1101" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1101" : { }
+      }
+    },
+    "CWE-1102" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1102" : { }
+      }
+    },
+    "CWE-1103" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1103" : { }
+      }
+    },
+    "CWE-1104" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1104" : { }
+      }
+    },
+    "CWE-1106" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1106" : { }
+      }
+    },
+    "CWE-1107" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1107" : { }
+      }
+    },
+    "CWE-1108" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1108" : { }
+      }
+    },
+    "CWE-1109" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1109" : { }
+      }
+    },
+    "CWE-1113" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1113" : { }
+      }
+    },
+    "CWE-1114" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1114" : { }
+      }
+    },
+    "CWE-1115" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1115" : { }
+      }
+    },
+    "CWE-1116" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1116" : { }
+      }
+    },
+    "CWE-1117" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1117" : { }
+      }
+    },
+    "CWE-1126" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1126" : { }
+      }
+    },
+    "CWE-1127" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1127" : { }
+      }
+    },
+    "CWE-1235" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1235" : { }
+      }
+    },
+    "CWE-115" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-115" : { }
+      }
+    },
+    "CWE-179" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-179" : { }
+      }
+    },
+    "CWE-408" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-408" : { }
+      }
+    },
+    "CWE-437" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-437" : { }
+      }
+    },
+    "CWE-439" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-439" : { }
+      }
+    },
+    "CWE-440" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-440" : { }
+      }
+    },
+    "CWE-444" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-444" : { }
+      }
+    },
+    "CWE-480" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-480" : { }
+      }
+    },
+    "CWE-483" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-483" : { }
+      }
+    },
+    "CWE-484" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-484" : { }
+      }
+    },
+    "CWE-698" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-698" : { }
+      }
+    },
+    "CWE-733" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-733" : { }
+      }
+    },
+    "CWE-783" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-783" : { }
+      }
+    },
+    "CWE-835" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-835" : { }
+      }
+    },
+    "CWE-837" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-837" : { }
+      }
+    },
+    "CWE-841" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-841" : { }
+      }
+    },
+    "CWE-1025" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1025" : { }
+      }
+    },
+    "CWE-1037" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1037" : { }
+      }
+    },
+    "CWE-283" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-283" : { }
+      }
+    },
+    "CWE-640" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-640" : { }
+      }
+    },
+    "CWE-708" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-708" : { }
+      }
+    },
+    "CWE-770" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-770" : { }
+      }
+    },
+    "CWE-826" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-826" : { }
+      }
+    },
+    "CWE-346" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-346" : { }
+      }
+    },
+    "CWE-385" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-385" : { }
+      }
+    },
+    "CWE-419" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-419" : { }
+      }
+    },
+    "CWE-420" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-420" : { }
+      }
+    },
+    "CWE-515" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-515" : { }
+      }
+    },
+    "CWE-924" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-924" : { }
+      }
+    },
+    "CWE-940" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-940" : { }
+      }
+    },
+    "CWE-941" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-941" : { }
+      }
+    },
+    "CWE-1047" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1047" : { }
+      }
+    },
+    "CWE-1055" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1055" : { }
+      }
+    },
+    "CWE-1056" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1056" : { }
+      }
+    },
+    "CWE-1060" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1060" : { }
+      }
+    },
+    "CWE-1064" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1064" : { }
+      }
+    },
+    "CWE-1074" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1074" : { }
+      }
+    },
+    "CWE-1075" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1075" : { }
+      }
+    },
+    "CWE-1080" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1080" : { }
+      }
+    },
+    "CWE-1086" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1086" : { }
+      }
+    },
+    "CWE-1095" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1095" : { }
+      }
+    },
+    "CWE-1119" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1119" : { }
+      }
+    },
+    "CWE-1121" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1121" : { }
+      }
+    },
+    "CWE-1122" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1122" : { }
+      }
+    },
+    "CWE-1123" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1123" : { }
+      }
+    },
+    "CWE-1124" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1124" : { }
+      }
+    },
+    "CWE-1125" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1125" : { }
+      }
+    },
+    "CWE-363" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-363" : { }
+      }
+    },
+    "CWE-364" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-364" : { }
+      }
+    },
+    "CWE-365" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-365" : { }
+      }
+    },
+    "CWE-366" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-366" : { }
+      }
+    },
+    "CWE-367" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-367" : { }
+      }
+    },
+    "CWE-368" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-368" : { }
+      }
+    },
+    "CWE-386" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-386" : { }
+      }
+    },
+    "CWE-421" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-421" : { }
+      }
+    },
+    "CWE-567" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-567" : { }
+      }
+    },
+    "CWE-585" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-585" : { }
+      }
+    },
+    "CWE-663" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-663" : { }
+      }
+    },
+    "CWE-820" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-820" : { }
+      }
+    },
+    "CWE-821" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-821" : { }
+      }
+    },
+    "CWE-1058" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1058" : { }
+      }
+    },
+    "CWE-1088" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1088" : { }
+      }
+    },
+    "CWE-256" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-256" : { }
+      }
+    },
+    "CWE-257" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-257" : { }
+      }
+    },
+    "CWE-260" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-260" : { }
+      }
+    },
+    "CWE-261" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-261" : { }
+      }
+    },
+    "CWE-262" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-262" : { }
+      }
+    },
+    "CWE-263" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-263" : { }
+      }
+    },
+    "CWE-324" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-324" : { }
+      }
+    },
+    "CWE-521" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-521" : { }
+      }
+    },
+    "CWE-523" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-523" : { }
+      }
+    },
+    "CWE-549" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-549" : { }
+      }
+    },
+    "CWE-620" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-620" : { }
+      }
+    },
+    "CWE-798" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-798" : { }
+      }
+    },
+    "CWE-916" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-916" : { }
+      }
+    },
+    "CWE-325" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-325" : { }
+      }
+    },
+    "CWE-328" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-328" : { }
+      }
+    },
+    "CWE-331" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-331" : { }
+      }
+    },
+    "CWE-334" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-334" : { }
+      }
+    },
+    "CWE-335" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-335" : { }
+      }
+    },
+    "CWE-338" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-338" : { }
+      }
+    },
+    "CWE-347" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-347" : { }
+      }
+    },
+    "CWE-1240" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1240" : { }
+      }
+    },
+    "CWE-321" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-321" : { }
+      }
+    },
+    "CWE-323" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-323" : { }
+      }
+    },
+    "CWE-348" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-348" : { }
+      }
+    },
+    "CWE-349" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-349" : { }
+      }
+    },
+    "CWE-351" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-351" : { }
+      }
+    },
+    "CWE-353" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-353" : { }
+      }
+    },
+    "CWE-354" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-354" : { }
+      }
+    },
+    "CWE-494" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-494" : { }
+      }
+    },
+    "CWE-565" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-565" : { }
+      }
+    },
+    "CWE-649" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-649" : { }
+      }
+    },
+    "CWE-829" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-829" : { }
+      }
+    },
+    "CWE-130" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-130" : { }
+      }
+    },
+    "CWE-166" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-166" : { }
+      }
+    },
+    "CWE-167" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-167" : { }
+      }
+    },
+    "CWE-168" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-168" : { }
+      }
+    },
+    "CWE-178" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-178" : { }
+      }
+    },
+    "CWE-182" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-182" : { }
+      }
+    },
+    "CWE-186" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-186" : { }
+      }
+    },
+    "CWE-229" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-229" : { }
+      }
+    },
+    "CWE-233" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-233" : { }
+      }
+    },
+    "CWE-237" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-237" : { }
+      }
+    },
+    "CWE-241" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-241" : { }
+      }
+    },
+    "CWE-409" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-409" : { }
+      }
+    },
+    "CWE-471" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-471" : { }
+      }
+    },
+    "CWE-472" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-472" : { }
+      }
+    },
+    "CWE-601" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-601" : { }
+      }
+    },
+    "CWE-611" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-611" : { }
+      }
+    },
+    "CWE-624" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-624" : { }
+      }
+    },
+    "CWE-625" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-625" : { }
+      }
+    },
+    "CWE-776" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-776" : { }
+      }
+    },
+    "CWE-1024" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1024" : { }
+      }
+    },
+    "CWE-76" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-76" : { }
+      }
+    },
+    "CWE-78" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-78" : { }
+      }
+    },
+    "CWE-79" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-79" : { }
+      }
+    },
+    "CWE-88" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-88" : { }
+      }
+    },
+    "CWE-89" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-89" : { }
+      }
+    },
+    "CWE-90" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-90" : { }
+      }
+    },
+    "CWE-91" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-91" : { }
+      }
+    },
+    "CWE-93" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-93" : { }
+      }
+    },
+    "CWE-94" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-94" : { }
+      }
+    },
+    "CWE-96" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-96" : { }
+      }
+    },
+    "CWE-140" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-140" : { }
+      }
+    },
+    "CWE-170" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-170" : { }
+      }
+    },
+    "CWE-188" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-188" : { }
+      }
+    },
+    "CWE-462" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-462" : { }
+      }
+    },
+    "CWE-463" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-463" : { }
+      }
+    },
+    "CWE-464" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-464" : { }
+      }
+    },
+    "CWE-641" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-641" : { }
+      }
+    },
+    "CWE-643" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-643" : { }
+      }
+    },
+    "CWE-652" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-652" : { }
+      }
+    },
+    "CWE-791" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-791" : { }
+      }
+    },
+    "CWE-795" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-795" : { }
+      }
+    },
+    "CWE-838" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-838" : { }
+      }
+    },
+    "CWE-917" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-917" : { }
+      }
+    },
+    "CWE-1236" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1236" : { }
+      }
+    },
+    "CWE-1053" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1053" : { }
+      }
+    },
+    "CWE-1068" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1068" : { }
+      }
+    },
+    "CWE-1110" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1110" : { }
+      }
+    },
+    "CWE-1111" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1111" : { }
+      }
+    },
+    "CWE-1112" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1112" : { }
+      }
+    },
+    "CWE-1118" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1118" : { }
+      }
+    },
+    "CWE-23" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-23" : { }
+      }
+    },
+    "CWE-36" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-36" : { }
+      }
+    },
+    "CWE-41" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-41" : { }
+      }
+    },
+    "CWE-59" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-59" : { }
+      }
+    },
+    "CWE-66" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-66" : { }
+      }
+    },
+    "CWE-378" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-378" : { }
+      }
+    },
+    "CWE-379" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-379" : { }
+      }
+    },
+    "CWE-426" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-426" : { }
+      }
+    },
+    "CWE-427" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-427" : { }
+      }
+    },
+    "CWE-428" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-428" : { }
+      }
+    },
+    "CWE-1054" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1054" : { }
+      }
+    },
+    "CWE-1057" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1057" : { }
+      }
+    },
+    "CWE-1062" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1062" : { }
+      }
+    },
+    "CWE-1083" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1083" : { }
+      }
+    },
+    "CWE-1090" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1090" : { }
+      }
+    },
+    "CWE-1100" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1100" : { }
+      }
+    },
+    "CWE-1105" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1105" : { }
+      }
+    },
+    "CWE-209" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-209" : { }
+      }
+    },
+    "CWE-248" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-248" : { }
+      }
+    },
+    "CWE-252" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-252" : { }
+      }
+    },
+    "CWE-253" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-253" : { }
+      }
+    },
+    "CWE-390" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-390" : { }
+      }
+    },
+    "CWE-391" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-391" : { }
+      }
+    },
+    "CWE-392" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-392" : { }
+      }
+    },
+    "CWE-393" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-393" : { }
+      }
+    },
+    "CWE-394" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-394" : { }
+      }
+    },
+    "CWE-395" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-395" : { }
+      }
+    },
+    "CWE-396" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-396" : { }
+      }
+    },
+    "CWE-397" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-397" : { }
+      }
+    },
+    "CWE-544" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-544" : { }
+      }
+    },
+    "CWE-584" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-584" : { }
+      }
+    },
+    "CWE-600" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-600" : { }
+      }
+    },
+    "CWE-617" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-617" : { }
+      }
+    },
+    "CWE-756" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-756" : { }
+      }
+    },
+    "CWE-1069" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1069" : { }
+      }
+    },
+    "CWE-570" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-570" : { }
+      }
+    },
+    "CWE-571" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-571" : { }
+      }
+    },
+    "CWE-588" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-588" : { }
+      }
+    },
+    "CWE-595" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-595" : { }
+      }
+    },
+    "CWE-430" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-430" : { }
+      }
+    },
+    "CWE-431" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-431" : { }
+      }
+    },
+    "CWE-432" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-432" : { }
+      }
+    },
+    "CWE-433" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-433" : { }
+      }
+    },
+    "CWE-434" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-434" : { }
+      }
+    },
+    "CWE-479" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-479" : { }
+      }
+    },
+    "CWE-201" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-201" : { }
+      }
+    },
+    "CWE-204" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-204" : { }
+      }
+    },
+    "CWE-205" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-205" : { }
+      }
+    },
+    "CWE-208" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-208" : { }
+      }
+    },
+    "CWE-212" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-212" : { }
+      }
+    },
+    "CWE-213" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-213" : { }
+      }
+    },
+    "CWE-214" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-214" : { }
+      }
+    },
+    "CWE-215" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-215" : { }
+      }
+    },
+    "CWE-312" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-312" : { }
+      }
+    },
+    "CWE-319" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-319" : { }
+      }
+    },
+    "CWE-359" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-359" : { }
+      }
+    },
+    "CWE-497" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-497" : { }
+      }
+    },
+    "CWE-524" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-524" : { }
+      }
+    },
+    "CWE-540" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-540" : { }
+      }
+    },
+    "CWE-921" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-921" : { }
+      }
+    },
+    "CWE-1230" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1230" : { }
+      }
+    },
+    "CWE-226" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-226" : { }
+      }
+    },
+    "CWE-454" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-454" : { }
+      }
+    },
+    "CWE-455" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-455" : { }
+      }
+    },
+    "CWE-459" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-459" : { }
+      }
+    },
+    "CWE-460" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-460" : { }
+      }
+    },
+    "CWE-1051" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1051" : { }
+      }
+    },
+    "CWE-1052" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1052" : { }
+      }
+    },
+    "CWE-1188" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1188" : { }
+      }
+    },
+    "CWE-112" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-112" : { }
+      }
+    },
+    "CWE-129" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-129" : { }
+      }
+    },
+    "CWE-183" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-183" : { }
+      }
+    },
+    "CWE-184" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-184" : { }
+      }
+    },
+    "CWE-606" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-606" : { }
+      }
+    },
+    "CWE-1173" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1173" : { }
+      }
+    },
+    "CWE-120" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-120" : { }
+      }
+    },
+    "CWE-123" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-123" : { }
+      }
+    },
+    "CWE-124" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-124" : { }
+      }
+    },
+    "CWE-125" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-125" : { }
+      }
+    },
+    "CWE-131" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-131" : { }
+      }
+    },
+    "CWE-786" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-786" : { }
+      }
+    },
+    "CWE-787" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-787" : { }
+      }
+    },
+    "CWE-788" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-788" : { }
+      }
+    },
+    "CWE-805" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-805" : { }
+      }
+    },
+    "CWE-128" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-128" : { }
+      }
+    },
+    "CWE-190" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-190" : { }
+      }
+    },
+    "CWE-191" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-191" : { }
+      }
+    },
+    "CWE-192" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-192" : { }
+      }
+    },
+    "CWE-193" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-193" : { }
+      }
+    },
+    "CWE-197" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-197" : { }
+      }
+    },
+    "CWE-198" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-198" : { }
+      }
+    },
+    "CWE-369" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-369" : { }
+      }
+    },
+    "CWE-681" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-681" : { }
+      }
+    },
+    "CWE-839" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-839" : { }
+      }
+    },
+    "CWE-1077" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1077" : { }
+      }
+    },
+    "CWE-276" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-276" : { }
+      }
+    },
+    "CWE-277" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-277" : { }
+      }
+    },
+    "CWE-278" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-278" : { }
+      }
+    },
+    "CWE-279" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-279" : { }
+      }
+    },
+    "CWE-280" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-280" : { }
+      }
+    },
+    "CWE-281" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-281" : { }
+      }
+    },
+    "CWE-618" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-618" : { }
+      }
+    },
+    "CWE-766" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-766" : { }
+      }
+    },
+    "CWE-767" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-767" : { }
+      }
+    },
+    "CWE-466" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-466" : { }
+      }
+    },
+    "CWE-467" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-467" : { }
+      }
+    },
+    "CWE-468" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-468" : { }
+      }
+    },
+    "CWE-469" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-469" : { }
+      }
+    },
+    "CWE-476" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-476" : { }
+      }
+    },
+    "CWE-587" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-587" : { }
+      }
+    },
+    "CWE-763" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-763" : { }
+      }
+    },
+    "CWE-822" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-822" : { }
+      }
+    },
+    "CWE-823" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-823" : { }
+      }
+    },
+    "CWE-824" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-824" : { }
+      }
+    },
+    "CWE-825" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-825" : { }
+      }
+    },
+    "CWE-243" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-243" : { }
+      }
+    },
+    "CWE-250" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-250" : { }
+      }
+    },
+    "CWE-266" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-266" : { }
+      }
+    },
+    "CWE-267" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-267" : { }
+      }
+    },
+    "CWE-268" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-268" : { }
+      }
+    },
+    "CWE-270" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-270" : { }
+      }
+    },
+    "CWE-272" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-272" : { }
+      }
+    },
+    "CWE-273" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-273" : { }
+      }
+    },
+    "CWE-274" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-274" : { }
+      }
+    },
+    "CWE-501" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-501" : { }
+      }
+    },
+    "CWE-580" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-580" : { }
+      }
+    },
+    "CWE-648" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-648" : { }
+      }
+    },
+    "CWE-341" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-341" : { }
+      }
+    },
+    "CWE-342" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-342" : { }
+      }
+    },
+    "CWE-343" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-343" : { }
+      }
+    },
+    "CWE-1241" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1241" : { }
+      }
+    },
+    "CWE-412" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-412" : { }
+      }
+    },
+    "CWE-413" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-413" : { }
+      }
+    },
+    "CWE-414" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-414" : { }
+      }
+    },
+    "CWE-609" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-609" : { }
+      }
+    },
+    "CWE-764" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-764" : { }
+      }
+    },
+    "CWE-765" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-765" : { }
+      }
+    },
+    "CWE-832" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-832" : { }
+      }
+    },
+    "CWE-833" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-833" : { }
+      }
+    },
+    "CWE-73" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-73" : { }
+      }
+    },
+    "CWE-403" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-403" : { }
+      }
+    },
+    "CWE-410" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-410" : { }
+      }
+    },
+    "CWE-470" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-470" : { }
+      }
+    },
+    "CWE-502" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-502" : { }
+      }
+    },
+    "CWE-619" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-619" : { }
+      }
+    },
+    "CWE-771" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-771" : { }
+      }
+    },
+    "CWE-772" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-772" : { }
+      }
+    },
+    "CWE-908" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-908" : { }
+      }
+    },
+    "CWE-909" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-909" : { }
+      }
+    },
+    "CWE-910" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-910" : { }
+      }
+    },
+    "CWE-911" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-911" : { }
+      }
+    },
+    "CWE-914" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-914" : { }
+      }
+    },
+    "CWE-915" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-915" : { }
+      }
+    },
+    "CWE-920" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-920" : { }
+      }
+    },
+    "CWE-828" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-828" : { }
+      }
+    },
+    "CWE-831" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-831" : { }
+      }
+    },
+    "CWE-15" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-15" : { }
+      }
+    },
+    "CWE-372" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-372" : { }
+      }
+    },
+    "CWE-374" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-374" : { }
+      }
+    },
+    "CWE-375" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-375" : { }
+      }
+    },
+    "CWE-1265" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1265" : { }
+      }
+    },
+    "CWE-134" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-134" : { }
+      }
+    },
+    "CWE-135" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-135" : { }
+      }
+    },
+    "CWE-597" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-597" : { }
+      }
+    },
+    "CWE-843" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-843" : { }
+      }
+    },
+    "CWE-317" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-317" : { }
+      }
+    },
+    "CWE-356" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-356" : { }
+      }
+    },
+    "CWE-357" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-357" : { }
+      }
+    },
+    "CWE-447" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-447" : { }
+      }
+    },
+    "CWE-448" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-448" : { }
+      }
+    },
+    "CWE-449" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-449" : { }
+      }
+    },
+    "CWE-450" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-450" : { }
+      }
+    },
+    "CWE-1007" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1007" : { }
+      }
+    },
+    "CWE-1021" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-1021" : { }
+      }
+    },
+    "CWE-488" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-488" : { }
+      }
+    },
+    "CWE-613" : {
+      "positive" : false,
+      "description" : "",
+      "children" : {
+        "CVE-CWE-613" : { }
+      }
+    }
+  },
+  "diagnostics" : {
+  
+   "CVE-CWE-Unknown-Other" : {
+      "description" : "CVE findings of unknown type, or of a CWE not in this model.",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1228" : {
+      "description" : "CVE findings of CWE-1228",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1210" : {
+      "description" : "CVE findings of CWE-1210",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1211" : {
+      "description" : "CVE findings of CWE-1211",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1212" : {
+      "description" : "CVE findings of CWE-1212",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1006" : {
+      "description" : "CVE findings of CWE-1006",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-438" : {
+      "description" : "CVE findings of CWE-438",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-840" : {
+      "description" : "CVE findings of CWE-840",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-417" : {
+      "description" : "CVE findings of CWE-417",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1226" : {
+      "description" : "CVE findings of CWE-1226",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-557" : {
+      "description" : "CVE findings of CWE-557",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-255" : {
+      "description" : "CVE findings of CWE-255",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-310" : {
+      "description" : "CVE findings of CWE-310",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-320" : {
+      "description" : "CVE findings of CWE-320",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1214" : {
+      "description" : "CVE findings of CWE-1214",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-19" : {
+      "description" : "CVE findings of CWE-19",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-137" : {
+      "description" : "CVE findings of CWE-137",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1225" : {
+      "description" : "CVE findings of CWE-1225",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1219" : {
+      "description" : "CVE findings of CWE-1219",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1227" : {
+      "description" : "CVE findings of CWE-1227",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-389" : {
+      "description" : "CVE findings of CWE-389",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-569" : {
+      "description" : "CVE findings of CWE-569",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-429" : {
+      "description" : "CVE findings of CWE-429",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-199" : {
+      "description" : "CVE findings of CWE-199",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-452" : {
+      "description" : "CVE findings of CWE-452",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1215" : {
+      "description" : "CVE findings of CWE-1215",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1216" : {
+      "description" : "CVE findings of CWE-1216",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1218" : {
+      "description" : "CVE findings of CWE-1218",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-189" : {
+      "description" : "CVE findings of CWE-189",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-275" : {
+      "description" : "CVE findings of CWE-275",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-465" : {
+      "description" : "CVE findings of CWE-465",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-265" : {
+      "description" : "CVE findings of CWE-265",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1213" : {
+      "description" : "CVE findings of CWE-1213",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-411" : {
+      "description" : "CVE findings of CWE-411",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-399" : {
+      "description" : "CVE findings of CWE-399",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-387" : {
+      "description" : "CVE findings of CWE-387",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-371" : {
+      "description" : "CVE findings of CWE-371",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-133" : {
+      "description" : "CVE findings of CWE-133",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-136" : {
+      "description" : "CVE findings of CWE-136",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-355" : {
+      "description" : "CVE findings of CWE-355",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1217" : {
+      "description" : "CVE findings of CWE-1217",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-242" : {
+      "description" : "CVE findings of CWE-242",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-474" : {
+      "description" : "CVE findings of CWE-474",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-475" : {
+      "description" : "CVE findings of CWE-475",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-477" : {
+      "description" : "CVE findings of CWE-477",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-676" : {
+      "description" : "CVE findings of CWE-676",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-695" : {
+      "description" : "CVE findings of CWE-695",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-749" : {
+      "description" : "CVE findings of CWE-749",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-117" : {
+      "description" : "CVE findings of CWE-117",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-222" : {
+      "description" : "CVE findings of CWE-222",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-223" : {
+      "description" : "CVE findings of CWE-223",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-224" : {
+      "description" : "CVE findings of CWE-224",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-532" : {
+      "description" : "CVE findings of CWE-532",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-778" : {
+      "description" : "CVE findings of CWE-778",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-779" : {
+      "description" : "CVE findings of CWE-779",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-288" : {
+      "description" : "CVE findings of CWE-288",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-290" : {
+      "description" : "CVE findings of CWE-290",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-294" : {
+      "description" : "CVE findings of CWE-294",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-295" : {
+      "description" : "CVE findings of CWE-295",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-296" : {
+      "description" : "CVE findings of CWE-296",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-299" : {
+      "description" : "CVE findings of CWE-299",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-303" : {
+      "description" : "CVE findings of CWE-303",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-304" : {
+      "description" : "CVE findings of CWE-304",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-305" : {
+      "description" : "CVE findings of CWE-305",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-306" : {
+      "description" : "CVE findings of CWE-306",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-307" : {
+      "description" : "CVE findings of CWE-307",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-308" : {
+      "description" : "CVE findings of CWE-308",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-309" : {
+      "description" : "CVE findings of CWE-309",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-322" : {
+      "description" : "CVE findings of CWE-322",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-603" : {
+      "description" : "CVE findings of CWE-603",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-645" : {
+      "description" : "CVE findings of CWE-645",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-804" : {
+      "description" : "CVE findings of CWE-804",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-836" : {
+      "description" : "CVE findings of CWE-836",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-425" : {
+      "description" : "CVE findings of CWE-425",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-551" : {
+      "description" : "CVE findings of CWE-551",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-612" : {
+      "description" : "CVE findings of CWE-612",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-639" : {
+      "description" : "CVE findings of CWE-639",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-939" : {
+      "description" : "CVE findings of CWE-939",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-842" : {
+      "description" : "CVE findings of CWE-842",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1220" : {
+      "description" : "CVE findings of CWE-1220",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-478" : {
+      "description" : "CVE findings of CWE-478",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-487" : {
+      "description" : "CVE findings of CWE-487",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-489" : {
+      "description" : "CVE findings of CWE-489",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-546" : {
+      "description" : "CVE findings of CWE-546",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-547" : {
+      "description" : "CVE findings of CWE-547",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-561" : {
+      "description" : "CVE findings of CWE-561",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-562" : {
+      "description" : "CVE findings of CWE-562",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-563" : {
+      "description" : "CVE findings of CWE-563",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-581" : {
+      "description" : "CVE findings of CWE-581",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-586" : {
+      "description" : "CVE findings of CWE-586",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-605" : {
+      "description" : "CVE findings of CWE-605",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-621" : {
+      "description" : "CVE findings of CWE-621",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-627" : {
+      "description" : "CVE findings of CWE-627",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-628" : {
+      "description" : "CVE findings of CWE-628",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-694" : {
+      "description" : "CVE findings of CWE-694",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1041" : {
+      "description" : "CVE findings of CWE-1041",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1043" : {
+      "description" : "CVE findings of CWE-1043",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1044" : {
+      "description" : "CVE findings of CWE-1044",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1045" : {
+      "description" : "CVE findings of CWE-1045",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1046" : {
+      "description" : "CVE findings of CWE-1046",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1048" : {
+      "description" : "CVE findings of CWE-1048",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1049" : {
+      "description" : "CVE findings of CWE-1049",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1050" : {
+      "description" : "CVE findings of CWE-1050",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1063" : {
+      "description" : "CVE findings of CWE-1063",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1065" : {
+      "description" : "CVE findings of CWE-1065",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1066" : {
+      "description" : "CVE findings of CWE-1066",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1067" : {
+      "description" : "CVE findings of CWE-1067",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1070" : {
+      "description" : "CVE findings of CWE-1070",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1071" : {
+      "description" : "CVE findings of CWE-1071",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1072" : {
+      "description" : "CVE findings of CWE-1072",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1073" : {
+      "description" : "CVE findings of CWE-1073",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1079" : {
+      "description" : "CVE findings of CWE-1079",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1082" : {
+      "description" : "CVE findings of CWE-1082",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1084" : {
+      "description" : "CVE findings of CWE-1084",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1085" : {
+      "description" : "CVE findings of CWE-1085",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1087" : {
+      "description" : "CVE findings of CWE-1087",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1089" : {
+      "description" : "CVE findings of CWE-1089",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1091" : {
+      "description" : "CVE findings of CWE-1091",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1092" : {
+      "description" : "CVE findings of CWE-1092",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1094" : {
+      "description" : "CVE findings of CWE-1094",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1097" : {
+      "description" : "CVE findings of CWE-1097",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1098" : {
+      "description" : "CVE findings of CWE-1098",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1099" : {
+      "description" : "CVE findings of CWE-1099",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1101" : {
+      "description" : "CVE findings of CWE-1101",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1102" : {
+      "description" : "CVE findings of CWE-1102",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1103" : {
+      "description" : "CVE findings of CWE-1103",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1104" : {
+      "description" : "CVE findings of CWE-1104",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1106" : {
+      "description" : "CVE findings of CWE-1106",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1107" : {
+      "description" : "CVE findings of CWE-1107",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1108" : {
+      "description" : "CVE findings of CWE-1108",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1109" : {
+      "description" : "CVE findings of CWE-1109",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1113" : {
+      "description" : "CVE findings of CWE-1113",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1114" : {
+      "description" : "CVE findings of CWE-1114",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1115" : {
+      "description" : "CVE findings of CWE-1115",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1116" : {
+      "description" : "CVE findings of CWE-1116",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1117" : {
+      "description" : "CVE findings of CWE-1117",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1126" : {
+      "description" : "CVE findings of CWE-1126",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1127" : {
+      "description" : "CVE findings of CWE-1127",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1235" : {
+      "description" : "CVE findings of CWE-1235",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-115" : {
+      "description" : "CVE findings of CWE-115",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-179" : {
+      "description" : "CVE findings of CWE-179",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-408" : {
+      "description" : "CVE findings of CWE-408",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-437" : {
+      "description" : "CVE findings of CWE-437",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-439" : {
+      "description" : "CVE findings of CWE-439",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-440" : {
+      "description" : "CVE findings of CWE-440",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-444" : {
+      "description" : "CVE findings of CWE-444",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-480" : {
+      "description" : "CVE findings of CWE-480",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-483" : {
+      "description" : "CVE findings of CWE-483",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-484" : {
+      "description" : "CVE findings of CWE-484",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-698" : {
+      "description" : "CVE findings of CWE-698",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-733" : {
+      "description" : "CVE findings of CWE-733",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-783" : {
+      "description" : "CVE findings of CWE-783",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-835" : {
+      "description" : "CVE findings of CWE-835",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-837" : {
+      "description" : "CVE findings of CWE-837",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-841" : {
+      "description" : "CVE findings of CWE-841",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1025" : {
+      "description" : "CVE findings of CWE-1025",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1037" : {
+      "description" : "CVE findings of CWE-1037",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-283" : {
+      "description" : "CVE findings of CWE-283",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-640" : {
+      "description" : "CVE findings of CWE-640",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-708" : {
+      "description" : "CVE findings of CWE-708",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-770" : {
+      "description" : "CVE findings of CWE-770",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-826" : {
+      "description" : "CVE findings of CWE-826",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-346" : {
+      "description" : "CVE findings of CWE-346",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-385" : {
+      "description" : "CVE findings of CWE-385",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-419" : {
+      "description" : "CVE findings of CWE-419",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-420" : {
+      "description" : "CVE findings of CWE-420",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-515" : {
+      "description" : "CVE findings of CWE-515",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-924" : {
+      "description" : "CVE findings of CWE-924",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-940" : {
+      "description" : "CVE findings of CWE-940",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-941" : {
+      "description" : "CVE findings of CWE-941",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1047" : {
+      "description" : "CVE findings of CWE-1047",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1055" : {
+      "description" : "CVE findings of CWE-1055",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1056" : {
+      "description" : "CVE findings of CWE-1056",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1060" : {
+      "description" : "CVE findings of CWE-1060",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1064" : {
+      "description" : "CVE findings of CWE-1064",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1074" : {
+      "description" : "CVE findings of CWE-1074",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1075" : {
+      "description" : "CVE findings of CWE-1075",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1080" : {
+      "description" : "CVE findings of CWE-1080",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1086" : {
+      "description" : "CVE findings of CWE-1086",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1095" : {
+      "description" : "CVE findings of CWE-1095",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1119" : {
+      "description" : "CVE findings of CWE-1119",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1121" : {
+      "description" : "CVE findings of CWE-1121",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1122" : {
+      "description" : "CVE findings of CWE-1122",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1123" : {
+      "description" : "CVE findings of CWE-1123",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1124" : {
+      "description" : "CVE findings of CWE-1124",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1125" : {
+      "description" : "CVE findings of CWE-1125",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-363" : {
+      "description" : "CVE findings of CWE-363",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-364" : {
+      "description" : "CVE findings of CWE-364",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-365" : {
+      "description" : "CVE findings of CWE-365",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-366" : {
+      "description" : "CVE findings of CWE-366",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-367" : {
+      "description" : "CVE findings of CWE-367",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-368" : {
+      "description" : "CVE findings of CWE-368",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-386" : {
+      "description" : "CVE findings of CWE-386",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-421" : {
+      "description" : "CVE findings of CWE-421",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-567" : {
+      "description" : "CVE findings of CWE-567",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-585" : {
+      "description" : "CVE findings of CWE-585",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-663" : {
+      "description" : "CVE findings of CWE-663",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-820" : {
+      "description" : "CVE findings of CWE-820",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-821" : {
+      "description" : "CVE findings of CWE-821",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1058" : {
+      "description" : "CVE findings of CWE-1058",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1088" : {
+      "description" : "CVE findings of CWE-1088",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-256" : {
+      "description" : "CVE findings of CWE-256",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-257" : {
+      "description" : "CVE findings of CWE-257",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-260" : {
+      "description" : "CVE findings of CWE-260",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-261" : {
+      "description" : "CVE findings of CWE-261",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-262" : {
+      "description" : "CVE findings of CWE-262",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-263" : {
+      "description" : "CVE findings of CWE-263",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-324" : {
+      "description" : "CVE findings of CWE-324",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-521" : {
+      "description" : "CVE findings of CWE-521",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-523" : {
+      "description" : "CVE findings of CWE-523",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-549" : {
+      "description" : "CVE findings of CWE-549",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-620" : {
+      "description" : "CVE findings of CWE-620",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-798" : {
+      "description" : "CVE findings of CWE-798",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-916" : {
+      "description" : "CVE findings of CWE-916",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-325" : {
+      "description" : "CVE findings of CWE-325",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-328" : {
+      "description" : "CVE findings of CWE-328",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-331" : {
+      "description" : "CVE findings of CWE-331",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-334" : {
+      "description" : "CVE findings of CWE-334",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-335" : {
+      "description" : "CVE findings of CWE-335",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-338" : {
+      "description" : "CVE findings of CWE-338",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-347" : {
+      "description" : "CVE findings of CWE-347",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1240" : {
+      "description" : "CVE findings of CWE-1240",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-321" : {
+      "description" : "CVE findings of CWE-321",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-323" : {
+      "description" : "CVE findings of CWE-323",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-348" : {
+      "description" : "CVE findings of CWE-348",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-349" : {
+      "description" : "CVE findings of CWE-349",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-351" : {
+      "description" : "CVE findings of CWE-351",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-353" : {
+      "description" : "CVE findings of CWE-353",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-354" : {
+      "description" : "CVE findings of CWE-354",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-494" : {
+      "description" : "CVE findings of CWE-494",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-565" : {
+      "description" : "CVE findings of CWE-565",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-649" : {
+      "description" : "CVE findings of CWE-649",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-829" : {
+      "description" : "CVE findings of CWE-829",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-130" : {
+      "description" : "CVE findings of CWE-130",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-166" : {
+      "description" : "CVE findings of CWE-166",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-167" : {
+      "description" : "CVE findings of CWE-167",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-168" : {
+      "description" : "CVE findings of CWE-168",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-178" : {
+      "description" : "CVE findings of CWE-178",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-182" : {
+      "description" : "CVE findings of CWE-182",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-186" : {
+      "description" : "CVE findings of CWE-186",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-229" : {
+      "description" : "CVE findings of CWE-229",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-233" : {
+      "description" : "CVE findings of CWE-233",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-237" : {
+      "description" : "CVE findings of CWE-237",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-241" : {
+      "description" : "CVE findings of CWE-241",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-409" : {
+      "description" : "CVE findings of CWE-409",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-471" : {
+      "description" : "CVE findings of CWE-471",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-472" : {
+      "description" : "CVE findings of CWE-472",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-601" : {
+      "description" : "CVE findings of CWE-601",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-611" : {
+      "description" : "CVE findings of CWE-611",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-624" : {
+      "description" : "CVE findings of CWE-624",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-625" : {
+      "description" : "CVE findings of CWE-625",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-776" : {
+      "description" : "CVE findings of CWE-776",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1024" : {
+      "description" : "CVE findings of CWE-1024",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-76" : {
+      "description" : "CVE findings of CWE-76",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-78" : {
+      "description" : "CVE findings of CWE-78",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-79" : {
+      "description" : "CVE findings of CWE-79",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-88" : {
+      "description" : "CVE findings of CWE-88",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-89" : {
+      "description" : "CVE findings of CWE-89",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-90" : {
+      "description" : "CVE findings of CWE-90",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-91" : {
+      "description" : "CVE findings of CWE-91",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-93" : {
+      "description" : "CVE findings of CWE-93",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-94" : {
+      "description" : "CVE findings of CWE-94",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-96" : {
+      "description" : "CVE findings of CWE-96",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-140" : {
+      "description" : "CVE findings of CWE-140",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-170" : {
+      "description" : "CVE findings of CWE-170",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-188" : {
+      "description" : "CVE findings of CWE-188",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-462" : {
+      "description" : "CVE findings of CWE-462",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-463" : {
+      "description" : "CVE findings of CWE-463",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-464" : {
+      "description" : "CVE findings of CWE-464",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-641" : {
+      "description" : "CVE findings of CWE-641",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-643" : {
+      "description" : "CVE findings of CWE-643",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-652" : {
+      "description" : "CVE findings of CWE-652",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-791" : {
+      "description" : "CVE findings of CWE-791",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-795" : {
+      "description" : "CVE findings of CWE-795",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-838" : {
+      "description" : "CVE findings of CWE-838",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-917" : {
+      "description" : "CVE findings of CWE-917",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1236" : {
+      "description" : "CVE findings of CWE-1236",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1053" : {
+      "description" : "CVE findings of CWE-1053",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1068" : {
+      "description" : "CVE findings of CWE-1068",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1110" : {
+      "description" : "CVE findings of CWE-1110",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1111" : {
+      "description" : "CVE findings of CWE-1111",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1112" : {
+      "description" : "CVE findings of CWE-1112",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1118" : {
+      "description" : "CVE findings of CWE-1118",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-23" : {
+      "description" : "CVE findings of CWE-23",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-36" : {
+      "description" : "CVE findings of CWE-36",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-41" : {
+      "description" : "CVE findings of CWE-41",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-59" : {
+      "description" : "CVE findings of CWE-59",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-66" : {
+      "description" : "CVE findings of CWE-66",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-378" : {
+      "description" : "CVE findings of CWE-378",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-379" : {
+      "description" : "CVE findings of CWE-379",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-426" : {
+      "description" : "CVE findings of CWE-426",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-427" : {
+      "description" : "CVE findings of CWE-427",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-428" : {
+      "description" : "CVE findings of CWE-428",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1054" : {
+      "description" : "CVE findings of CWE-1054",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1057" : {
+      "description" : "CVE findings of CWE-1057",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1062" : {
+      "description" : "CVE findings of CWE-1062",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1083" : {
+      "description" : "CVE findings of CWE-1083",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1090" : {
+      "description" : "CVE findings of CWE-1090",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1100" : {
+      "description" : "CVE findings of CWE-1100",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1105" : {
+      "description" : "CVE findings of CWE-1105",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-209" : {
+      "description" : "CVE findings of CWE-209",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-248" : {
+      "description" : "CVE findings of CWE-248",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-252" : {
+      "description" : "CVE findings of CWE-252",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-253" : {
+      "description" : "CVE findings of CWE-253",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-390" : {
+      "description" : "CVE findings of CWE-390",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-391" : {
+      "description" : "CVE findings of CWE-391",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-392" : {
+      "description" : "CVE findings of CWE-392",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-393" : {
+      "description" : "CVE findings of CWE-393",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-394" : {
+      "description" : "CVE findings of CWE-394",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-395" : {
+      "description" : "CVE findings of CWE-395",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-396" : {
+      "description" : "CVE findings of CWE-396",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-397" : {
+      "description" : "CVE findings of CWE-397",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-544" : {
+      "description" : "CVE findings of CWE-544",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-584" : {
+      "description" : "CVE findings of CWE-584",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-600" : {
+      "description" : "CVE findings of CWE-600",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-617" : {
+      "description" : "CVE findings of CWE-617",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-756" : {
+      "description" : "CVE findings of CWE-756",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1069" : {
+      "description" : "CVE findings of CWE-1069",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-570" : {
+      "description" : "CVE findings of CWE-570",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-571" : {
+      "description" : "CVE findings of CWE-571",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-588" : {
+      "description" : "CVE findings of CWE-588",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-595" : {
+      "description" : "CVE findings of CWE-595",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-430" : {
+      "description" : "CVE findings of CWE-430",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-431" : {
+      "description" : "CVE findings of CWE-431",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-432" : {
+      "description" : "CVE findings of CWE-432",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-433" : {
+      "description" : "CVE findings of CWE-433",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-434" : {
+      "description" : "CVE findings of CWE-434",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-479" : {
+      "description" : "CVE findings of CWE-479",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-201" : {
+      "description" : "CVE findings of CWE-201",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-204" : {
+      "description" : "CVE findings of CWE-204",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-205" : {
+      "description" : "CVE findings of CWE-205",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-208" : {
+      "description" : "CVE findings of CWE-208",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-212" : {
+      "description" : "CVE findings of CWE-212",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-213" : {
+      "description" : "CVE findings of CWE-213",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-214" : {
+      "description" : "CVE findings of CWE-214",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-215" : {
+      "description" : "CVE findings of CWE-215",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-312" : {
+      "description" : "CVE findings of CWE-312",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-319" : {
+      "description" : "CVE findings of CWE-319",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-359" : {
+      "description" : "CVE findings of CWE-359",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-497" : {
+      "description" : "CVE findings of CWE-497",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-524" : {
+      "description" : "CVE findings of CWE-524",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-540" : {
+      "description" : "CVE findings of CWE-540",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-921" : {
+      "description" : "CVE findings of CWE-921",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1230" : {
+      "description" : "CVE findings of CWE-1230",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-226" : {
+      "description" : "CVE findings of CWE-226",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-454" : {
+      "description" : "CVE findings of CWE-454",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-455" : {
+      "description" : "CVE findings of CWE-455",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-459" : {
+      "description" : "CVE findings of CWE-459",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-460" : {
+      "description" : "CVE findings of CWE-460",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1051" : {
+      "description" : "CVE findings of CWE-1051",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1052" : {
+      "description" : "CVE findings of CWE-1052",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1188" : {
+      "description" : "CVE findings of CWE-1188",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-112" : {
+      "description" : "CVE findings of CWE-112",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-129" : {
+      "description" : "CVE findings of CWE-129",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-183" : {
+      "description" : "CVE findings of CWE-183",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-184" : {
+      "description" : "CVE findings of CWE-184",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-606" : {
+      "description" : "CVE findings of CWE-606",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1173" : {
+      "description" : "CVE findings of CWE-1173",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-120" : {
+      "description" : "CVE findings of CWE-120",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-123" : {
+      "description" : "CVE findings of CWE-123",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-124" : {
+      "description" : "CVE findings of CWE-124",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-125" : {
+      "description" : "CVE findings of CWE-125",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-131" : {
+      "description" : "CVE findings of CWE-131",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-786" : {
+      "description" : "CVE findings of CWE-786",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-787" : {
+      "description" : "CVE findings of CWE-787",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-788" : {
+      "description" : "CVE findings of CWE-788",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-805" : {
+      "description" : "CVE findings of CWE-805",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-128" : {
+      "description" : "CVE findings of CWE-128",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-190" : {
+      "description" : "CVE findings of CWE-190",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-191" : {
+      "description" : "CVE findings of CWE-191",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-192" : {
+      "description" : "CVE findings of CWE-192",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-193" : {
+      "description" : "CVE findings of CWE-193",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-197" : {
+      "description" : "CVE findings of CWE-197",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-198" : {
+      "description" : "CVE findings of CWE-198",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-369" : {
+      "description" : "CVE findings of CWE-369",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-681" : {
+      "description" : "CVE findings of CWE-681",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-839" : {
+      "description" : "CVE findings of CWE-839",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1077" : {
+      "description" : "CVE findings of CWE-1077",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-276" : {
+      "description" : "CVE findings of CWE-276",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-277" : {
+      "description" : "CVE findings of CWE-277",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-278" : {
+      "description" : "CVE findings of CWE-278",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-279" : {
+      "description" : "CVE findings of CWE-279",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-280" : {
+      "description" : "CVE findings of CWE-280",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-281" : {
+      "description" : "CVE findings of CWE-281",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-618" : {
+      "description" : "CVE findings of CWE-618",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-766" : {
+      "description" : "CVE findings of CWE-766",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-767" : {
+      "description" : "CVE findings of CWE-767",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-466" : {
+      "description" : "CVE findings of CWE-466",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-467" : {
+      "description" : "CVE findings of CWE-467",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-468" : {
+      "description" : "CVE findings of CWE-468",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-469" : {
+      "description" : "CVE findings of CWE-469",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-476" : {
+      "description" : "CVE findings of CWE-476",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-587" : {
+      "description" : "CVE findings of CWE-587",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-763" : {
+      "description" : "CVE findings of CWE-763",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-822" : {
+      "description" : "CVE findings of CWE-822",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-823" : {
+      "description" : "CVE findings of CWE-823",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-824" : {
+      "description" : "CVE findings of CWE-824",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-825" : {
+      "description" : "CVE findings of CWE-825",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-243" : {
+      "description" : "CVE findings of CWE-243",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-250" : {
+      "description" : "CVE findings of CWE-250",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-266" : {
+      "description" : "CVE findings of CWE-266",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-267" : {
+      "description" : "CVE findings of CWE-267",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-268" : {
+      "description" : "CVE findings of CWE-268",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-270" : {
+      "description" : "CVE findings of CWE-270",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-272" : {
+      "description" : "CVE findings of CWE-272",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-273" : {
+      "description" : "CVE findings of CWE-273",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-274" : {
+      "description" : "CVE findings of CWE-274",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-501" : {
+      "description" : "CVE findings of CWE-501",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-580" : {
+      "description" : "CVE findings of CWE-580",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-648" : {
+      "description" : "CVE findings of CWE-648",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-341" : {
+      "description" : "CVE findings of CWE-341",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-342" : {
+      "description" : "CVE findings of CWE-342",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-343" : {
+      "description" : "CVE findings of CWE-343",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1241" : {
+      "description" : "CVE findings of CWE-1241",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-412" : {
+      "description" : "CVE findings of CWE-412",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-413" : {
+      "description" : "CVE findings of CWE-413",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-414" : {
+      "description" : "CVE findings of CWE-414",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-609" : {
+      "description" : "CVE findings of CWE-609",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-764" : {
+      "description" : "CVE findings of CWE-764",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-765" : {
+      "description" : "CVE findings of CWE-765",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-832" : {
+      "description" : "CVE findings of CWE-832",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-833" : {
+      "description" : "CVE findings of CWE-833",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-73" : {
+      "description" : "CVE findings of CWE-73",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-403" : {
+      "description" : "CVE findings of CWE-403",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-410" : {
+      "description" : "CVE findings of CWE-410",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-470" : {
+      "description" : "CVE findings of CWE-470",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-502" : {
+      "description" : "CVE findings of CWE-502",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-619" : {
+      "description" : "CVE findings of CWE-619",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-771" : {
+      "description" : "CVE findings of CWE-771",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-772" : {
+      "description" : "CVE findings of CWE-772",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-908" : {
+      "description" : "CVE findings of CWE-908",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-909" : {
+      "description" : "CVE findings of CWE-909",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-910" : {
+      "description" : "CVE findings of CWE-910",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-911" : {
+      "description" : "CVE findings of CWE-911",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-914" : {
+      "description" : "CVE findings of CWE-914",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-915" : {
+      "description" : "CVE findings of CWE-915",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-920" : {
+      "description" : "CVE findings of CWE-920",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-828" : {
+      "description" : "CVE findings of CWE-828",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-831" : {
+      "description" : "CVE findings of CWE-831",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-15" : {
+      "description" : "CVE findings of CWE-15",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-372" : {
+      "description" : "CVE findings of CWE-372",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-374" : {
+      "description" : "CVE findings of CWE-374",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-375" : {
+      "description" : "CVE findings of CWE-375",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1265" : {
+      "description" : "CVE findings of CWE-1265",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-134" : {
+      "description" : "CVE findings of CWE-134",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-135" : {
+      "description" : "CVE findings of CWE-135",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-597" : {
+      "description" : "CVE findings of CWE-597",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-843" : {
+      "description" : "CVE findings of CWE-843",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-317" : {
+      "description" : "CVE findings of CWE-317",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-356" : {
+      "description" : "CVE findings of CWE-356",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-357" : {
+      "description" : "CVE findings of CWE-357",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-447" : {
+      "description" : "CVE findings of CWE-447",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-448" : {
+      "description" : "CVE findings of CWE-448",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-449" : {
+      "description" : "CVE findings of CWE-449",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-450" : {
+      "description" : "CVE findings of CWE-450",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1007" : {
+      "description" : "CVE findings of CWE-1007",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-1021" : {
+      "description" : "CVE findings of CWE-1021",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-488" : {
+      "description" : "CVE findings of CWE-488",
+      "toolName" : "cve-bin-tool"
+    },
+    "CVE-CWE-613" : {
+      "description" : "CVE findings of CWE-613",
+      "toolName" : "cve-bin-tool"
+    }
+  }
+}
