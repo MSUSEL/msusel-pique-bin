@@ -28,7 +28,33 @@ public class BinaryUtility implements IUtilityFunction {
 
 
     @Override
-    public double utilityFunction(double v, Double[] doubles, boolean b) {
-        return 0;
+    public double utilityFunction(double v, Double[] doubles, boolean pos) {
+    	if (doubles == null) return 0.0;
+    	
+    	//if upper and lower threshold are equal, return the value or 0.5 if no findings 
+    	//(0.5 implies it is equivalent to other projects in the benchmark repository)
+    	if (doubles[1]-doubles[0]==0.0) {
+    		if (v==0.0) {
+    			return 0.5;
+    		}
+    		if(pos) return v;
+    		return -v;
+    	}
+    	return linearInterpolationTwoPoints(v,doubles, pos);
+
+    	
     }
+
+    private double linearInterpolationTwoPoints(double inValue, Double[] thresholds, boolean pos) {
+    	//reverse the slope if measure is negative
+    	int upper = 1;
+    	int lower = 0;
+    	if (!pos) {
+    		upper = 0;
+    		lower = 1;
+    	}
+    	
+        return (inValue - thresholds[lower]) * (1 / (thresholds[upper] - thresholds[lower]));
+    }
+
 }
