@@ -1,5 +1,5 @@
 /**
- * MIT License
+   * MIT License
  * Copyright (c) 2019 Montana State University Software Engineering Labs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -128,18 +128,61 @@ public class BinaryBenchmarker implements IBenchmarker {
             );
         });
 
-        // Identify the lowest and highest of each measure value
+        
+        // Identify the 1st and 3rd quartiles of each measure value
+        Double[] percentiles = new Double[2];
+        percentiles[0]=0.25;
+        percentiles[1]=0.75;
         Map<String, Double[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
             measureThresholds.putIfAbsent(measureName, new Double[2]);
-            measureThresholds.get(measureName)[0] = Collections.min(measureValues);
-            measureThresholds.get(measureName)[1] = Collections.max(measureValues);
+            Double[] quantiles = getPercentiles(measureValues,percentiles);
+            measureThresholds.get(measureName)[0] = mean(measureValues)-calculateSD(measureValues);
+            measureThresholds.get(measureName)[1] = mean(measureValues)+calculateSD(measureValues);
 
         });
 
         return measureThresholds;
     }
+    
+    private static Double mean(ArrayList<Double> measureValues) {
+    	Double sum = 0.0;
+        for (int i = 0; i < measureValues.size(); i++) {
+            sum += measureValues.get(i);
+        }
+        return sum / measureValues.size();
+    }
+    
+    private static Double[] getPercentiles(ArrayList<Double> values, Double[] percentiles) {
+    	Double[] tempVals= new Double[values.size()];
+    	tempVals = values.toArray(tempVals);
+        Arrays.sort(tempVals, 0, tempVals.length);
+        for (int i = 0; i < percentiles.length; i++) {
+          int index = (int) (percentiles[i] * tempVals.length);
+          percentiles[i] = tempVals[index];
+        }
+        
+        return percentiles;
+      }
 
+    private static Double calculateSD(ArrayList<Double> measureValues)
+    {
+    	Double sum = 0.0, standardDeviation = 0.0;
+        int length = measureValues.size();
+
+        for(Double num : measureValues) {
+            sum += num;
+        }
+
+        double mean = sum/length;
+
+        for(Double num: measureValues) {
+            standardDeviation += Math.pow(num - mean, 2);
+        }
+
+        return Math.sqrt(standardDeviation/length);
+    }
+    
     @Override
     public String getName() {
         return this.getClass().getCanonicalName();
