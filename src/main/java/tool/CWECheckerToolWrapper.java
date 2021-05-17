@@ -93,7 +93,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		String results = "";
 
 		try {
-			results = Files.readString(toolResults);
+			results = helperFunctions.readFileContent(toolResults);
 
 		} catch (IOException e) {
 			System.err.println("Error when reading tool results.");

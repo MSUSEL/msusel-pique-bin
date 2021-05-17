@@ -3,7 +3,7 @@
   "additionalData" : { },
   "global_config" : {
     "benchmark_strategy" : "calibration.BinaryBenchmarker",
-    "normalizer_strategy" : "evaluation.NoNormalizer"
+    "normalizer_strategy" : "evaluator.NoNormalizer"
   },
   "factors" : {
     "tqi" : {
@@ -13,27 +13,34 @@
     },
     "quality_aspects" : {
       "Confidentiality" : {
-        "description" : "Information is not made available or disclosed to unauthorized individuals, entities, or processes."
+        "description" : "Information is not made available or disclosed to unauthorized individuals, entities, or processes.",
+		"eval_strategy": "evaluator.QualityAspectEvaluator"
       },
       "Integrity" : {
-        "description" : "Data or processes cannot be modified in an unauthorized way."
+        "description" : "Data or processes cannot be modified in an unauthorized way.",
+		"eval_strategy": "evaluator.QualityAspectEvaluator"
       },
       "Availability" : {
-        "description" : "Data and processes should be available at all times when deemed necessary."
+        "description" : "Data and processes should be available at all times when deemed necessary.",
+		"eval_strategy": "evaluator.QualityAspectEvaluator"
       },
       "Authenticity" : {
-        "description" : "Identity of individuals, entities, or processes is verified correctly."
+        "description" : "Identity of individuals, entities, or processes is verified correctly.",
+		"eval_strategy": "evaluator.QualityAspectEvaluator"
       },
       "Authorization" : {
-        "description" : "individuals, entities, or processes only have access to data and processes they should."
+        "description" : "individuals, entities, or processes only have access to data and processes they should.",
+		"eval_strategy": "evaluator.QualityAspectEvaluator"
       },
       "Non-repudiation" : {
-        "description" : "Individuals, entities, or processes may not deny any actions they performed."
+        "description" : "Individuals, entities, or processes may not deny any actions they performed.",
+		"eval_strategy": "evaluator.QualityAspectEvaluator"
       }
     },
     "product_factors" : {
       "Category CWE-1228" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1228" : { },
@@ -48,6 +55,7 @@
       },
       "Category CWE-1210" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1210" : { },
@@ -62,6 +70,7 @@
       },
       "Category CWE-1211" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1211" : { },
@@ -87,6 +96,7 @@
       },
       "Category CWE-1212" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1212" : { },
@@ -101,6 +111,7 @@
       },
       "Category CWE-1006" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1006" : { },
@@ -167,6 +178,7 @@
       },
       "Category CWE-438" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-438" : { },
@@ -193,6 +205,7 @@
       },
       "Category CWE-840" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-840" : { },
@@ -209,6 +222,7 @@
       },
       "Category CWE-417" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-417" : { },
@@ -226,6 +240,7 @@
       },
       "Category CWE-1226" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1043" : { },
@@ -249,6 +264,7 @@
       },
       "Category CWE-557" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-363" : { },
@@ -270,6 +286,7 @@
       },
       "Category CWE-255" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-255" : { },
@@ -291,6 +308,7 @@
       },
       "Category CWE-310" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-310" : { },
@@ -309,6 +327,7 @@
       },
       "Category CWE-320" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-320" : { },
@@ -320,6 +339,7 @@
       },
       "Category CWE-1214" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1214" : { },
@@ -340,6 +360,7 @@
       },
       "Category CWE-19" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-19" : { },
@@ -367,6 +388,7 @@
       },
       "Category CWE-137" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-137" : { },
@@ -399,6 +421,7 @@
       },
       "Category CWE-1225" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1225" : { },
@@ -412,6 +435,7 @@
       },
       "Category CWE-1219" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1219" : { },
@@ -429,6 +453,7 @@
       },
       "Category CWE-1227" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1227" : { },
@@ -443,6 +468,7 @@
       },
       "Category CWE-389" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-389" : { },
@@ -468,6 +494,7 @@
       },
       "Category CWE-569" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-569" : { },
@@ -481,6 +508,7 @@
       },
       "Category CWE-429" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-429" : { },
@@ -494,6 +522,7 @@
       },
       "Category CWE-199" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-199" : { },
@@ -519,6 +548,7 @@
       },
       "Category CWE-452" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-452" : { },
@@ -534,6 +564,7 @@
       },
       "Category CWE-1215" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1215" : { },
@@ -549,6 +580,7 @@
       },
       "Category CWE-1216" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1216" : { },
@@ -557,6 +589,7 @@
       },
       "Category CWE-1218" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1218" : { },
@@ -573,6 +606,7 @@
       },
       "Category CWE-189" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-189" : { },
@@ -591,6 +625,7 @@
       },
       "Category CWE-275" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-275" : { },
@@ -607,6 +642,7 @@
       },
       "Category CWE-465" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-465" : { },
@@ -626,6 +662,7 @@
       },
       "Category CWE-265" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-265" : { },
@@ -646,6 +683,7 @@
       },
       "Category CWE-1213" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1213" : { },
@@ -661,6 +699,7 @@
       },
       "Category CWE-411" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-411" : { },
@@ -676,6 +715,7 @@
       },
       "Category CWE-399" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-399" : { },
@@ -704,6 +744,7 @@
       },
       "Category CWE-387" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-387" : { },
@@ -715,6 +756,7 @@
       },
       "Category CWE-371" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-371" : { },
@@ -727,6 +769,7 @@
       },
       "Category CWE-133" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-133" : { },
@@ -737,6 +780,7 @@
       },
       "Category CWE-136" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-136" : { },
@@ -746,6 +790,7 @@
       },
       "Category CWE-355" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-355" : { },
@@ -763,6 +808,7 @@
       },
       "Category CWE-1217" : {
         "description" : "",
+		"eval_strategy": "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-Unknown-Other" : { },
           "CWE-1217" : { },
@@ -772,10 +818,11 @@
         }
       }
     }
-  },
+  },                
   "measures" : {
   "CWE-Unknown-Other" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-Unknown-Other" : { }
@@ -783,6 +830,7 @@
     },
     "CWE-1228" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1228" : { }
@@ -790,6 +838,7 @@
     },
     "CWE-1210" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1210" : { }
@@ -797,6 +846,7 @@
     },
     "CWE-1211" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1211" : { }
@@ -804,6 +854,7 @@
     },
     "CWE-1212" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1212" : { }
@@ -811,6 +862,7 @@
     },
     "CWE-1006" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1006" : { }
@@ -818,6 +870,7 @@
     },
     "CWE-438" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-438" : { }
@@ -825,6 +878,7 @@
     },
     "CWE-840" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-840" : { }
@@ -832,6 +886,7 @@
     },
     "CWE-417" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-417" : { }
@@ -839,6 +894,7 @@
     },
     "CWE-1226" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1226" : { }
@@ -846,6 +902,7 @@
     },
     "CWE-557" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-557" : { }
@@ -853,6 +910,7 @@
     },
     "CWE-255" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-255" : { }
@@ -860,6 +918,7 @@
     },
     "CWE-310" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-310" : { }
@@ -867,6 +926,7 @@
     },
     "CWE-320" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-320" : { }
@@ -874,6 +934,7 @@
     },
     "CWE-1214" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1214" : { }
@@ -881,6 +942,7 @@
     },
     "CWE-19" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-19" : { }
@@ -888,6 +950,7 @@
     },
     "CWE-137" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-137" : { }
@@ -895,6 +958,7 @@
     },
     "CWE-1225" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1225" : { }
@@ -902,6 +966,7 @@
     },
     "CWE-1219" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1219" : { }
@@ -909,6 +974,7 @@
     },
     "CWE-1227" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1227" : { }
@@ -916,6 +982,7 @@
     },
     "CWE-389" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-389" : { }
@@ -923,6 +990,7 @@
     },
     "CWE-569" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-569" : { }
@@ -930,6 +998,7 @@
     },
     "CWE-429" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-429" : { }
@@ -937,6 +1006,7 @@
     },
     "CWE-199" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-199" : { }
@@ -944,6 +1014,7 @@
     },
     "CWE-452" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-452" : { }
@@ -951,6 +1022,7 @@
     },
     "CWE-1215" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1215" : { }
@@ -958,6 +1030,7 @@
     },
     "CWE-1216" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1216" : { }
@@ -965,6 +1038,7 @@
     },
     "CWE-1218" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1218" : { }
@@ -972,6 +1046,7 @@
     },
     "CWE-189" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-189" : { }
@@ -979,6 +1054,7 @@
     },
     "CWE-275" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-275" : { }
@@ -986,6 +1062,7 @@
     },
     "CWE-465" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-465" : { }
@@ -993,6 +1070,7 @@
     },
     "CWE-265" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-265" : { }
@@ -1000,6 +1078,7 @@
     },
     "CWE-1213" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1213" : { }
@@ -1007,6 +1086,7 @@
     },
     "CWE-411" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-411" : { }
@@ -1014,6 +1094,7 @@
     },
     "CWE-399" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-399" : { }
@@ -1021,6 +1102,7 @@
     },
     "CWE-387" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-387" : { }
@@ -1028,6 +1110,7 @@
     },
     "CWE-371" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-371" : { }
@@ -1035,6 +1118,7 @@
     },
     "CWE-133" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-133" : { }
@@ -1042,6 +1126,7 @@
     },
     "CWE-136" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-136" : { }
@@ -1049,6 +1134,7 @@
     },
     "CWE-355" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-355" : { }
@@ -1056,6 +1142,7 @@
     },
     "CWE-1217" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1217" : { }
@@ -1063,6 +1150,7 @@
     },
     "CWE-242" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-242" : { }
@@ -1070,6 +1158,7 @@
     },
     "CWE-474" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-474" : { }
@@ -1077,6 +1166,7 @@
     },
     "CWE-475" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-475" : { }
@@ -1084,6 +1174,7 @@
     },
     "CWE-477" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-477" : { }
@@ -1091,6 +1182,7 @@
     },
     "CWE-676" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-676" : { }
@@ -1098,6 +1190,7 @@
     },
     "CWE-695" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-695" : { }
@@ -1105,6 +1198,7 @@
     },
     "CWE-749" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-749" : { }
@@ -1112,6 +1206,7 @@
     },
     "CWE-117" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-117" : { }
@@ -1119,6 +1214,7 @@
     },
     "CWE-222" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-222" : { }
@@ -1126,6 +1222,7 @@
     },
     "CWE-223" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-223" : { }
@@ -1133,6 +1230,7 @@
     },
     "CWE-224" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-224" : { }
@@ -1140,6 +1238,7 @@
     },
     "CWE-532" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-532" : { }
@@ -1147,6 +1246,7 @@
     },
     "CWE-778" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-778" : { }
@@ -1154,6 +1254,7 @@
     },
     "CWE-779" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-779" : { }
@@ -1161,6 +1262,7 @@
     },
     "CWE-288" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-288" : { }
@@ -1168,6 +1270,7 @@
     },
     "CWE-290" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-290" : { }
@@ -1175,6 +1278,7 @@
     },
     "CWE-294" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-294" : { }
@@ -1182,6 +1286,7 @@
     },
     "CWE-295" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-295" : { }
@@ -1189,6 +1294,7 @@
     },
     "CWE-296" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-296" : { }
@@ -1196,6 +1302,7 @@
     },
     "CWE-299" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-299" : { }
@@ -1203,6 +1310,7 @@
     },
     "CWE-303" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-303" : { }
@@ -1210,6 +1318,7 @@
     },
     "CWE-304" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-304" : { }
@@ -1217,6 +1326,7 @@
     },
     "CWE-305" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-305" : { }
@@ -1224,6 +1334,7 @@
     },
     "CWE-306" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-306" : { }
@@ -1231,6 +1342,7 @@
     },
     "CWE-307" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-307" : { }
@@ -1238,6 +1350,7 @@
     },
     "CWE-308" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-308" : { }
@@ -1245,6 +1358,7 @@
     },
     "CWE-309" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-309" : { }
@@ -1252,6 +1366,7 @@
     },
     "CWE-322" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-322" : { }
@@ -1259,6 +1374,7 @@
     },
     "CWE-603" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-603" : { }
@@ -1266,6 +1382,7 @@
     },
     "CWE-645" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-645" : { }
@@ -1273,6 +1390,7 @@
     },
     "CWE-804" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-804" : { }
@@ -1280,6 +1398,7 @@
     },
     "CWE-836" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-836" : { }
@@ -1287,6 +1406,7 @@
     },
     "CWE-425" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-425" : { }
@@ -1294,6 +1414,7 @@
     },
     "CWE-551" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-551" : { }
@@ -1301,6 +1422,7 @@
     },
     "CWE-612" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-612" : { }
@@ -1308,6 +1430,7 @@
     },
     "CWE-639" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-639" : { }
@@ -1315,6 +1438,7 @@
     },
     "CWE-939" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-939" : { }
@@ -1322,6 +1446,7 @@
     },
     "CWE-842" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-842" : { }
@@ -1329,6 +1454,7 @@
     },
     "CWE-1220" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1220" : { }
@@ -1336,6 +1462,7 @@
     },
     "CWE-478" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-478" : { }
@@ -1343,6 +1470,7 @@
     },
     "CWE-487" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-487" : { }
@@ -1350,6 +1478,7 @@
     },
     "CWE-489" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-489" : { }
@@ -1357,6 +1486,7 @@
     },
     "CWE-546" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-546" : { }
@@ -1364,6 +1494,7 @@
     },
     "CWE-547" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-547" : { }
@@ -1371,6 +1502,7 @@
     },
     "CWE-561" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-561" : { }
@@ -1378,6 +1510,7 @@
     },
     "CWE-562" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-562" : { }
@@ -1385,6 +1518,7 @@
     },
     "CWE-563" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-563" : { }
@@ -1392,6 +1526,7 @@
     },
     "CWE-581" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-581" : { }
@@ -1399,6 +1534,7 @@
     },
     "CWE-586" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-586" : { }
@@ -1406,6 +1542,7 @@
     },
     "CWE-605" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-605" : { }
@@ -1413,6 +1550,7 @@
     },
     "CWE-621" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-621" : { }
@@ -1420,6 +1558,7 @@
     },
     "CWE-627" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-627" : { }
@@ -1427,6 +1566,7 @@
     },
     "CWE-628" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-628" : { }
@@ -1434,6 +1574,7 @@
     },
     "CWE-694" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-694" : { }
@@ -1441,6 +1582,7 @@
     },
     "CWE-1041" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1041" : { }
@@ -1448,6 +1590,7 @@
     },
     "CWE-1043" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1043" : { }
@@ -1455,6 +1598,7 @@
     },
     "CWE-1044" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1044" : { }
@@ -1462,6 +1606,7 @@
     },
     "CWE-1045" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1045" : { }
@@ -1469,6 +1614,7 @@
     },
     "CWE-1046" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1046" : { }
@@ -1476,6 +1622,7 @@
     },
     "CWE-1048" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1048" : { }
@@ -1483,6 +1630,7 @@
     },
     "CWE-1049" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1049" : { }
@@ -1490,6 +1638,7 @@
     },
     "CWE-1050" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1050" : { }
@@ -1497,6 +1646,7 @@
     },
     "CWE-1063" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1063" : { }
@@ -1504,6 +1654,7 @@
     },
     "CWE-1065" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1065" : { }
@@ -1511,6 +1662,7 @@
     },
     "CWE-1066" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1066" : { }
@@ -1518,6 +1670,7 @@
     },
     "CWE-1067" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1067" : { }
@@ -1525,6 +1678,7 @@
     },
     "CWE-1070" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1070" : { }
@@ -1532,6 +1686,7 @@
     },
     "CWE-1071" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1071" : { }
@@ -1539,6 +1694,7 @@
     },
     "CWE-1072" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1072" : { }
@@ -1546,6 +1702,7 @@
     },
     "CWE-1073" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1073" : { }
@@ -1553,6 +1710,7 @@
     },
     "CWE-1079" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1079" : { }
@@ -1560,6 +1718,7 @@
     },
     "CWE-1082" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1082" : { }
@@ -1567,6 +1726,7 @@
     },
     "CWE-1084" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1084" : { }
@@ -1574,6 +1734,7 @@
     },
     "CWE-1085" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1085" : { }
@@ -1581,6 +1742,7 @@
     },
     "CWE-1087" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1087" : { }
@@ -1588,6 +1750,7 @@
     },
     "CWE-1089" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1089" : { }
@@ -1595,6 +1758,7 @@
     },
     "CWE-1091" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1091" : { }
@@ -1602,6 +1766,7 @@
     },
     "CWE-1092" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1092" : { }
@@ -1609,6 +1774,7 @@
     },
     "CWE-1094" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1094" : { }
@@ -1616,6 +1782,7 @@
     },
     "CWE-1097" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1097" : { }
@@ -1623,6 +1790,7 @@
     },
     "CWE-1098" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1098" : { }
@@ -1630,6 +1798,7 @@
     },
     "CWE-1099" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1099" : { }
@@ -1637,6 +1806,7 @@
     },
     "CWE-1101" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1101" : { }
@@ -1644,6 +1814,7 @@
     },
     "CWE-1102" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1102" : { }
@@ -1651,6 +1822,7 @@
     },
     "CWE-1103" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1103" : { }
@@ -1658,6 +1830,7 @@
     },
     "CWE-1104" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1104" : { }
@@ -1665,6 +1838,7 @@
     },
     "CWE-1106" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1106" : { }
@@ -1672,6 +1846,7 @@
     },
     "CWE-1107" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1107" : { }
@@ -1679,6 +1854,7 @@
     },
     "CWE-1108" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1108" : { }
@@ -1686,6 +1862,7 @@
     },
     "CWE-1109" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1109" : { }
@@ -1693,6 +1870,7 @@
     },
     "CWE-1113" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1113" : { }
@@ -1700,6 +1878,7 @@
     },
     "CWE-1114" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1114" : { }
@@ -1707,6 +1886,7 @@
     },
     "CWE-1115" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1115" : { }
@@ -1714,6 +1894,7 @@
     },
     "CWE-1116" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1116" : { }
@@ -1721,6 +1902,7 @@
     },
     "CWE-1117" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1117" : { }
@@ -1728,6 +1910,7 @@
     },
     "CWE-1126" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1126" : { }
@@ -1735,6 +1918,7 @@
     },
     "CWE-1127" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1127" : { }
@@ -1742,6 +1926,7 @@
     },
     "CWE-1235" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1235" : { }
@@ -1749,6 +1934,7 @@
     },
     "CWE-115" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-115" : { }
@@ -1756,6 +1942,7 @@
     },
     "CWE-179" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-179" : { }
@@ -1763,6 +1950,7 @@
     },
     "CWE-408" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-408" : { }
@@ -1770,6 +1958,7 @@
     },
     "CWE-437" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-437" : { }
@@ -1777,6 +1966,7 @@
     },
     "CWE-439" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-439" : { }
@@ -1784,6 +1974,7 @@
     },
     "CWE-440" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-440" : { }
@@ -1791,6 +1982,7 @@
     },
     "CWE-444" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-444" : { }
@@ -1798,6 +1990,7 @@
     },
     "CWE-480" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-480" : { }
@@ -1805,6 +1998,7 @@
     },
     "CWE-483" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-483" : { }
@@ -1812,6 +2006,7 @@
     },
     "CWE-484" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-484" : { }
@@ -1819,6 +2014,7 @@
     },
     "CWE-698" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-698" : { }
@@ -1826,6 +2022,7 @@
     },
     "CWE-733" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-733" : { }
@@ -1833,6 +2030,7 @@
     },
     "CWE-783" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-783" : { }
@@ -1840,6 +2038,7 @@
     },
     "CWE-835" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-835" : { }
@@ -1847,6 +2046,7 @@
     },
     "CWE-837" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-837" : { }
@@ -1854,6 +2054,7 @@
     },
     "CWE-841" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-841" : { }
@@ -1861,6 +2062,7 @@
     },
     "CWE-1025" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1025" : { }
@@ -1868,6 +2070,7 @@
     },
     "CWE-1037" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1037" : { }
@@ -1875,6 +2078,7 @@
     },
     "CWE-283" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-283" : { }
@@ -1882,6 +2086,7 @@
     },
     "CWE-640" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-640" : { }
@@ -1889,6 +2094,7 @@
     },
     "CWE-708" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-708" : { }
@@ -1896,6 +2102,7 @@
     },
     "CWE-770" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-770" : { }
@@ -1903,6 +2110,7 @@
     },
     "CWE-826" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-826" : { }
@@ -1910,6 +2118,7 @@
     },
     "CWE-346" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-346" : { }
@@ -1917,6 +2126,7 @@
     },
     "CWE-385" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-385" : { }
@@ -1924,6 +2134,7 @@
     },
     "CWE-419" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-419" : { }
@@ -1931,6 +2142,7 @@
     },
     "CWE-420" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-420" : { }
@@ -1938,6 +2150,7 @@
     },
     "CWE-515" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-515" : { }
@@ -1945,6 +2158,7 @@
     },
     "CWE-924" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-924" : { }
@@ -1952,6 +2166,7 @@
     },
     "CWE-940" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-940" : { }
@@ -1959,6 +2174,7 @@
     },
     "CWE-941" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-941" : { }
@@ -1966,6 +2182,7 @@
     },
     "CWE-1047" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1047" : { }
@@ -1973,6 +2190,7 @@
     },
     "CWE-1055" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1055" : { }
@@ -1980,6 +2198,7 @@
     },
     "CWE-1056" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1056" : { }
@@ -1987,6 +2206,7 @@
     },
     "CWE-1060" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1060" : { }
@@ -1994,6 +2214,7 @@
     },
     "CWE-1064" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1064" : { }
@@ -2001,6 +2222,7 @@
     },
     "CWE-1074" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1074" : { }
@@ -2008,6 +2230,7 @@
     },
     "CWE-1075" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1075" : { }
@@ -2015,6 +2238,7 @@
     },
     "CWE-1080" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1080" : { }
@@ -2022,6 +2246,7 @@
     },
     "CWE-1086" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1086" : { }
@@ -2029,6 +2254,7 @@
     },
     "CWE-1095" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1095" : { }
@@ -2036,6 +2262,7 @@
     },
     "CWE-1119" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1119" : { }
@@ -2043,6 +2270,7 @@
     },
     "CWE-1121" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1121" : { }
@@ -2050,6 +2278,7 @@
     },
     "CWE-1122" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1122" : { }
@@ -2057,6 +2286,7 @@
     },
     "CWE-1123" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1123" : { }
@@ -2064,6 +2294,7 @@
     },
     "CWE-1124" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1124" : { }
@@ -2071,6 +2302,7 @@
     },
     "CWE-1125" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1125" : { }
@@ -2078,6 +2310,7 @@
     },
     "CWE-363" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-363" : { }
@@ -2085,6 +2318,7 @@
     },
     "CWE-364" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-364" : { }
@@ -2092,6 +2326,7 @@
     },
     "CWE-365" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-365" : { }
@@ -2099,6 +2334,7 @@
     },
     "CWE-366" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-366" : { }
@@ -2106,6 +2342,7 @@
     },
     "CWE-367" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-367" : { }
@@ -2113,6 +2350,7 @@
     },
     "CWE-368" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-368" : { }
@@ -2120,6 +2358,7 @@
     },
     "CWE-386" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-386" : { }
@@ -2127,6 +2366,7 @@
     },
     "CWE-421" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-421" : { }
@@ -2134,6 +2374,7 @@
     },
     "CWE-567" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-567" : { }
@@ -2141,6 +2382,7 @@
     },
     "CWE-585" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-585" : { }
@@ -2148,6 +2390,7 @@
     },
     "CWE-663" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-663" : { }
@@ -2155,6 +2398,7 @@
     },
     "CWE-820" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-820" : { }
@@ -2162,6 +2406,7 @@
     },
     "CWE-821" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-821" : { }
@@ -2169,6 +2414,7 @@
     },
     "CWE-1058" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1058" : { }
@@ -2176,6 +2422,7 @@
     },
     "CWE-1088" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1088" : { }
@@ -2183,6 +2430,7 @@
     },
     "CWE-256" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-256" : { }
@@ -2190,6 +2438,7 @@
     },
     "CWE-257" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-257" : { }
@@ -2197,6 +2446,7 @@
     },
     "CWE-260" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-260" : { }
@@ -2204,6 +2454,7 @@
     },
     "CWE-261" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-261" : { }
@@ -2211,6 +2462,7 @@
     },
     "CWE-262" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-262" : { }
@@ -2218,6 +2470,7 @@
     },
     "CWE-263" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-263" : { }
@@ -2225,6 +2478,7 @@
     },
     "CWE-324" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-324" : { }
@@ -2232,6 +2486,7 @@
     },
     "CWE-521" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-521" : { }
@@ -2239,6 +2494,7 @@
     },
     "CWE-523" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-523" : { }
@@ -2246,6 +2502,7 @@
     },
     "CWE-549" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-549" : { }
@@ -2253,6 +2510,7 @@
     },
     "CWE-620" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-620" : { }
@@ -2260,6 +2518,7 @@
     },
     "CWE-798" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-798" : { }
@@ -2267,6 +2526,7 @@
     },
     "CWE-916" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-916" : { }
@@ -2274,6 +2534,7 @@
     },
     "CWE-325" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-325" : { }
@@ -2281,6 +2542,7 @@
     },
     "CWE-328" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-328" : { }
@@ -2288,6 +2550,7 @@
     },
     "CWE-331" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-331" : { }
@@ -2295,6 +2558,7 @@
     },
     "CWE-334" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-334" : { }
@@ -2302,6 +2566,7 @@
     },
     "CWE-335" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-335" : { }
@@ -2309,6 +2574,7 @@
     },
     "CWE-338" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-338" : { }
@@ -2316,6 +2582,7 @@
     },
     "CWE-347" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-347" : { }
@@ -2323,6 +2590,7 @@
     },
     "CWE-1240" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1240" : { }
@@ -2330,6 +2598,7 @@
     },
     "CWE-321" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-321" : { }
@@ -2337,6 +2606,7 @@
     },
     "CWE-323" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-323" : { }
@@ -2344,6 +2614,7 @@
     },
     "CWE-348" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-348" : { }
@@ -2351,6 +2622,7 @@
     },
     "CWE-349" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-349" : { }
@@ -2358,6 +2630,7 @@
     },
     "CWE-351" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-351" : { }
@@ -2365,6 +2638,7 @@
     },
     "CWE-353" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-353" : { }
@@ -2372,6 +2646,7 @@
     },
     "CWE-354" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-354" : { }
@@ -2379,6 +2654,7 @@
     },
     "CWE-494" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-494" : { }
@@ -2386,6 +2662,7 @@
     },
     "CWE-565" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-565" : { }
@@ -2393,6 +2670,7 @@
     },
     "CWE-649" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-649" : { }
@@ -2400,6 +2678,7 @@
     },
     "CWE-829" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-829" : { }
@@ -2407,6 +2686,7 @@
     },
     "CWE-130" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-130" : { }
@@ -2414,6 +2694,7 @@
     },
     "CWE-166" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-166" : { }
@@ -2421,6 +2702,7 @@
     },
     "CWE-167" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-167" : { }
@@ -2428,6 +2710,7 @@
     },
     "CWE-168" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-168" : { }
@@ -2435,6 +2718,7 @@
     },
     "CWE-178" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-178" : { }
@@ -2442,6 +2726,7 @@
     },
     "CWE-182" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-182" : { }
@@ -2449,6 +2734,7 @@
     },
     "CWE-186" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-186" : { }
@@ -2456,6 +2742,7 @@
     },
     "CWE-229" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-229" : { }
@@ -2463,6 +2750,7 @@
     },
     "CWE-233" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-233" : { }
@@ -2470,6 +2758,7 @@
     },
     "CWE-237" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-237" : { }
@@ -2477,6 +2766,7 @@
     },
     "CWE-241" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-241" : { }
@@ -2484,6 +2774,7 @@
     },
     "CWE-409" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-409" : { }
@@ -2491,6 +2782,7 @@
     },
     "CWE-471" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-471" : { }
@@ -2498,6 +2790,7 @@
     },
     "CWE-472" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-472" : { }
@@ -2505,6 +2798,7 @@
     },
     "CWE-601" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-601" : { }
@@ -2512,6 +2806,7 @@
     },
     "CWE-611" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-611" : { }
@@ -2519,6 +2814,7 @@
     },
     "CWE-624" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-624" : { }
@@ -2526,6 +2822,7 @@
     },
     "CWE-625" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-625" : { }
@@ -2533,6 +2830,7 @@
     },
     "CWE-776" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-776" : { }
@@ -2540,6 +2838,7 @@
     },
     "CWE-1024" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1024" : { }
@@ -2547,6 +2846,7 @@
     },
     "CWE-76" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-76" : { }
@@ -2554,6 +2854,7 @@
     },
     "CWE-78" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-78" : { }
@@ -2561,6 +2862,7 @@
     },
     "CWE-79" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-79" : { }
@@ -2568,6 +2870,7 @@
     },
     "CWE-88" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-88" : { }
@@ -2575,6 +2878,7 @@
     },
     "CWE-89" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-89" : { }
@@ -2582,6 +2886,7 @@
     },
     "CWE-90" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-90" : { }
@@ -2589,6 +2894,7 @@
     },
     "CWE-91" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-91" : { }
@@ -2596,6 +2902,7 @@
     },
     "CWE-93" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-93" : { }
@@ -2603,6 +2910,7 @@
     },
     "CWE-94" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-94" : { }
@@ -2610,6 +2918,7 @@
     },
     "CWE-96" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-96" : { }
@@ -2617,6 +2926,7 @@
     },
     "CWE-140" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-140" : { }
@@ -2624,6 +2934,7 @@
     },
     "CWE-170" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-170" : { }
@@ -2631,6 +2942,7 @@
     },
     "CWE-188" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-188" : { }
@@ -2638,6 +2950,7 @@
     },
     "CWE-462" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-462" : { }
@@ -2645,6 +2958,7 @@
     },
     "CWE-463" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-463" : { }
@@ -2652,6 +2966,7 @@
     },
     "CWE-464" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-464" : { }
@@ -2659,6 +2974,7 @@
     },
     "CWE-641" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-641" : { }
@@ -2666,6 +2982,7 @@
     },
     "CWE-643" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-643" : { }
@@ -2673,6 +2990,7 @@
     },
     "CWE-652" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-652" : { }
@@ -2680,6 +2998,7 @@
     },
     "CWE-791" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-791" : { }
@@ -2687,6 +3006,7 @@
     },
     "CWE-795" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-795" : { }
@@ -2694,6 +3014,7 @@
     },
     "CWE-838" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-838" : { }
@@ -2701,6 +3022,7 @@
     },
     "CWE-917" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-917" : { }
@@ -2708,6 +3030,7 @@
     },
     "CWE-1236" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1236" : { }
@@ -2715,6 +3038,7 @@
     },
     "CWE-1053" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1053" : { }
@@ -2722,6 +3046,7 @@
     },
     "CWE-1068" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1068" : { }
@@ -2729,6 +3054,7 @@
     },
     "CWE-1110" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1110" : { }
@@ -2736,6 +3062,7 @@
     },
     "CWE-1111" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1111" : { }
@@ -2743,6 +3070,7 @@
     },
     "CWE-1112" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1112" : { }
@@ -2750,6 +3078,7 @@
     },
     "CWE-1118" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1118" : { }
@@ -2757,6 +3086,7 @@
     },
     "CWE-23" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-23" : { }
@@ -2764,6 +3094,7 @@
     },
     "CWE-36" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-36" : { }
@@ -2771,6 +3102,7 @@
     },
     "CWE-41" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-41" : { }
@@ -2778,6 +3110,7 @@
     },
     "CWE-59" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-59" : { }
@@ -2785,6 +3118,7 @@
     },
     "CWE-66" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-66" : { }
@@ -2792,6 +3126,7 @@
     },
     "CWE-378" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-378" : { }
@@ -2799,6 +3134,7 @@
     },
     "CWE-379" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-379" : { }
@@ -2806,6 +3142,7 @@
     },
     "CWE-426" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-426" : { }
@@ -2813,6 +3150,7 @@
     },
     "CWE-427" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-427" : { }
@@ -2820,6 +3158,7 @@
     },
     "CWE-428" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-428" : { }
@@ -2827,6 +3166,7 @@
     },
     "CWE-1054" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1054" : { }
@@ -2834,6 +3174,7 @@
     },
     "CWE-1057" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1057" : { }
@@ -2841,6 +3182,7 @@
     },
     "CWE-1062" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1062" : { }
@@ -2848,6 +3190,7 @@
     },
     "CWE-1083" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1083" : { }
@@ -2855,6 +3198,7 @@
     },
     "CWE-1090" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1090" : { }
@@ -2862,6 +3206,7 @@
     },
     "CWE-1100" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1100" : { }
@@ -2869,6 +3214,7 @@
     },
     "CWE-1105" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1105" : { }
@@ -2876,6 +3222,7 @@
     },
     "CWE-209" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-209" : { }
@@ -2883,6 +3230,7 @@
     },
     "CWE-248" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-248" : { }
@@ -2890,6 +3238,7 @@
     },
     "CWE-252" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-252" : { }
@@ -2897,6 +3246,7 @@
     },
     "CWE-253" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-253" : { }
@@ -2904,6 +3254,7 @@
     },
     "CWE-390" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-390" : { }
@@ -2911,6 +3262,7 @@
     },
     "CWE-391" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-391" : { }
@@ -2918,6 +3270,7 @@
     },
     "CWE-392" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-392" : { }
@@ -2925,6 +3278,7 @@
     },
     "CWE-393" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-393" : { }
@@ -2932,6 +3286,7 @@
     },
     "CWE-394" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-394" : { }
@@ -2939,6 +3294,7 @@
     },
     "CWE-395" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-395" : { }
@@ -2946,6 +3302,7 @@
     },
     "CWE-396" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-396" : { }
@@ -2953,6 +3310,7 @@
     },
     "CWE-397" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-397" : { }
@@ -2960,6 +3318,7 @@
     },
     "CWE-544" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-544" : { }
@@ -2967,6 +3326,7 @@
     },
     "CWE-584" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-584" : { }
@@ -2974,6 +3334,7 @@
     },
     "CWE-600" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-600" : { }
@@ -2981,6 +3342,7 @@
     },
     "CWE-617" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-617" : { }
@@ -2988,6 +3350,7 @@
     },
     "CWE-756" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-756" : { }
@@ -2995,6 +3358,7 @@
     },
     "CWE-1069" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1069" : { }
@@ -3002,6 +3366,7 @@
     },
     "CWE-570" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-570" : { }
@@ -3009,6 +3374,7 @@
     },
     "CWE-571" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-571" : { }
@@ -3016,6 +3382,7 @@
     },
     "CWE-588" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-588" : { }
@@ -3023,6 +3390,7 @@
     },
     "CWE-595" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-595" : { }
@@ -3030,6 +3398,7 @@
     },
     "CWE-430" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-430" : { }
@@ -3037,6 +3406,7 @@
     },
     "CWE-431" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-431" : { }
@@ -3044,6 +3414,7 @@
     },
     "CWE-432" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-432" : { }
@@ -3051,6 +3422,7 @@
     },
     "CWE-433" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-433" : { }
@@ -3058,6 +3430,7 @@
     },
     "CWE-434" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-434" : { }
@@ -3065,6 +3438,7 @@
     },
     "CWE-479" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-479" : { }
@@ -3072,6 +3446,7 @@
     },
     "CWE-201" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-201" : { }
@@ -3079,6 +3454,7 @@
     },
     "CWE-204" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-204" : { }
@@ -3086,6 +3462,7 @@
     },
     "CWE-205" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-205" : { }
@@ -3093,6 +3470,7 @@
     },
     "CWE-208" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-208" : { }
@@ -3100,6 +3478,7 @@
     },
     "CWE-212" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-212" : { }
@@ -3107,6 +3486,7 @@
     },
     "CWE-213" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-213" : { }
@@ -3114,6 +3494,7 @@
     },
     "CWE-214" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-214" : { }
@@ -3121,6 +3502,7 @@
     },
     "CWE-215" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-215" : { }
@@ -3128,6 +3510,7 @@
     },
     "CWE-312" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-312" : { }
@@ -3135,6 +3518,7 @@
     },
     "CWE-319" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-319" : { }
@@ -3142,6 +3526,7 @@
     },
     "CWE-359" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-359" : { }
@@ -3149,6 +3534,7 @@
     },
     "CWE-497" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-497" : { }
@@ -3156,6 +3542,7 @@
     },
     "CWE-524" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-524" : { }
@@ -3163,6 +3550,7 @@
     },
     "CWE-540" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-540" : { }
@@ -3170,6 +3558,7 @@
     },
     "CWE-921" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-921" : { }
@@ -3177,6 +3566,7 @@
     },
     "CWE-1230" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1230" : { }
@@ -3184,6 +3574,7 @@
     },
     "CWE-226" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-226" : { }
@@ -3191,6 +3582,7 @@
     },
     "CWE-454" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-454" : { }
@@ -3198,6 +3590,7 @@
     },
     "CWE-455" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-455" : { }
@@ -3205,6 +3598,7 @@
     },
     "CWE-459" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-459" : { }
@@ -3212,6 +3606,7 @@
     },
     "CWE-460" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-460" : { }
@@ -3219,6 +3614,7 @@
     },
     "CWE-1051" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1051" : { }
@@ -3226,6 +3622,7 @@
     },
     "CWE-1052" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1052" : { }
@@ -3233,6 +3630,7 @@
     },
     "CWE-1188" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1188" : { }
@@ -3240,6 +3638,7 @@
     },
     "CWE-112" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-112" : { }
@@ -3247,6 +3646,7 @@
     },
     "CWE-129" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-129" : { }
@@ -3254,6 +3654,7 @@
     },
     "CWE-183" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-183" : { }
@@ -3261,6 +3662,7 @@
     },
     "CWE-184" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-184" : { }
@@ -3268,6 +3670,7 @@
     },
     "CWE-606" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-606" : { }
@@ -3275,6 +3678,7 @@
     },
     "CWE-1173" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1173" : { }
@@ -3282,6 +3686,7 @@
     },
     "CWE-120" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-120" : { }
@@ -3289,6 +3694,7 @@
     },
     "CWE-123" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-123" : { }
@@ -3296,6 +3702,7 @@
     },
     "CWE-124" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-124" : { }
@@ -3303,6 +3710,7 @@
     },
     "CWE-125" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-125" : { }
@@ -3310,6 +3718,7 @@
     },
     "CWE-131" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-131" : { }
@@ -3317,6 +3726,7 @@
     },
     "CWE-786" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-786" : { }
@@ -3324,6 +3734,7 @@
     },
     "CWE-787" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-787" : { }
@@ -3331,6 +3742,7 @@
     },
     "CWE-788" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-788" : { }
@@ -3338,6 +3750,7 @@
     },
     "CWE-805" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-805" : { }
@@ -3345,6 +3758,7 @@
     },
     "CWE-128" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-128" : { }
@@ -3352,6 +3766,7 @@
     },
     "CWE-190" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-190" : { }
@@ -3359,6 +3774,7 @@
     },
     "CWE-191" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-191" : { }
@@ -3366,6 +3782,7 @@
     },
     "CWE-192" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-192" : { }
@@ -3373,6 +3790,7 @@
     },
     "CWE-193" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-193" : { }
@@ -3380,6 +3798,7 @@
     },
     "CWE-197" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-197" : { }
@@ -3387,6 +3806,7 @@
     },
     "CWE-198" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-198" : { }
@@ -3394,6 +3814,7 @@
     },
     "CWE-369" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-369" : { }
@@ -3401,6 +3822,7 @@
     },
     "CWE-681" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-681" : { }
@@ -3408,6 +3830,7 @@
     },
     "CWE-839" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-839" : { }
@@ -3415,6 +3838,7 @@
     },
     "CWE-1077" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1077" : { }
@@ -3422,6 +3846,7 @@
     },
     "CWE-276" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-276" : { }
@@ -3429,6 +3854,7 @@
     },
     "CWE-277" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-277" : { }
@@ -3436,6 +3862,7 @@
     },
     "CWE-278" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-278" : { }
@@ -3443,6 +3870,7 @@
     },
     "CWE-279" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-279" : { }
@@ -3450,6 +3878,7 @@
     },
     "CWE-280" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-280" : { }
@@ -3457,6 +3886,7 @@
     },
     "CWE-281" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-281" : { }
@@ -3464,6 +3894,7 @@
     },
     "CWE-618" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-618" : { }
@@ -3471,6 +3902,7 @@
     },
     "CWE-766" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-766" : { }
@@ -3478,6 +3910,7 @@
     },
     "CWE-767" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-767" : { }
@@ -3485,6 +3918,7 @@
     },
     "CWE-466" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-466" : { }
@@ -3492,6 +3926,7 @@
     },
     "CWE-467" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-467" : { }
@@ -3499,6 +3934,7 @@
     },
     "CWE-468" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-468" : { }
@@ -3506,6 +3942,7 @@
     },
     "CWE-469" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-469" : { }
@@ -3513,6 +3950,7 @@
     },
     "CWE-476" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-476" : { }
@@ -3520,6 +3958,7 @@
     },
     "CWE-587" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-587" : { }
@@ -3527,6 +3966,7 @@
     },
     "CWE-763" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-763" : { }
@@ -3534,6 +3974,7 @@
     },
     "CWE-822" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-822" : { }
@@ -3541,6 +3982,7 @@
     },
     "CWE-823" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-823" : { }
@@ -3548,6 +3990,7 @@
     },
     "CWE-824" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-824" : { }
@@ -3555,6 +3998,7 @@
     },
     "CWE-825" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-825" : { }
@@ -3562,6 +4006,7 @@
     },
     "CWE-243" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-243" : { }
@@ -3569,6 +4014,7 @@
     },
     "CWE-250" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-250" : { }
@@ -3576,6 +4022,7 @@
     },
     "CWE-266" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-266" : { }
@@ -3583,6 +4030,7 @@
     },
     "CWE-267" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-267" : { }
@@ -3590,6 +4038,7 @@
     },
     "CWE-268" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-268" : { }
@@ -3597,6 +4046,7 @@
     },
     "CWE-270" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-270" : { }
@@ -3604,6 +4054,7 @@
     },
     "CWE-272" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-272" : { }
@@ -3611,6 +4062,7 @@
     },
     "CWE-273" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-273" : { }
@@ -3618,6 +4070,7 @@
     },
     "CWE-274" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-274" : { }
@@ -3625,6 +4078,7 @@
     },
     "CWE-501" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-501" : { }
@@ -3632,6 +4086,7 @@
     },
     "CWE-580" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-580" : { }
@@ -3639,6 +4094,7 @@
     },
     "CWE-648" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-648" : { }
@@ -3646,6 +4102,7 @@
     },
     "CWE-341" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-341" : { }
@@ -3653,6 +4110,7 @@
     },
     "CWE-342" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-342" : { }
@@ -3660,6 +4118,7 @@
     },
     "CWE-343" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-343" : { }
@@ -3667,6 +4126,7 @@
     },
     "CWE-1241" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1241" : { }
@@ -3674,6 +4134,7 @@
     },
     "CWE-412" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-412" : { }
@@ -3681,6 +4142,7 @@
     },
     "CWE-413" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-413" : { }
@@ -3688,6 +4150,7 @@
     },
     "CWE-414" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-414" : { }
@@ -3695,6 +4158,7 @@
     },
     "CWE-609" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-609" : { }
@@ -3702,6 +4166,7 @@
     },
     "CWE-764" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-764" : { }
@@ -3709,6 +4174,7 @@
     },
     "CWE-765" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-765" : { }
@@ -3716,6 +4182,7 @@
     },
     "CWE-832" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-832" : { }
@@ -3723,6 +4190,7 @@
     },
     "CWE-833" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-833" : { }
@@ -3730,6 +4198,7 @@
     },
     "CWE-73" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-73" : { }
@@ -3737,6 +4206,7 @@
     },
     "CWE-403" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-403" : { }
@@ -3744,6 +4214,7 @@
     },
     "CWE-410" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-410" : { }
@@ -3751,6 +4222,7 @@
     },
     "CWE-470" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-470" : { }
@@ -3758,6 +4230,7 @@
     },
     "CWE-502" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-502" : { }
@@ -3765,6 +4238,7 @@
     },
     "CWE-619" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-619" : { }
@@ -3772,6 +4246,7 @@
     },
     "CWE-771" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-771" : { }
@@ -3779,6 +4254,7 @@
     },
     "CWE-772" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-772" : { }
@@ -3786,6 +4262,7 @@
     },
     "CWE-908" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-908" : { }
@@ -3793,6 +4270,7 @@
     },
     "CWE-909" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-909" : { }
@@ -3800,6 +4278,7 @@
     },
     "CWE-910" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-910" : { }
@@ -3807,6 +4286,7 @@
     },
     "CWE-911" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-911" : { }
@@ -3814,6 +4294,7 @@
     },
     "CWE-914" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-914" : { }
@@ -3821,6 +4302,7 @@
     },
     "CWE-915" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-915" : { }
@@ -3828,6 +4310,7 @@
     },
     "CWE-920" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-920" : { }
@@ -3835,6 +4318,7 @@
     },
     "CWE-828" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-828" : { }
@@ -3842,6 +4326,7 @@
     },
     "CWE-831" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-831" : { }
@@ -3849,6 +4334,7 @@
     },
     "CWE-15" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-15" : { }
@@ -3856,6 +4342,7 @@
     },
     "CWE-372" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-372" : { }
@@ -3863,6 +4350,7 @@
     },
     "CWE-374" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-374" : { }
@@ -3870,6 +4358,7 @@
     },
     "CWE-375" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-375" : { }
@@ -3877,6 +4366,7 @@
     },
     "CWE-1265" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1265" : { }
@@ -3884,6 +4374,7 @@
     },
     "CWE-134" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-134" : { }
@@ -3891,6 +4382,7 @@
     },
     "CWE-135" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-135" : { }
@@ -3898,6 +4390,7 @@
     },
     "CWE-597" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-597" : { }
@@ -3905,6 +4398,7 @@
     },
     "CWE-843" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-843" : { }
@@ -3912,6 +4406,7 @@
     },
     "CWE-317" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-317" : { }
@@ -3919,6 +4414,7 @@
     },
     "CWE-356" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-356" : { }
@@ -3926,6 +4422,7 @@
     },
     "CWE-357" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-357" : { }
@@ -3933,6 +4430,7 @@
     },
     "CWE-447" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-447" : { }
@@ -3940,6 +4438,7 @@
     },
     "CWE-448" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-448" : { }
@@ -3947,6 +4446,7 @@
     },
     "CWE-449" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-449" : { }
@@ -3954,6 +4454,7 @@
     },
     "CWE-450" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-450" : { }
@@ -3961,6 +4462,7 @@
     },
     "CWE-1007" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1007" : { }
@@ -3968,6 +4470,7 @@
     },
     "CWE-1021" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-1021" : { }
@@ -3975,6 +4478,7 @@
     },
     "CWE-488" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-488" : { }
@@ -3982,6 +4486,7 @@
     },
     "CWE-613" : {
       "positive" : false,
+ "utility_function": "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
         "CVE-CWE-613" : { }

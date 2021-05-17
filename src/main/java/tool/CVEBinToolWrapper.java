@@ -36,6 +36,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,40 +44,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.stream.Stream;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CVEBinToolWrapper extends Tool implements ITool  {
-
-	//Expected set of CWEs this tool will find instances of. Certainly a better way to do this, but this is fast and 
-	//I already had the list written out
-	/**final String[] cweList = {"CWE-22", 
-			"CWE-755", 
-			"CWE-20", 
-			"CWE-119", 
-			"CWE-416", 
-			"CWE-835", 
-			"CWE-273", 
-			"CWE-295", 
-			"CWE-770", 
-			"CWE-772", 
-			"CWE-476", 
-			"CWE-674", 
-			"CWE-Unknown-Other", 
-			"CWE-190", 
-			"CWE-191", 
-			"CWE-59", 
-			"CWE-125", 
-			"CWE-787", 
-			"CWE-502", 
-			"CWE-404", 
-			"CWE-94", 
-			"CWE-120", 
-			"CWE-362", 
-			"CWE-200", 
-			"CWE-617"};*/
 	
 			
 	public CVEBinToolWrapper() {
@@ -116,10 +90,10 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			String results = "";
 
 			try {
-				results = Files.readString(toolResults);
+				results = helperFunctions.readFileContent(toolResults);
 
 			} catch (IOException e) {
-				System.err.println("Error when reading tool results, or no results to read.");
+				System.err.println("No results to read.");
 				return diagnostics;
 			}
 			
@@ -195,38 +169,38 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 		// Creates and returns a set of CWE diagnostics without findings
 		private Map<String, Diagnostic> initializeDiagnostics() {
-			ArrayList<String> cweList = identifyCWEs();
-			
-			Map<String, Diagnostic> diagnostics = new HashMap<>();
-
-			for (String cwe : cweList) { // TODO: add descriptions for CWEs
-				String description = "CVE findings of " + cwe;
-				Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
-				diagnostics.put(cwe, diag);
-			}
-
-			return diagnostics;
-		}	
-		
-		private ArrayList<String> identifyCWEs() {
-			// identify all relevant diagnostics from the model structure
-			ArrayList<String> cweList = new ArrayList<String>();
-		
 			// load the qm structure
 			Properties prop = PiqueProperties.getProperties();
 			Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
 			QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
 	        QualityModel qmDescription = qmImport.importQualityModel();
+
+	        Map<String, Diagnostic> diagnostics = new HashMap<>();
 	        
 	        // for each diagnostic in the model, if it is associated with this tool, 
-	        // add it to the list of cwes
+	        // add it to the list of diagnostics
 	        for (ModelNode x : qmDescription.getDiagnostics().values()) {
-	        	if (((Diagnostic)x).getToolName().equals("cve-bin-tool")) {
-	        		cweList.add(x.getName());
+	        	Diagnostic diag = (Diagnostic) x;
+	        	if (diag.getToolName().equals("cve-bin-tool")) {
+	        		diagnostics.put(diag.getName(),diag);
 	        	}
 	        }
-	        return cweList;
-		}
+	       
+			
+
+			//for (String cwe : cweList) { // TODO: add descriptions for CWEs
+			//	String description = "CVE findings of " + cwe;
+			//	Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
+			//	diagnostics.put(cwe, diag);
+			//}
+
+			return diagnostics;
+		}	
+		
+		//private ArrayList<String> identifyCWEs() {
+			// identify all relevant diagnostics from the model structure
+		//	ArrayList<String> cweList = new ArrayList<String>();	
+		//}
 		
 		//maps low-critical to numeric values based on the highest value for each range.
 		private Integer severityToInt(String severity) {
@@ -252,8 +226,6 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			
 			return severityInt;
 		}
-    @Override
-    public String getName() {
-        return null;
-    }
+		
+		 
 }

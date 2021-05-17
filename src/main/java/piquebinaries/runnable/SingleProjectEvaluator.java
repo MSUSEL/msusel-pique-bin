@@ -63,7 +63,7 @@ public class SingleProjectEvaluator {
         String projectRootFlag = ".txt";
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
-        Path qmLocation = Paths.get("out/BinarySecurityQualityModel.json");
+        Path qmLocation = Paths.get("out/BinarySecurityQualityModelCWE-699.json");
 
         ITool cveBinTool = new CVEBinToolWrapper();
         Set<ITool> tools = Stream.of(cveBinTool).collect(Collectors.toSet());
