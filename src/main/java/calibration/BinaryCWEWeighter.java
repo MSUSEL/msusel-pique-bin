@@ -1,19 +1,14 @@
 package calibration;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.ArrayUtils;
-
-import Jama.EigenvalueDecomposition;
-import Jama.Matrix;
 
 import pique.calibration.IWeighter;
 import pique.calibration.WeightResult;

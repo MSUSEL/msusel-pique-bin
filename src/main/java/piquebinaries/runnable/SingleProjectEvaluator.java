@@ -22,20 +22,24 @@
  */
 package piquebinaries.runnable;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.apache.commons.io.FilenameUtils;
-import pique.model.Diagnostic;
+
 import pique.analysis.ITool;
 import pique.evaluation.Project;
+import pique.model.Diagnostic;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import tool.CVEBinToolWrapper;
 import utilities.PiqueProperties;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Behavioral class responsible for running TQI evaluation of a single project

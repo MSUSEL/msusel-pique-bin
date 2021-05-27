@@ -22,6 +22,15 @@
  */
 package calibration;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import pique.analysis.ITool;
 import pique.calibration.IBenchmarker;
 import pique.evaluation.BenchmarkMeasureEvaluator;
@@ -29,14 +38,6 @@ import pique.evaluation.Project;
 import pique.model.Diagnostic;
 import pique.model.Measure;
 import pique.model.QualityModel;
-import pique.utility.FileUtility;
-
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.*;
-
-import org.apache.commons.math3.analysis.function.Min;
 
 public class BinaryBenchmarker implements IBenchmarker {
     /**

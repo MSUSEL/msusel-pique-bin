@@ -22,15 +22,6 @@
  */
 package piquebinaries.runnable;
 
-import pique.analysis.ITool;
-import pique.calibration.IBenchmarker;
-import pique.calibration.IWeighter;
-import pique.calibration.WeightResult;
-import pique.model.*;
-import tool.CVEBinToolWrapper;
-import utilities.PiqueProperties;
-
-import java.io.FileReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -38,6 +29,18 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import pique.analysis.ITool;
+import pique.calibration.IBenchmarker;
+import pique.calibration.IWeighter;
+import pique.calibration.WeightResult;
+import pique.model.Measure;
+import pique.model.ModelNode;
+import pique.model.QualityModel;
+import pique.model.QualityModelExport;
+import pique.model.QualityModelImport;
+import tool.CVEBinToolWrapper;
+import utilities.PiqueProperties;
 
 /**
  * Utility driver class responsible for running the calibration module's procedure.
