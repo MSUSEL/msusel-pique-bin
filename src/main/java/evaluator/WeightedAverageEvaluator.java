@@ -31,9 +31,8 @@ public class WeightedAverageEvaluator extends Evaluator {
     public double evaluate(ModelNode modelNode) {
         double weightedSum = 0.0;
         for (ModelNode child : modelNode.getChildren().values()) {
-            weightedSum += child.getValue();
+        	weightedSum += child.getValue() * modelNode.getWeight(child.getName());
         }
-        weightedSum = weightedSum / modelNode.getChildren().size();
         return weightedSum;
     }
 }

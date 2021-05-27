@@ -36,6 +36,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+import org.apache.commons.math3.analysis.function.Min;
+
 public class BinaryBenchmarker implements IBenchmarker {
     /**
      * Derive thesholds for all {@link Measure} nodes using a naive approach:
@@ -136,9 +138,13 @@ public class BinaryBenchmarker implements IBenchmarker {
         Map<String, Double[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
             measureThresholds.putIfAbsent(measureName, new Double[2]);
-            Double[] quantiles = getPercentiles(measureValues,percentiles);
+            
             measureThresholds.get(measureName)[0] = mean(measureValues)-calculateSD(measureValues);
             measureThresholds.get(measureName)[1] = mean(measureValues)+calculateSD(measureValues);
+            
+            if (measureThresholds.get(measureName)[0] < 0.0) {
+            	measureThresholds.get(measureName)[0] = 0.0;
+            }
 
         });
 

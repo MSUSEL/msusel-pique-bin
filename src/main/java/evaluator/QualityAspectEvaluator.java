@@ -29,18 +29,28 @@ public class QualityAspectEvaluator extends Evaluator {
 
     @Override
     public double evaluate(ModelNode modelNode) {
-        double sum = 0.0;
+    	double weightedSum = 0.0;
+    	
+        // Apply weighted sums
         for (ModelNode child : modelNode.getChildren().values()) {
-            sum += child.getValue();
+        	weightedSum += child.getValue() * modelNode.getWeight(child.getName());
         }
-        double evalValue = sum/modelNode.getNumChildren();
-        if (evalValue>1.0) {
-        	evalValue = 1.0;
+        if (weightedSum>1.0) {
+        	weightedSum = 1.0;
         }
-        else if (evalValue<0.0) {
-        	evalValue = 0.0;
+        else if (weightedSum<0.0) {
+        	weightedSum = 0.0;
         }
         
-        return evalValue;
+        return weightedSum;
+    }
+    
+    public int numberOfNonZeroWeightChildren(ModelNode modelNode) {
+    	int count = 0;
+    	
+    	for (ModelNode child : modelNode.getChildren().values()) {
+        	if (modelNode.getWeight(child.getName())>0) count++;
+        }
+    	return count;
     }
 }
