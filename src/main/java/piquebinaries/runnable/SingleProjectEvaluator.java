@@ -39,6 +39,7 @@ import pique.model.Diagnostic;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import tool.CVEBinToolWrapper;
+import tool.CWECheckerToolWrapper;
 import utilities.PiqueProperties;
 
 /**
@@ -70,7 +71,8 @@ public class SingleProjectEvaluator {
         Path qmLocation = Paths.get("out/BinarySecurityQualityModelCWE-699.json");
 
         ITool cveBinTool = new CVEBinToolWrapper();
-        Set<ITool> tools = Stream.of(cveBinTool).collect(Collectors.toSet());
+        ITool cweCheckerTool = new CWECheckerToolWrapper();
+        Set<ITool> tools = Stream.of(cveBinTool,cweCheckerTool).collect(Collectors.toSet());
         Path outputPath = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
         System.out.println("output: " + outputPath.getFileName());
 

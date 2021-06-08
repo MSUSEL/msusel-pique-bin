@@ -71,7 +71,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 					projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
 			
 			try {
-				System.out.println(helperFunctions.getOutputFromProgram(cmd));
+				helperFunctions.getOutputFromProgram(cmd);
 
 			} catch (IOException  e) {
 				e.printStackTrace();
@@ -90,7 +90,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				results = helperFunctions.readFileContent(toolResults);
 
 			} catch (IOException e) {
-				System.err.println("No results to read.");
+				System.err.println("No results to read from cve-bin-tool.");
 				return diagnostics;
 			}
 			
@@ -120,11 +120,11 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				for (int i = 0; i < findingNames.length; i++) {
 					
 					
-					Diagnostic diag = diagnostics.get(("CVE-" +findingNames[i]));
+					Diagnostic diag = diagnostics.get(("CVE-" +findingNames[i]+" Diagnostic"));
 					if (diag == null) { 
 						//this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
 						//We may want to treat this in another way.
-						diag = diagnostics.get("CVE-CWE-Unknown-Other");
+						diag = diagnostics.get("CVE-CWE-Unknown-Other Diagnostic");
 					}
 					Finding finding = new Finding("",0,0,severityList.get(i));
 					finding.setName(cveList.get(i));

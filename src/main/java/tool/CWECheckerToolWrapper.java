@@ -27,8 +27,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +40,10 @@ import pique.analysis.ITool;
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
 import pique.model.Finding;
+import pique.model.ModelNode;
+import pique.model.QualityModel;
+import pique.model.QualityModelImport;
+import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
 /**
@@ -46,8 +52,6 @@ import utilities.helperFunctions;
 
 public class CWECheckerToolWrapper extends Tool implements ITool {
 
-	final String cweList[] = { "CWE190", "CWE215", "CWE243", "CWE332", "CWE367", "CWE415", "CWE416", "CWE426", "CWE467",
-			"CWE476", "CWE560", "CWE676", "CWE782" };
 
 	public CWECheckerToolWrapper() {
 		super("cwe_checker", null);
@@ -63,22 +67,14 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	public Path analyze(Path projectLocation) {
 
 		File tempResults = new File(System.getProperty("user.dir") + "/out/CWECheckerOutput.json");
+		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 		tempResults.getParentFile().mkdirs();
 
 		String cmd = String.format("cmd /c docker run --rm -v %s:/input fkiecad/cwe_checker:latest --json --quiet /input > %s",
 				projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
-
-		Process p;
 		try {
-			p = Runtime.getRuntime().exec(cmd);
-			BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			String line;
-
-			while ((line = stdInput.readLine()) != null) {
-				System.out.println("cwe_checker: " + line);
-			}
-			p.waitFor();
-		} catch (IOException | InterruptedException e) {
+			helperFunctions.getOutputFromProgram(cmd);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
@@ -106,7 +102,8 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 				for (int i = 0; i < jsonResults.length(); i++) {
 					JSONObject jsonFinding = (JSONObject) jsonResults.get(i);
 					String findingName = jsonFinding.get("name").toString();
-					Finding finding = new Finding("",0,0,1); //might need to change
+					findingName = helperFunctions.addDashtoCWEName(findingName) + " Weakness Diagnostic";
+					Finding finding = new Finding("",i,0,1); //might need to change. Passing 'i' as line number to ensure findings have different names
 					diagnostics.get(findingName).setChild(finding);
 				}
 			}
@@ -142,17 +139,33 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	}
 
 	// Creates and returns a set of CWE diagnostics without findings
-	private Map<String, Diagnostic> initializeDiagnostics() {
-		Map<String, Diagnostic> diagnostics = new HashMap<>();
+		private Map<String, Diagnostic> initializeDiagnostics() {
+			// load the qm structure
+			Properties prop = PiqueProperties.getProperties();
+			Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
+			QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
+	        QualityModel qmDescription = qmImport.importQualityModel();
 
-		for (String cwe : cweList) {
-			String id = "CWE-" + helperFunctions.addDashtoCWEName(cwe);
-			String description = "A weakness of type " + id;
-			Diagnostic diag = new Diagnostic(id, description, "cwe_checker");
-			diagnostics.put(cwe, diag);
-		}
+	        Map<String, Diagnostic> diagnostics = new HashMap<>();
+	        
+	        // for each diagnostic in the model, if it is associated with this tool, 
+	        // add it to the list of diagnostics
+	        for (ModelNode x : qmDescription.getDiagnostics().values()) {
+	        	Diagnostic diag = (Diagnostic) x;
+	        	if (diag.getToolName().equals("cwe_checker")) {
+	        		diagnostics.put(diag.getName(),diag);
+	        	}
+	        }
+	       
+			
 
-		return diagnostics;
-	}
+			//for (String cwe : cweList) { // TODO: add descriptions for CWEs
+			//	String description = "CVE findings of " + cwe;
+			//	Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
+			//	diagnostics.put(cwe, diag);
+			//}
+
+			return diagnostics;
+		}	
 
 }
