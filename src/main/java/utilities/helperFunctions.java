@@ -30,8 +30,17 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import pique.model.Diagnostic;
+import pique.model.ModelNode;
+import pique.model.QualityModel;
+import pique.model.QualityModelImport;
 
 
 public class helperFunctions {
@@ -106,5 +115,27 @@ public class helperFunctions {
  
         return contentBuilder.toString();
     }
+	
+	// Creates and returns a set of CWE diagnostics without findings
+	public static Map<String, Diagnostic> initializeDiagnostics(String toolName) {
+		// load the qm structure
+		Properties prop = PiqueProperties.getProperties();
+		Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
+		QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
+        QualityModel qmDescription = qmImport.importQualityModel();
+
+        Map<String, Diagnostic> diagnostics = new HashMap<>();
+        
+        // for each diagnostic in the model, if it is associated with this tool, 
+        // add it to the list of diagnostics
+        for (ModelNode x : qmDescription.getDiagnostics().values()) {
+        	Diagnostic diag = (Diagnostic) x;
+        	if (diag.getToolName().equals(toolName)) {
+        		diagnostics.put(diag.getName(),diag);
+        	}
+        }
+       
+		return diagnostics;
+	}	
 
 }

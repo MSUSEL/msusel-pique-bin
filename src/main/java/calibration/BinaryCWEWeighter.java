@@ -63,7 +63,7 @@ public class BinaryCWEWeighter implements IWeighter{
 		comparisonMat = new double[numQA][numQA];
 		
 		String pathToCsv = "src/main/resources/comparisons.csv";
-		String pfPrefix = "Category CWE-";
+		String pfPrefix = "Category ";
 		BufferedReader csvReader;
 		int lineCount = 0;
 		try {
@@ -84,12 +84,13 @@ public class BinaryCWEWeighter implements IWeighter{
 				}
 				else { //QA weights, fill values for manWeights
 					for (int i = 1; i < data.length; i++) {
-						//parse out the integer for the CWE number and add appropriate prefix, unless it is CWE-Unknown-Other
-						if (data[0].toLowerCase().contains("unknown-other")) {
-							pfNames[lineCount-numQA-1] = pfPrefix + "Unknown-Other";	
+						//parse out the integer for the CWE number and add appropriate prefix, unless it is not numbered
+						if (data[0].replaceAll("[\\D]", "").length() == 0) {
+							//no numbers in the name
+							pfNames[lineCount-numQA-1] = pfPrefix +data[0];
 						}
 						else {
-							pfNames[lineCount-numQA-1] = pfPrefix + Integer.toString(Integer.parseInt(data[0].replaceAll("[\\D]", "")));							
+							pfNames[lineCount-numQA-1] = pfPrefix + "CWE-" + Integer.toString(Integer.parseInt(data[0].replaceAll("[\\D]", "")));							
 						}
 						manWeights[lineCount-numQA-1][i-1] = Double.parseDouble(data[i].trim());
 					}

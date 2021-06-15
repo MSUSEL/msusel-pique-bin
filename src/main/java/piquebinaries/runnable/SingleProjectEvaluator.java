@@ -40,6 +40,7 @@ import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import tool.CVEBinToolWrapper;
 import tool.CWECheckerToolWrapper;
+import tool.YaraRulesToolWrapper;
 import utilities.PiqueProperties;
 
 /**
@@ -69,10 +70,12 @@ public class SingleProjectEvaluator {
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
         Path qmLocation = Paths.get("out/BinarySecurityQualityModelCWE-699.json");
-
+        Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
+        
         ITool cveBinTool = new CVEBinToolWrapper();
         ITool cweCheckerTool = new CWECheckerToolWrapper();
-        Set<ITool> tools = Stream.of(cveBinTool,cweCheckerTool).collect(Collectors.toSet());
+        ITool yaraRulesWrapper = new YaraRulesToolWrapper(resources);
+        Set<ITool> tools = Stream.of(cveBinTool,cweCheckerTool, yaraRulesWrapper).collect(Collectors.toSet());
         Path outputPath = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
         System.out.println("output: " + outputPath.getFileName());
 
@@ -104,7 +107,7 @@ public class SingleProjectEvaluator {
         initialize(projectDir, resultsDir, qmLocation);
         QualityModelImport qmImport = new QualityModelImport(qmLocation);
         QualityModel qualityModel = qmImport.importQualityModel();
-        project = new Project(FilenameUtils.getBaseName(projectDir.getFileName().toString()), projectDir, qualityModel);
+        project = new Project(projectDir.getFileName().toString(), projectDir, qualityModel);
 
         // Validate State
         // TODO: validate more objects such as if the quality model has thresholds and weights, are there expected diagnostics, etc

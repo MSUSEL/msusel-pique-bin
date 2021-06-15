@@ -5,6 +5,7 @@ Authorization,0.333,1,1,4,4,2
 Confidentiality,0.125,0.25,0.25,1,1,0.5
 Non-repudiation,0.125,0.25,0.25,1,1,0.5
 Integrity,0.2,0.5,0.5,2,2,1
+Potential Malicious Indicators,1,1,1,1,1,1
 Unknown-Other,1,1,1,1,1,1
 API / Function Errors - (1228),1,1,1,1,1,1
 Audit / Logging - (1210),0,0,0,0,1,0

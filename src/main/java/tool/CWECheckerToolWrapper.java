@@ -82,7 +82,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	}
 
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
-		Map<String, Diagnostic> diagnostics = initializeDiagnostics();
+		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
 
 		String results = "";
@@ -91,7 +91,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 			results = helperFunctions.readFileContent(toolResults);
 
 		} catch (IOException e) {
-			System.err.println("Error when reading tool results.");
+			System.err.println("Error when reading CWEChecker tool results.");
 			e.printStackTrace();
 		}
 			
@@ -104,7 +104,13 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 					String findingName = jsonFinding.get("name").toString();
 					findingName = helperFunctions.addDashtoCWEName(findingName) + " Weakness Diagnostic";
 					Finding finding = new Finding("",i,0,1); //might need to change. Passing 'i' as line number to ensure findings have different names
-					diagnostics.get(findingName).setChild(finding);
+					Diagnostic relDiag = diagnostics.get(findingName);
+					if (relDiag == null) {
+						System.err.println("Error finding diagnostic for CWE_Checker finding. Check to ensure all CWEs are in the model. Ignoring this finding.");
+					}
+					else {
+						relDiag.setChild(finding);
+					}
 				}
 			}
 			else {
@@ -138,34 +144,6 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		return toolRoot;
 	}
 
-	// Creates and returns a set of CWE diagnostics without findings
-		private Map<String, Diagnostic> initializeDiagnostics() {
-			// load the qm structure
-			Properties prop = PiqueProperties.getProperties();
-			Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
-			QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
-	        QualityModel qmDescription = qmImport.importQualityModel();
-
-	        Map<String, Diagnostic> diagnostics = new HashMap<>();
-	        
-	        // for each diagnostic in the model, if it is associated with this tool, 
-	        // add it to the list of diagnostics
-	        for (ModelNode x : qmDescription.getDiagnostics().values()) {
-	        	Diagnostic diag = (Diagnostic) x;
-	        	if (diag.getToolName().equals("cwe_checker")) {
-	        		diagnostics.put(diag.getName(),diag);
-	        	}
-	        }
-	       
-			
-
-			//for (String cwe : cweList) { // TODO: add descriptions for CWEs
-			//	String description = "CVE findings of " + cwe;
-			//	Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
-			//	diagnostics.put(cwe, diag);
-			//}
-
-			return diagnostics;
-		}	
+	
 
 }

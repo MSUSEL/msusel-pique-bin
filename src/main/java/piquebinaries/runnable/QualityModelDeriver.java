@@ -41,6 +41,7 @@ import pique.model.QualityModelExport;
 import pique.model.QualityModelImport;
 import tool.CVEBinToolWrapper;
 import tool.CWECheckerToolWrapper;
+import tool.YaraRulesToolWrapper;
 import utilities.PiqueProperties;
 
 /**
@@ -72,10 +73,12 @@ public class QualityModelDeriver {
         String projectRootFlag = "";
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
+        Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
+        
         ITool cvebinToolWrapper = new CVEBinToolWrapper();
         ITool cweCheckerWrapper = new CWECheckerToolWrapper();
-        Set<ITool> tools = Stream.of(cvebinToolWrapper,cweCheckerWrapper).collect(Collectors.toSet());
-
+        ITool yaraRulesWrapper = new YaraRulesToolWrapper(resources);
+        Set<ITool> tools = Stream.of(cvebinToolWrapper,cweCheckerWrapper, yaraRulesWrapper).collect(Collectors.toSet());
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
 

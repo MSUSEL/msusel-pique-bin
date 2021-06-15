@@ -82,7 +82,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 		@Override
 		public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
-			Map<String, Diagnostic> diagnostics = initializeDiagnostics();
+			Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
 			String results = "";
 
@@ -124,7 +124,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 					if (diag == null) { 
 						//this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
 						//We may want to treat this in another way.
-						diag = diagnostics.get("CVE-CWE-Unknown-Other Diagnostic");
+						diag = diagnostics.get("CVE-Unknown-Other Diagnostic");
 					}
 					Finding finding = new Finding("",0,0,severityList.get(i));
 					finding.setName(cveList.get(i));
@@ -164,36 +164,6 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			return toolRoot;
 		}
 
-		// Creates and returns a set of CWE diagnostics without findings
-		private Map<String, Diagnostic> initializeDiagnostics() {
-			// load the qm structure
-			Properties prop = PiqueProperties.getProperties();
-			Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
-			QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
-	        QualityModel qmDescription = qmImport.importQualityModel();
-
-	        Map<String, Diagnostic> diagnostics = new HashMap<>();
-	        
-	        // for each diagnostic in the model, if it is associated with this tool, 
-	        // add it to the list of diagnostics
-	        for (ModelNode x : qmDescription.getDiagnostics().values()) {
-	        	Diagnostic diag = (Diagnostic) x;
-	        	if (diag.getToolName().equals("cve-bin-tool")) {
-	        		diagnostics.put(diag.getName(),diag);
-	        	}
-	        }
-	       
-			
-
-			//for (String cwe : cweList) { // TODO: add descriptions for CWEs
-			//	String description = "CVE findings of " + cwe;
-			//	Diagnostic diag = new Diagnostic(cwe, description, "cve-bin-tool");
-			//	diagnostics.put(cwe, diag);
-			//}
-
-			return diagnostics;
-		}	
-		
 		//private ArrayList<String> identifyCWEs() {
 			// identify all relevant diagnostics from the model structure
 		//	ArrayList<String> cweList = new ArrayList<String>();	

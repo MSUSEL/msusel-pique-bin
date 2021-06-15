@@ -39,16 +39,31 @@
       }
     },
     "product_factors" : {
-      "Category CWE-Unknown-Other" : {
-        "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+      "Category Potential Malicious Indicators" : {
+        "description" : "Potential indicators of a malicious binary",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
-          "CVE-CWE-Unknown-Other Measure" : { }
+          "Yara antidebug_antivm Measure" : { },
+          "Yara capabilities Measure" : { },
+          "Yara crypto Measure" : { },
+          "Yara email Measure" : { },
+          "Yara exploit_kits Measure" : { },
+          "Yara maldocs Measure" : { },
+          "Yara malware Measure" : { },
+          "Yara packers Measure" : { },
+          "Yara webshells Measure" : { }
+        }
+      },
+      "Category Unknown-Other" : {
+        "description" : "",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
+        "children" : {
+          "CVE-Unknown-Other Measure" : { }
         }
       },
       "Category CWE-1228" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-676 Weakness Measure" : { },
           "CWE-782 Weakness Measure" : { },
@@ -64,7 +79,7 @@
       },
       "Category CWE-1210" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1210 Measure" : { },
           "CVE-CWE-117 Measure" : { },
@@ -78,7 +93,7 @@
       },
       "Category CWE-1211" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1211 Measure" : { },
           "CVE-CWE-288 Measure" : { },
@@ -103,7 +118,7 @@
       },
       "Category CWE-1212" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1212 Measure" : { },
           "CVE-CWE-425 Measure" : { },
@@ -117,7 +132,7 @@
       },
       "Category CWE-1006" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-560 Weakness Measure" : { },
           "CVE-CWE-1006 Measure" : { },
@@ -184,7 +199,7 @@
       },
       "Category CWE-438" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-438 Measure" : { },
           "CVE-CWE-115 Measure" : { },
@@ -210,7 +225,7 @@
       },
       "Category CWE-840" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-840 Measure" : { },
           "CVE-CWE-283 Measure" : { },
@@ -226,7 +241,7 @@
       },
       "Category CWE-417" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-417 Measure" : { },
           "CVE-CWE-322 Measure" : { },
@@ -243,7 +258,7 @@
       },
       "Category CWE-1226" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1043 Measure" : { },
           "CVE-CWE-1047 Measure" : { },
@@ -266,7 +281,7 @@
       },
       "Category CWE-557" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-367 Weakness Measure" : { },
           "CVE-CWE-363 Measure" : { },
@@ -288,7 +303,7 @@
       },
       "Category CWE-255" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-255 Measure" : { },
           "CVE-CWE-256 Measure" : { },
@@ -309,7 +324,7 @@
       },
       "Category CWE-310" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-332 Weakness Measure" : { },
           "CVE-CWE-310 Measure" : { },
@@ -328,7 +343,7 @@
       },
       "Category CWE-320" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-320 Measure" : { },
           "CVE-CWE-321 Measure" : { },
@@ -339,7 +354,7 @@
       },
       "Category CWE-1214" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1214 Measure" : { },
           "CVE-CWE-322 Measure" : { },
@@ -359,7 +374,7 @@
       },
       "Category CWE-19" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-19 Measure" : { },
           "CVE-CWE-130 Measure" : { },
@@ -386,7 +401,7 @@
       },
       "Category CWE-137" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-78 Weakness Measure" : { },
           "CVE-CWE-137 Measure" : { },
@@ -419,7 +434,7 @@
       },
       "Category CWE-1225" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1225 Measure" : { },
           "CVE-CWE-1053 Measure" : { },
@@ -432,7 +447,7 @@
       },
       "Category CWE-1219" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-426 Weakness Measure" : { },
           "CVE-CWE-1219 Measure" : { },
@@ -450,7 +465,7 @@
       },
       "Category CWE-1227" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1227 Measure" : { },
           "CVE-CWE-1054 Measure" : { },
@@ -464,7 +479,7 @@
       },
       "Category CWE-389" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-389 Measure" : { },
           "CVE-CWE-209 Measure" : { },
@@ -489,7 +504,7 @@
       },
       "Category CWE-569" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-569 Measure" : { },
           "CVE-CWE-480 Measure" : { },
@@ -502,7 +517,7 @@
       },
       "Category CWE-429" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-429 Measure" : { },
           "CVE-CWE-430 Measure" : { },
@@ -515,7 +530,7 @@
       },
       "Category CWE-199" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-215 Weakness Measure" : { },
           "CVE-CWE-199 Measure" : { },
@@ -541,7 +556,7 @@
       },
       "Category CWE-452" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-452 Measure" : { },
           "CVE-CWE-226 Measure" : { },
@@ -556,7 +571,7 @@
       },
       "Category CWE-1215" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1215 Measure" : { },
           "CVE-CWE-112 Measure" : { },
@@ -571,7 +586,7 @@
       },
       "Category CWE-1216" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1216 Measure" : { },
           "CVE-CWE-645 Measure" : { }
@@ -579,7 +594,7 @@
       },
       "Category CWE-1218" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-119 Weakness Measure" : { },
           "CVE-CWE-1218 Measure" : { },
@@ -596,7 +611,7 @@
       },
       "Category CWE-189" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-190 Weakness Measure" : { },
           "CVE-CWE-189 Measure" : { },
@@ -615,7 +630,7 @@
       },
       "Category CWE-275" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-275 Measure" : { },
           "CVE-CWE-276 Measure" : { },
@@ -631,7 +646,7 @@
       },
       "Category CWE-465" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-415 Weakness Measure" : { },
           "CWE-416 Weakness Measure" : { },
@@ -654,7 +669,7 @@
       },
       "Category CWE-265" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-243 Weakness Measure" : { },
           "CVE-CWE-265 Measure" : { },
@@ -675,7 +690,7 @@
       },
       "Category CWE-1213" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1213 Measure" : { },
           "CVE-CWE-331 Measure" : { },
@@ -690,7 +705,7 @@
       },
       "Category CWE-411" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-411 Measure" : { },
           "CVE-CWE-412 Measure" : { },
@@ -705,7 +720,7 @@
       },
       "Category CWE-399" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-399 Measure" : { },
           "CVE-CWE-73 Measure" : { },
@@ -733,7 +748,7 @@
       },
       "Category CWE-387" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-387 Measure" : { },
           "CVE-CWE-364 Measure" : { },
@@ -744,7 +759,7 @@
       },
       "Category CWE-371" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-371 Measure" : { },
           "CVE-CWE-15 Measure" : { },
@@ -756,8 +771,9 @@
       },
       "Category CWE-133" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
+          "CWE-134 Weakness Measure" : { },
           "CVE-CWE-133 Measure" : { },
           "CVE-CWE-134 Measure" : { },
           "CVE-CWE-135 Measure" : { },
@@ -766,7 +782,7 @@
       },
       "Category CWE-136" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-136 Measure" : { },
           "CVE-CWE-681 Measure" : { },
@@ -775,7 +791,7 @@
       },
       "Category CWE-355" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-355 Measure" : { },
           "CVE-CWE-317 Measure" : { },
@@ -792,7 +808,7 @@
       },
       "Category CWE-1217" : {
         "description" : "",
-        "eval_strategy" : "evaluator.WeightedAverageOfValuedNodesEvaluator",
+        "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CVE-CWE-1217 Measure" : { },
           "CVE-CWE-488 Measure" : { },
@@ -803,12 +819,84 @@
     }
   },
   "measures" : {
-    "CVE-CWE-Unknown-Other Measure" : {
+    "Yara antidebug_antivm Measure" : {
       "positive" : false,
       "utility_function" : "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
-        "CVE-CWE-Unknown-Other Diagnostic" : { }
+        "Yara antidebug_antivm Diagnostic" : { }
+      }
+    },
+    "Yara capabilities Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "Yara capabilities Diagnostic" : { }
+      }
+    },
+    "Yara crypto Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "Yara crypto Diagnostic" : { }
+      }
+    },
+    "Yara email Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "Yara email Diagnostic" : { }
+      }
+    },
+    "Yara exploit_kits Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "Yara exploit_kits Diagnostic" : { }
+      }
+    },
+    "Yara maldocs Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "Yara maldocs Diagnostic" : { }
+      }
+    },
+    "Yara malware Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "Yara malware Diagnostic" : { }
+      }
+    },
+    "Yara packers Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "Yara packers Diagnostic" : { }
+      }
+    },
+    "Yara webshells Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "Yara webshells Diagnostic" : { }
+      }
+    },
+    "CVE-Unknown-Other Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "CVE-Unknown-Other Diagnostic" : { }
       }
     },
     "CVE-CWE-1228 Measure" : {
@@ -4483,6 +4571,14 @@
         "CWE-78 Weakness Diagnostic" : { }
       }
     },
+    "CWE-134 Weakness Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "CWE-134 Weakness Diagnostic" : { }
+      }
+    },
     "CWE-119 Weakness Measure" : {
       "positive" : false,
       "utility_function" : "evaluator.BinaryUtility",
@@ -4599,7 +4695,43 @@
     }
   },
   "diagnostics" : {
-    "CVE-CWE-Unknown-Other Diagnostic" : {
+    "Yara antidebug_antivm Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "Yara capabilities Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "Yara crypto Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "Yara email Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "Yara exploit_kits Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "Yara maldocs Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "Yara malware Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "Yara packers Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "Yara webshells Diagnostic" : {
+      "description" : "",
+      "toolName" : "yara-rules"
+    },
+    "CVE-Unknown-Other Diagnostic" : {
       "description" : "CVE findings of unknown type, or of a CWE not in this model.",
       "toolName" : "cve-bin-tool"
     },
@@ -6437,6 +6569,10 @@
     },
     "CWE-78 Weakness Diagnostic" : {
       "description" : "Weakness findings of CWE-78",
+      "toolName" : "cwe_checker"
+    },
+    "CWE-134 Weakness Diagnostic" : {
+      "description" : "Weakness findings of CWE-134",
       "toolName" : "cwe_checker"
     },
     "CWE-119 Weakness Diagnostic" : {
