@@ -15,7 +15,6 @@ Bad Coding Practices - (1006),1,1,1,1,1,1
 Behavioral Problems - (438),1,0,0,0,0,0
 Business Logic Errors - (840),1,1,1,1,1,1
 Communication Channel Errors - (417),0,1,1,1,0,0
-Complexity Issues - (1226),1,1,1,1,1,1
 Concurrency Issues - (557),1,1,1,1,1,1
 Credentials Management Errors - (255),0,1,0,0,0,0
 Cryptographic Issues - (310),0,1,0,1,0,0
@@ -23,16 +22,12 @@ Key Management Errors - (320),0,1,0,0,0,0
 Data Integrity Issues - (1214),0,0,0,0,0,1
 Data Processing Errors - (19),1,1,1,1,1,1
 Data Neutralization Issues - (137),1,1,1,1,1,1
-Documentation Issues - (1225),1,1,1,1,1,1
 File Handling Issues - (1219),1,1,1,1,1,1
-Encapsulation Issues - (1227),1,1,1,1,1,1
 Error Conditions Return Values Status Codes - (389),1,0,0,1,0,0
-Expression Issues - (569),1,1,1,1,1,1
 Handler Errors - (429),1,1,1,1,1,1
 Information Management Errors - (199),0,0,0,1,0,0
 Initialization and Cleanup Errors - (452),1,1,1,1,1,1
 Data Validation Issues - (1215),1,1,1,1,1,1
-Lockout Mechanism Errors - (1216),1,0,0,0,0,0
 Memory Buffer Errors - (1218),1,1,1,1,1,1
 Numeric Errors - (189),1,1,1,1,1,1
 Permission Issues - (275),0,0,1,0,0,0
