@@ -77,7 +77,7 @@ public class FakeFindingToolWrapper extends Tool implements ITool {
 		System.out.println("Fake finding info:");
 		System.out.println("Diagnostic: " + relDiag.getName());
 		System.out.println("Finding Severity: " + randomSeverity);
-		
+		   
 		return diagnostics;
 	}
 

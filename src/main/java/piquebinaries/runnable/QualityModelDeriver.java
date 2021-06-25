@@ -24,6 +24,11 @@ package piquebinaries.runnable;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -39,6 +44,7 @@ import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelExport;
 import pique.model.QualityModelImport;
+import pique.model.Tqi;
 import tool.CVEBinToolWrapper;
 import tool.CWECheckerToolWrapper;
 import tool.YaraRulesToolWrapper;
@@ -81,6 +87,8 @@ public class QualityModelDeriver {
         Set<ITool> tools = Stream.of(cvebinToolWrapper,cweCheckerWrapper, yaraRulesWrapper).collect(Collectors.toSet());
         QualityModelImport qmImport = new QualityModelImport(blankqmFilePath);
         QualityModel qmDescription = qmImport.importQualityModel();
+        qmDescription = pique.utility.TreeTrimmingUtility.trimQualityModelTree(qmDescription);
+        
 
         QualityModel derivedQualityModel = QualityModelDeriver.deriveModel(qmDescription, tools, benchmarkRepo, projectRootFlag);
 
@@ -124,4 +132,6 @@ public class QualityModelDeriver {
 
         return qmDesign;
     }
+    
+    
 }

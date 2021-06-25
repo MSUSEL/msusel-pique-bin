@@ -154,7 +154,7 @@ public class BinaryBenchmarker implements IBenchmarker {
         });
 
         
-        // Identify the 1st and 3rd quartiles of each measure value
+        // Identify the mean+-sd of each measure value
         Double[] percentiles = new Double[2];
         percentiles[0]=0.25;
         percentiles[1]=0.75;

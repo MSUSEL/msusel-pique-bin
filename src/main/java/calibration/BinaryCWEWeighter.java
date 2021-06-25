@@ -26,8 +26,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -62,6 +64,14 @@ public class BinaryCWEWeighter implements IWeighter{
 		manWeights = new double[numPF][numQA];
 		comparisonMat = new double[numQA][numQA];
 		
+		List<String> modelQANames = new ArrayList<String>();
+		List<String> modelPFNames = new ArrayList<String>();
+		qualityModel.getQualityAspects().values().stream().forEach(s -> modelQANames.add(s.getName()));
+		qualityModel.getProductFactors().values().stream().forEach(s -> modelPFNames.add(s.getName()));
+		
+		
+		
+		
 		String pathToCsv = "src/main/resources/comparisons.csv";
 		String pfPrefix = "Category ";
 		BufferedReader csvReader;
@@ -76,26 +86,23 @@ public class BinaryCWEWeighter implements IWeighter{
 					for (int i = 1; i < data.length; i++) {
 						qaNames[i-1] = data[i];
 					}
+					lineCount++;
 				}
-				else if (lineCount < numQA+1) { //tqi weights, fill values for ahpMat
-					for (int i = 1; i < data.length; i++) {
-						comparisonMat[lineCount-1][i-1] = Double.parseDouble(data[i].trim());
+				else if (modelQANames.contains(data[0]) || modelPFNames.contains(getCategoryName(data[0],pfPrefix))) {
+					if (lineCount < numQA+1) { //tqi weights, fill values for ahpMat
+						for (int i = 1; i < data.length; i++) {
+							comparisonMat[lineCount-1][i-1] = Double.parseDouble(data[i].trim());
+						}
 					}
-				}
-				else { //QA weights, fill values for manWeights
-					for (int i = 1; i < data.length; i++) {
+					else { //QA weights, fill values for manWeights
 						//parse out the integer for the CWE number and add appropriate prefix, unless it is not numbered
-						if (data[0].replaceAll("[\\D]", "").length() == 0) {
-							//no numbers in the name
-							pfNames[lineCount-numQA-1] = pfPrefix +data[0];
+						pfNames[lineCount-numQA-1] = getCategoryName(data[0],pfPrefix);
+						for (int i = 1; i < data.length; i++) {							
+							manWeights[lineCount-numQA-1][i-1] = Double.parseDouble(data[i].trim());
 						}
-						else {
-							pfNames[lineCount-numQA-1] = pfPrefix + "CWE-" + Integer.toString(Integer.parseInt(data[0].replaceAll("[\\D]", "")));							
-						}
-						manWeights[lineCount-numQA-1][i-1] = Double.parseDouble(data[i].trim());
 					}
+				    lineCount++;
 				}
-			    lineCount++;
 			}
 			csvReader.close();
 		} catch (IOException e) {
@@ -122,6 +129,8 @@ public class BinaryCWEWeighter implements IWeighter{
 		
         return weights;
 	}
+	
+	
 
 
 
@@ -131,6 +140,16 @@ public class BinaryCWEWeighter implements IWeighter{
         return this.getClass().getCanonicalName();
 	}
 
+	private String getCategoryName(String name, String pfPrefix) {
+		if (name.replaceAll("[\\D]", "").length() == 0) {
+			//no numbers in the name
+			return pfPrefix +name;
+		}
+		else {
+			return pfPrefix + "CWE-" + Integer.toString(Integer.parseInt(name.replaceAll("[\\D]", "")));							
+		}
+	}
+	
 	private void averageWeights(Collection<ModelNode> values, Set<WeightResult> weights) {
 		values.forEach(node -> {
 			WeightResult weightResult = new WeightResult(node.getName());
