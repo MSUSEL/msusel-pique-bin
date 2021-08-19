@@ -126,7 +126,7 @@ public class SingleProjectEvaluator {
         double tqiValue = project.evaluateTqi();
 
         // Create a file of the results and return its path
-        return project.exportToJson(resultsDir);
+        return project.exportToJson(resultsDir,false);
     }
 
 

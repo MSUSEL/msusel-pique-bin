@@ -144,7 +144,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			//NOTE: the version of cve-bin-tool that is installed at the time of writing this will error when downloading CVEs
 			//However, this will be the command that should be run in the future. If this is failing, get the working
 			//version and make this cmd something unimportant. 
-			final String cmd = "cmd /c python -m pip install cve-bin-tool"; 
+			final String cmd = "cmd /c python -m pip install cve-bin-tool==2.1"; 
 			
 			Process p;
 			try {

@@ -15,6 +15,10 @@ import org.json.JSONObject;
 public class ModelStructureTrimmer {
 
 	//remove all nodes in model that have the tool name but  are not a part of the toolFindings
+	//This is really poorly coded. To make this more generic, we should define the 'structure' string by reading from the JSON and then write 
+	//to that file to modify the structure. As is, we use the known tool findings and the string of the structure to remove any measures that 
+	//aren't a part of the known tool findings. Gross, I know. I'm sorry. This utility should be very rarely used, so I didn't bother making
+	//it very nice.
 	public static void main(String[] args) {
 		String[] toolFindings = "CWE-Unknown-Other CWE-216 CWE-399 CWE-316 CWE-704 CWE-191 CWE-436 CWE-80 CWE-476 CWE-364 CWE-59 CWE-78 CWE-270 CWE-294 CWE-252 CWE-407 CWE-307 CWE-775 CWE-334 CWE-112 CWE-470 CWE-299 CWE-319 CWE-1188 CWE-21 CWE-552 CWE-350 CWE-603 CWE-347 CWE-342 CWE-273 CWE-264 CWE-1 CWE-271 CWE-769 CWE-378 CWE-415 CWE-288 CWE-611 CWE-310 CWE-114 CWE-664 CWE-617 CWE-88 CWE-670 CWE-116 CWE-352 CWE-134 CWE-573 CWE-305 CWE-674 CWE-763 CWE-331 CWE-444 CWE-895 CWE-281 CWE-346 CWE-280 CWE-770 CWE-185 CWE-74 CWE-1286 CWE-259 CWE-17 CWE-118 CWE-371 CWE-248 CWE-918 CWE-89 CWE-369 CWE-668 CWE-323 CWE-384 CWE-917 CWE-36 CWE-1236 CWE-23 CWE-789 CWE-64 CWE-1076 CWE-400 CWE-269 CWE-787 CWE-829 CWE-20 CWE-388 CWE-183 CWE-228 CWE-256 CWE-208 CWE-532 CWE-610 CWE-417 CWE-943 CWE-255 CWE-916 CWE-119 CWE-123 CWE-178 CWE-441 CWE-667 CWE-915 CWE-367 CWE-760 CWE-312 CWE-93 CWE-297 CWE-279 CWE-202 CWE-680 CWE-788 CWE-644 CWE-472 CWE-345 CWE-405 CWE-538 CWE-335 CWE-203 CWE-798 CWE-489 CWE-639 CWE-261 CWE-459 CWE-275 CWE-406 CWE-99 CWE-749 CWE-87 CWE-707 CWE-199 CWE-313 CWE-527 CWE-353 CWE-349 CWE-642 CWE-193 CWE-669 CWE-672 CWE-754 CWE-697 CWE-131 CWE-120 CWE-426 CWE-522 CWE-778 CWE-434 CWE-823 CWE-640 CWE-300 CWE-540 CWE-494 CWE-567 CWE-22 CWE-303 CWE-361 CWE-507 CWE-909 CWE-497 CWE-125 CWE-209 CWE-73 CWE-565 CWE-834 CWE-327 CWE-862 CWE-306 CWE-190 CWE-665 CWE-757 CWE-126 CWE-122 CWE-254 CWE-285 CWE-117 CWE-427 CWE-682 CWE-428 CWE-1021 CWE-200 CWE-170 CWE-212 CWE-706 CWE-732 CWE-922 CWE-774 CWE-320 CWE-18 CWE-920 CWE-506 CWE-759 CWE-19 CWE-772 CWE-184 CWE-130 CWE-539 CWE-776 CWE-201 CWE-502 CWE-172 CWE-401 CWE-77 CWE-266 CWE-61 CWE-338 CWE-521 CWE-913 CWE-863 CWE-311 CWE-1187 CWE-601 CWE-838 CWE-287 CWE-332 CWE-35 CWE-358 CWE-317 CWE-302 CWE-189 CWE-693 CWE-843 CWE-79 CWE-321 CWE-115 CWE-435 CWE-113 CWE-662 CWE-924 CWE-912 CWE-362 CWE-98 CWE-824 CWE-684 CWE-276 CWE-681 CWE-240 CWE-90 CWE-416 CWE-377 CWE-91 CWE-290 CWE-835 CWE-379 CWE-16 CWE-471 CWE-822 CWE-295 CWE-425 CWE-250 CWE-284 CWE-326 CWE-613 CWE-404 CWE-805 CWE-129 CWE-755 CWE-121 CWE-534 CWE-457 CWE-385 CWE-908 CWE-330 CWE-354 CWE-94".split(" ");
         String structure = "      \"Category CWE-1228\" : {\r\n"
@@ -746,6 +750,7 @@ public class ModelStructureTrimmer {
         List<String> cweList = Arrays.asList(toolFindings);
         int i = 0;
 		for (String line : arr) {
+			//hard coded to identify cve-bin-tool measures based on naming convention
 			if (line.contains("Measure") && line.contains("CVE")) {
 				String cwe = line.trim().substring(5,12);
 				if (!cweList.contains(cwe.trim())) {

@@ -69,13 +69,17 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		File tempResults = new File(System.getProperty("user.dir") + "/out/CWECheckerOutput.json");
 		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 		tempResults.getParentFile().mkdirs();
-
+		String out = "";
 		String cmd = String.format("cmd /c docker run --rm -v %s:/input fkiecad/cwe_checker:latest --json --quiet /input > %s",
 				projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
 		try {
-			helperFunctions.getOutputFromProgram(cmd);
-		} catch (IOException e) {
+			out = helperFunctions.getOutputFromProgram(cmd);
+			System.out.println("cwe_checker on " + projectLocation.toString() + ": "+ out);
+ 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+		if (out.toLowerCase().contains("error") || out.toLowerCase().contains("report")) {
+			tempResults.delete();
 		}
 
 		return tempResults.toPath();
@@ -84,11 +88,15 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
-
 		String results = "";
 
 		try {
-			results = helperFunctions.readFileContent(toolResults);
+			if (toolResults.toFile().isFile()) {
+				results = helperFunctions.readFileContent(toolResults);
+			}
+			else {
+				System.err.println("CWE_Checker failed to run");
+			}
 
 		} catch (IOException e) {
 			System.err.println("Error when reading CWEChecker tool results.");

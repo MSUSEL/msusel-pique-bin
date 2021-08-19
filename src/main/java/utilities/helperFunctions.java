@@ -54,6 +54,11 @@ public class helperFunctions {
 			return dashed;
 	}
 	
+	/**
+	 * Given a set of CVE names in a string separated by spaces, return the CWEs the CVEs are associated with
+	 * @param cve A string of one or more CVE names, separated by spaces
+	 * @return An array of CWEs associated with the given CVEs
+	 */
 	public static String[] getCWE(String cve) {
 		String cwe = "";
 		String temp = (new File("")).toPath().toAbsolutePath().toString();

@@ -54,7 +54,7 @@ public class BinaryUtility implements IUtilityFunction {
     		lower = 1;
     	}
     	
-        return (inValue - thresholds[lower]) * (1 / (thresholds[upper] - thresholds[lower]));
+        return (inValue - thresholds[lower]) * (1.0 / (thresholds[upper] - thresholds[lower]));
     }
 
 }

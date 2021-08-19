@@ -95,7 +95,7 @@ public class QualityModelDeriver {
         Path jsonOutput = new QualityModelExport(derivedQualityModel)
         		.exportToJson(derivedQualityModel
         				.getName(), derivedModelFilePath);
-
+  
         System.out.println("Quality Model derivation finished. You can find the file at " + jsonOutput.toAbsolutePath().toString());
     }
 

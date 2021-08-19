@@ -82,12 +82,14 @@ public class BinaryCWEWeighter implements IWeighter{
 			String row;
 			while (( row = csvReader.readLine()) != null) {
 				String[] data = row.split(",");
+				//first line is qaNames
 				if (lineCount == 0) {
 					for (int i = 1; i < data.length; i++) {
 						qaNames[i-1] = data[i];
 					}
 					lineCount++;
 				}
+				//otherwise, check if the first entry of data is part of the model
 				else if (modelQANames.contains(data[0]) || modelPFNames.contains(getCategoryName(data[0],pfPrefix))) {
 					if (lineCount < numQA+1) { //tqi weights, fill values for ahpMat
 						for (int i = 1; i < data.length; i++) {

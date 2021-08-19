@@ -21,7 +21,6 @@ import utilities.helperFunctions;
 public class YaraRulesToolWrapper extends Tool implements ITool {
 	
 	private ArrayList<String> ruleCategories;
-	private Map<String, Diagnostic> diagnostics;
 	private final String ruleCatPrefix = "RULE CATEGORY ";
 	
 	public YaraRulesToolWrapper(Path toolRoot) {
@@ -31,6 +30,13 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 
 	@Override
 	public Path analyze(Path projectLocation) {
+		ruleCategories = new ArrayList<String>();
+		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
+		for (String diagnosticName :diagnostics.keySet()) {
+			String ruleFileName = (diagnosticName.split(" "))[1]; // Diagnostics are "Yara rulename Diagnostic"
+			ruleCategories.add(ruleFileName);
+		}
+		
 		File tempResults = new File(System.getProperty("user.dir") + "\\out\\yaraRulesOutput.txt");
 		tempResults.delete(); // clear out the last output file. May want to change this to rename rather than delete.
 		tempResults.getParentFile().mkdirs();
@@ -51,6 +57,8 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 
 	@Override
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
+		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
+
 		//get contents output file
 		String results = "";
 
@@ -82,12 +90,6 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 
 	@Override
 	public Path initialize(Path toolRoot) {
-		ruleCategories = new ArrayList<String>();
-		diagnostics = helperFunctions.initializeDiagnostics(this.getName());
-		for (String diagnosticName :diagnostics.keySet()) {
-			String ruleFileName = (diagnosticName.split(" "))[1]; // Diagnostics are "Yara rulename Diagnostic"
-			ruleCategories.add(ruleFileName);
-		}
 		return null;
 	}
 	
@@ -95,7 +97,7 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 		String ruleFileName = this.getToolRoot().toAbsolutePath().toString() + "\\rules\\" + ruleName + "_index.yar";
 		
 		// command to call yara on the target file with give rules
-		String cmd = String.format("cmd /c %s\\rules\\yara64.exe -w %s  %s",
+		String cmd = String.format("cmd /c %s\\yara64.exe -w %s  %s",
  				this.getToolRoot().toAbsolutePath().toString(), ruleFileName, projectLocation.toAbsolutePath().toString());
 		String output = "";
 		try {
