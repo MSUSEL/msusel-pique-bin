@@ -22,6 +22,7 @@
  */
 package piquebinaries.runnable;
 
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -119,14 +120,13 @@ public class SingleProjectEvaluator {
             allDiagnostics.putAll(runTool(projectDir, tool));
         });
 
-
         // Apply tool results to Project object
         project.updateDiagnosticsWithFindings(allDiagnostics);
 
-        double tqiValue = project.evaluateTqi();
+        BigDecimal tqiValue = project.evaluateTqi();
 
         // Create a file of the results and return its path
-        return project.exportToJson(resultsDir,false);
+        return project.exportToJson(resultsDir,true);
     }
 
 

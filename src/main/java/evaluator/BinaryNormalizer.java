@@ -22,14 +22,17 @@
  */
 package evaluator;
 
+import java.math.BigDecimal;
+
 import pique.evaluation.Normalizer;
+import pique.utility.BigDecimalWithContext;
 
 public class BinaryNormalizer extends Normalizer {
 
 
     @Override
-    public double normalize(double v) {
-        return 1.0;
+    public BigDecimal normalize(BigDecimal v) {
+        return new BigDecimalWithContext(1.0);
     }
 
 }

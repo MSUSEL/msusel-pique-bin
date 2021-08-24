@@ -45,6 +45,7 @@
 package calibration;
 
 import java.io.File;
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,11 +73,11 @@ public class BinaryBenchmarker implements IBenchmarker {
      * @param tools               The collection of static analysis tools needed to audio the benchmark repository
      * @param projectRootFlag     Option flag to target the static analysis tools, not used in binary case
      * @return A dictionary of [ Key: {@link pique.model.ModelNode} name, Value: thresholds ] where
-     * thresholds is a size = 2 array of Double[] containing the lowest and highest value
+     * thresholds is a size = 2 array of BigDecimal[] containing the lowest and highest value
      * seen for the given measure (after normalization).
      */
     @Override
-    public Map<String, Double[]> deriveThresholds(Path benchmarkRepository, QualityModel qmDescription, Set<ITool> tools,
+    public Map<String, BigDecimal[]> deriveThresholds(Path benchmarkRepository, QualityModel qmDescription, Set<ITool> tools,
                                                   String projectRootFlag) {
 
         // Collect benchmark binaries
@@ -139,11 +140,11 @@ public class BinaryBenchmarker implements IBenchmarker {
         }
 
         // Map all values audited for each measure
-        Map<String, ArrayList<Double>> measureBenchmarkData = new HashMap<>();
+        Map<String, ArrayList<BigDecimal>> measureBenchmarkData = new HashMap<>();
         projects.forEach(p -> {
             p.getQualityModel().getMeasures().values().forEach(m -> {
                         if (!measureBenchmarkData.containsKey(m.getName())) {
-                            measureBenchmarkData.put(m.getName(), new ArrayList<Double>() {{
+                             measureBenchmarkData.put(m.getName(), new ArrayList<BigDecimal>() {{
                                 add(m.getValue());
                             }});
                         } else {
@@ -155,18 +156,18 @@ public class BinaryBenchmarker implements IBenchmarker {
 
         
         // Identify the mean+-sd of each measure value
-        Double[] percentiles = new Double[2];
-        percentiles[0]=0.25;
-        percentiles[1]=0.75;
-        Map<String, Double[]> measureThresholds = new HashMap<>();
+        BigDecimal[] percentiles = new BigDecimal[2];
+        percentiles[0]=new BigDecimal("0.25");
+        percentiles[1]=new BigDecimal("0.75");
+        Map<String, BigDecimal[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
-            measureThresholds.putIfAbsent(measureName, new Double[2]);
+            measureThresholds.putIfAbsent(measureName, new BigDecimal[2]);
             
-            measureThresholds.get(measureName)[0] = mean(measureValues)-calculateSD(measureValues);
-            measureThresholds.get(measureName)[1] = mean(measureValues)+calculateSD(measureValues);
+            measureThresholds.get(measureName)[0] = mean(measureValues).subtract(calculateSD(measureValues));
+            measureThresholds.get(measureName)[1] = mean(measureValues).subtract(calculateSD(measureValues));
             
-            if (measureThresholds.get(measureName)[0] < 0.0) {
-            	measureThresholds.get(measureName)[0] = 0.0;
+            if (measureThresholds.get(measureName)[0].compareTo(new BigDecimal("0.0")) < 0) { //measureThresholds.get(measureName)[0] < 0.0
+            	measureThresholds.get(measureName)[0] = new BigDecimal("0.0");
             }
 
         });
@@ -174,42 +175,42 @@ public class BinaryBenchmarker implements IBenchmarker {
         return measureThresholds;
     }
     
-    private static Double mean(ArrayList<Double> measureValues) {
-    	Double sum = 0.0;
+    private static BigDecimal mean(ArrayList<BigDecimal> measureValues) {
+    	BigDecimal sum = new BigDecimal("0.0");
         for (int i = 0; i < measureValues.size(); i++) {
-            sum += measureValues.get(i);
+            sum.add(measureValues.get(i));
         }
-        return sum / measureValues.size();
+        return sum.divide(new BigDecimal(""+measureValues.size())); 
     }
     
-    private static Double[] getPercentiles(ArrayList<Double> values, Double[] percentiles) {
-    	Double[] tempVals= new Double[values.size()];
+    private static BigDecimal[] getPercentiles(ArrayList<BigDecimal> values, BigDecimal[] percentiles) {
+    	BigDecimal[] tempVals= new BigDecimal[values.size()];
     	tempVals = values.toArray(tempVals);
         Arrays.sort(tempVals, 0, tempVals.length);
         for (int i = 0; i < percentiles.length; i++) {
-          int index = (int) (percentiles[i] * tempVals.length);
+          int index =  percentiles[i].multiply(new BigDecimal(""+tempVals.length)).intValue(); //could cause an issue.
           percentiles[i] = tempVals[index];
         }
         
         return percentiles;
       }
 
-    private static Double calculateSD(ArrayList<Double> measureValues)
+    private static BigDecimal calculateSD(ArrayList<BigDecimal> measureValues)
     {
-    	Double sum = 0.0, standardDeviation = 0.0;
+    	BigDecimal sum = new BigDecimal("0.0"), standardDeviation = new BigDecimal("0.0");
         int length = measureValues.size();
 
-        for(Double num : measureValues) {
-            sum += num;
+        for(BigDecimal num : measureValues) {
+            sum.add(num);
         }
 
-        double mean = sum/length;
+        BigDecimal mean = sum.divide(new BigDecimal(""+length));
 
-        for(Double num: measureValues) {
-            standardDeviation += Math.pow(num - mean, 2);
+        for(BigDecimal num: measureValues) {
+            standardDeviation.add(num.subtract(mean).pow(2));
         }
 
-        return Math.sqrt(standardDeviation/length);
+        return (standardDeviation.divide(new BigDecimal(length)));
     }
     
     @Override

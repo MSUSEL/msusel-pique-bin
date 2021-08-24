@@ -22,47 +22,52 @@
  */
 package evaluator;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 import pique.evaluation.Evaluator;
 import pique.model.ModelNode;
+import pique.utility.BigDecimalWithContext;
 
 public class WeightedAverageOfValuedNodesEvaluator extends Evaluator {
 
     @Override
-    public double evaluate(ModelNode modelNode) {
-    	double weightedSum = 0.0;    	
+    public BigDecimal evaluate(ModelNode modelNode) {
+    	BigDecimal weightedSum = new BigDecimalWithContext(0.0);    	
     	int numberNonZeroNodes = 0;    	
-    	Double zeroValue = 0.5; //value of node with no findings 0 thresholds
+    	BigDecimal zeroValue = new BigDecimalWithContext(0.5); //value of node with no findings 0 thresholds
     	
     	// Apply weighted sums
         for (ModelNode child : modelNode.getChildren().values()) {
-        	Double[] th = child.getThresholds();
+        	BigDecimal[] th = child.getThresholds();
         	if (th!=null) {
-	        	if (isZero(th[0],0.005) && isZero(th[1],0.005) && isZero(child.getValue()-zeroValue,0.005)) {
+	        	if (isZero(th[0],2) && isZero(th[1],2) && isZero(child.getValue().subtract(zeroValue),2)) {
 	        		// node has no findings and no thresholds, ignore it
 	        	}
 	        	else {
 	        		numberNonZeroNodes+=1;
-	            	weightedSum += child.getValue() * modelNode.getWeight(child.getName());
-	
+	            	weightedSum = weightedSum.add( child.getValue().multiply( modelNode.getWeight(child.getName()) ) );
 	        	}
         	}
         	else { //we're in the benchmark stage still
-        		weightedSum += child.getValue() * modelNode.getWeight(child.getName());
+        		weightedSum = weightedSum.add( child.getValue().multiply( modelNode.getWeight(child.getName()) ) );
         		numberNonZeroNodes+=1;
         	}
         }
         
         if (numberNonZeroNodes==0) {
-        	weightedSum = 0.5;
+        	weightedSum = new BigDecimalWithContext(0.5);
         }
         else {        	
-        	weightedSum = weightedSum*((double)modelNode.getNumChildren()/(double)numberNonZeroNodes); // account for nodes that we ignore
+        	weightedSum = weightedSum.multiply((new BigDecimalWithContext(modelNode.getNumChildren()).divide(new BigDecimalWithContext(numberNonZeroNodes))),BigDecimalWithContext.getMC()); // account for nodes that we ignore
         }
         
         return weightedSum;
     }
     
-    public boolean isZero(Double value, Double threshold){
-        return value >= -threshold && value <= threshold;
+    public boolean isZero(BigDecimal value, int threshold){
+    	MathContext mc = new MathContext(threshold);
+    	BigDecimal v = new BigDecimal(value.doubleValue(),mc);
+    	return (v.compareTo(new BigDecimal("0.0",mc))==0);
     }
 }

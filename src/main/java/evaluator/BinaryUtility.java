@@ -22,30 +22,33 @@
  */
 package evaluator;
 
+import java.math.BigDecimal;
+
 import pique.evaluation.IUtilityFunction;
+import pique.utility.BigDecimalWithContext;
 
 public class BinaryUtility implements IUtilityFunction {
 
 
     @Override
-    public double utilityFunction(double v, Double[] doubles, boolean pos) {
-    	if (doubles == null) return 0.0;
+    public BigDecimal utilityFunction(BigDecimal v, BigDecimal[] bigDecimals, boolean pos) {
+    	if (bigDecimals == null) return new BigDecimalWithContext(0.0);
     	
     	//if upper and lower threshold are equal, return the value or 0.5 if no findings 
     	//(0.5 implies it is equivalent to other projects in the benchmark repository)
-    	if (doubles[1]-doubles[0]==0.0) {
-    		if (v==0.0) {
-    			return 0.5;
+    	if (bigDecimals[1].subtract(bigDecimals[0]).compareTo(new BigDecimalWithContext(0.0))==0) {
+    		if (v.compareTo(new BigDecimalWithContext(0.0))==0) {
+    			return new BigDecimalWithContext(0.5);
     		}
     		if(pos) return v;
-    		return -v;
+    		return v.negate();
     	}
-    	return linearInterpolationTwoPoints(v,doubles, pos);
+    	return linearInterpolationTwoPoints(v,bigDecimals, pos);
 
     	
     }
 
-    private double linearInterpolationTwoPoints(double inValue, Double[] thresholds, boolean pos) {
+    private BigDecimal linearInterpolationTwoPoints(BigDecimal inValue, BigDecimal[] thresholds, boolean pos) {
     	//reverse the slope if measure is negative
     	int upper = 1;
     	int lower = 0;
@@ -54,7 +57,7 @@ public class BinaryUtility implements IUtilityFunction {
     		lower = 1;
     	}
     	
-        return (inValue - thresholds[lower]) * (1.0 / (thresholds[upper] - thresholds[lower]));
+        return (inValue.subtract(thresholds[lower])).divide((thresholds[upper].subtract(thresholds[lower])),BigDecimalWithContext.getMC());
     }
 
 }
