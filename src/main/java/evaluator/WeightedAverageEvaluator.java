@@ -22,16 +22,19 @@
  */
 package evaluator;
 
+import java.math.BigDecimal;
+
 import pique.evaluation.Evaluator;
 import pique.model.ModelNode;
+import pique.utility.BigDecimalWithContext;
 
 public class WeightedAverageEvaluator extends Evaluator {
 
     @Override
-    public double evaluate(ModelNode modelNode) {
-        double weightedSum = 0.0;
+    public BigDecimal evaluate(ModelNode modelNode) {
+        BigDecimal weightedSum = new BigDecimalWithContext(0.0);
         for (ModelNode child : modelNode.getChildren().values()) {
-        	weightedSum += child.getValue() * modelNode.getWeight(child.getName());
+        	weightedSum = weightedSum.add(child.getValue().multiply(modelNode.getWeight(child.getName())));
         }
         return weightedSum;
     }

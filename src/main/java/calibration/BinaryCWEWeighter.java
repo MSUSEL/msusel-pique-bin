@@ -25,6 +25,7 @@ package calibration;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -38,6 +39,7 @@ import pique.calibration.IWeighter;
 import pique.calibration.WeightResult;
 import pique.model.ModelNode;
 import pique.model.QualityModel;
+import pique.utility.BigDecimalWithContext;
 
 /** 
  * @author Andrew Johnson
@@ -49,8 +51,8 @@ import pique.model.QualityModel;
 public class BinaryCWEWeighter implements IWeighter{
 	private String[] qaNames;
 	private String[] pfNames;
-	private double[][] manWeights;
-	private double[][] comparisonMat;
+	private BigDecimal[][] manWeights;
+	private BigDecimal[][] comparisonMat;
 	private int numQA;
 	private int numPF;
 	
@@ -61,8 +63,8 @@ public class BinaryCWEWeighter implements IWeighter{
 		numPF = qualityModel.getProductFactors().size();
 		qaNames = new String[numQA];
 		pfNames = new String[numPF];
-		manWeights = new double[numPF][numQA];
-		comparisonMat = new double[numQA][numQA];
+		manWeights = new BigDecimal[numPF][numQA];
+		comparisonMat = new BigDecimal[numQA][numQA];
 		
 		List<String> modelQANames = new ArrayList<String>();
 		List<String> modelPFNames = new ArrayList<String>();
@@ -93,14 +95,14 @@ public class BinaryCWEWeighter implements IWeighter{
 				else if (modelQANames.contains(data[0]) || modelPFNames.contains(getCategoryName(data[0],pfPrefix))) {
 					if (lineCount < numQA+1) { //tqi weights, fill values for ahpMat
 						for (int i = 1; i < data.length; i++) {
-							comparisonMat[lineCount-1][i-1] = Double.parseDouble(data[i].trim());
+							comparisonMat[lineCount-1][i-1] = new BigDecimalWithContext(Double.parseDouble(data[i].trim()));
 						}
 					}
 					else { //QA weights, fill values for manWeights
 						//parse out the integer for the CWE number and add appropriate prefix, unless it is not numbered
 						pfNames[lineCount-numQA-1] = getCategoryName(data[0],pfPrefix);
 						for (int i = 1; i < data.length; i++) {							
-							manWeights[lineCount-numQA-1][i-1] = Double.parseDouble(data[i].trim());
+							manWeights[lineCount-numQA-1][i-1] = new BigDecimalWithContext(Double.parseDouble(data[i].trim()));
 						}
 					}
 				    lineCount++;
@@ -160,15 +162,15 @@ public class BinaryCWEWeighter implements IWeighter{
 		});
 	}
 
-	private double averageWeight(ModelNode currentNode) {
-        return 1.0 / (double)currentNode.getChildren().size();
+	private BigDecimal averageWeight(ModelNode currentNode) {
+        return new BigDecimalWithContext(1.0).divide(new BigDecimalWithContext(currentNode.getChildren().size()));
     }
 	
 	//weight based on AHP
 	private void ahpWeights(ModelNode tqi, Set<WeightResult> weights) {
-		double[] ahpVec = new double[numQA];
+		BigDecimal[] ahpVec = new BigDecimal[numQA];
 		//normalize by column sums
-		double[][] norm = normalizeByColSum(comparisonMat);
+		BigDecimal[][] norm = normalizeByColSum(comparisonMat);
 		//get the row means
 		for (int i= 0; i < numQA; i++) {
 			ahpVec[i] = rowMean(norm,i);
@@ -179,52 +181,52 @@ public class BinaryCWEWeighter implements IWeighter{
         weights.add(weightResult);
 	}
 	
-	private double[][] normalizeByColSum(double[][] mat) {
-		double[][] norm = new double[mat.length][mat[0].length];
+	private BigDecimal[][] normalizeByColSum(BigDecimal[][] mat) {
+		BigDecimal[][] norm = new BigDecimal[mat.length][mat[0].length];
 		for (int i= 0; i < mat.length; i++) {
 			for (int j= 0; j < mat[0].length; j++) {
-				norm[i][j] = (mat[i][j]/colSum(mat,j));
+				norm[i][j] = (mat[i][j].divide(colSum(mat,j)));
 			}	
 		}
 		return norm;
 	}
 	
-	private double[][] normalizeByRowSum(double[][] mat) {
-		double[][] norm = new double[mat.length][mat[0].length];
+	private BigDecimal[][] normalizeByRowSum(BigDecimal[][] mat) {
+		BigDecimal[][] norm = new BigDecimal[mat.length][mat[0].length];
 		for (int i= 0; i < mat.length; i++) {
 			for (int j= 0; j < mat[0].length; j++) {
-				norm[i][j] = (mat[i][j]/rowSum(mat,i));
+				norm[i][j] = (mat[i][j].divide(rowSum(mat,i)));
 			}	
 		}
 		return norm;
 	}
 
-	private double rowMean(double[][] mat, int row) {
+	private BigDecimal rowMean(BigDecimal[][] mat, int row) {
 		int cols = mat[0].length;  
-		return (rowSum(mat,row))/((double)cols);
+		return (rowSum(mat,row)).divide(new BigDecimalWithContext(cols));
 	}
 	
-	private double rowSum(double[][] mat, int row) {
+	private BigDecimal rowSum(BigDecimal[][] mat, int row) {
 		int cols = mat[0].length;  
-		 double sumRow = 0;  
+		BigDecimal sumRow = new BigDecimalWithContext(0);  
         for(int j = 0; j < cols; j++){  
-          sumRow = sumRow + mat[row][j];  
+          sumRow = sumRow.add(mat[row][j]);  
         }
         return sumRow;
 	}
 	
-	private double colSum(double[][] mat, int col) {
+	private BigDecimal colSum(BigDecimal[][] mat, int col) {
 		 int rows = mat.length;  
-		 double sumCol = 0;  
+		 BigDecimal sumCol = new BigDecimalWithContext(0);  
          for(int j = 0; j < rows; j++){  
-           sumCol = sumCol + mat[j][col];  
+           sumCol = sumCol.add(mat[j][col]);  
          } 
 		return (sumCol);
 	}
 	
 	//weights based on manual entry
 	private void manualWeights(Collection<ModelNode> nodes, Set<WeightResult> weights) {
-		double[][] normMat = normalizeByColSum(manWeights);
+		BigDecimal[][] normMat = normalizeByColSum(manWeights);
 		
 
 		for (ModelNode node : nodes) {
