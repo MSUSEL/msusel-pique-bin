@@ -22,6 +22,7 @@
  */
 package piquebinaries.runnable;
 
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -42,7 +43,7 @@ import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 import tool.CVEBinToolWrapper;
 import tool.CWECheckerToolWrapper;
-import tool.FakeFindingToolWrapper;
+import tool.RandomFakeFindingWrapper;
 import tool.YaraRulesToolWrapper;
 import utilities.PiqueProperties;
 
@@ -72,7 +73,7 @@ public class BinaryEvaluatorWithFakeFinding {
         Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
         
         ITool cvebintool = new CVEBinToolWrapper();
-        ITool cveBinToolAndFake = new FakeFindingToolWrapper(cvebintool,10);
+        ITool cveBinToolAndFake = new RandomFakeFindingWrapper(cvebintool,10);
         ITool cweCheckerTool = new CWECheckerToolWrapper();
         ITool yaraRulesWrapper = new YaraRulesToolWrapper(resources);
         
@@ -124,7 +125,7 @@ public class BinaryEvaluatorWithFakeFinding {
         // Apply tool results to Project object
         project.updateDiagnosticsWithFindings(allDiagnostics);
 
-        double tqiValue = project.evaluateTqi();
+        BigDecimal tqiValue = project.evaluateTqi();
 
         // Create a file of the results and return its path
         return project.exportToJson(resultsDir);

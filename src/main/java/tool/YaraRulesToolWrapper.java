@@ -30,6 +30,8 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 
 	@Override
 	public Path analyze(Path projectLocation) {
+		System.out.println(this.getName() + " Running...");
+		
 		ruleCategories = new ArrayList<String>();
 		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 		for (String diagnosticName :diagnostics.keySet()) {
@@ -57,11 +59,12 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 
 	@Override
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
+		System.out.println(this.getName() + " Parsing Analysis...");
 		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
 		//get contents output file
 		String results = "";
-
+		
 		try {
 			results = helperFunctions.readFileContent(toolResults);
 
@@ -101,7 +104,7 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
  				this.getToolRoot().toAbsolutePath().toString(), ruleFileName, projectLocation.toAbsolutePath().toString());
 		String output = "";
 		try {
-			output = helperFunctions.getOutputFromProgram(cmd);
+			output = helperFunctions.getOutputFromProgram(cmd,true);
 		} catch (IOException  e) {
 			e.printStackTrace();
 		}

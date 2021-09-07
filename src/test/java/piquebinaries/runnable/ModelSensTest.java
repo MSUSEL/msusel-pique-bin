@@ -1,5 +1,5 @@
 /**
- * MIT License
+ b * MIT License
  * Copyright (c) 2019 Montana State University Software Engineering Labs
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -83,7 +83,7 @@ public class ModelSensTest {
         
         Project outputProj = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
         QualityModel evaluatedQM = outputProj.getQualityModel();
-        double originalTQI = evaluatedQM.getTqi().getValue();
+        BigDecimal originalTQI = evaluatedQM.getTqi().getValue();
         
         System.out.println("Original TQI: " + originalTQI);
         
@@ -92,9 +92,9 @@ public class ModelSensTest {
         boolean check = false;
         for (ModelNode d : diagnostics) {
         	if (!check) {
-        		if (d.getName().equals("CVE-CWE-823 Diagnostic")) {
+        		//if (d.getName().equals("CWE-134 Weakness Diagnostic")) {
         			check = true;
-        		}
+        		//}
         	}
         	else {
         	cweCheckerTool = new CWECheckerToolWrapper();
@@ -115,8 +115,8 @@ public class ModelSensTest {
         	tools = Stream.of(cveBinTool,cweCheckerTool, yaraRulesWrapper).collect(Collectors.toSet());
         	outputProj = runEvaluator(projectRoot, resultsDir, qmLocation, tools);
             evaluatedQM = outputProj.getQualityModel();
-            double tqi = evaluatedQM.getTqi().getValue();
-            double tqiDiff = originalTQI-tqi;
+            BigDecimal tqi = evaluatedQM.getTqi().getValue();
+            BigDecimal tqiDiff = originalTQI.subtract(tqi);
 
             String strToAppend = d.getName()+", "+tqiDiff;
             System.out.println(strToAppend);
@@ -172,7 +172,7 @@ public class ModelSensTest {
         // Apply tool results to Project object
         project.updateDiagnosticsWithFindings(allDiagnostics);
 
-        double tqiValue = project.evaluateTqi();
+        BigDecimal tqiValue = project.evaluateTqi();
 
         // Create a file of the results and return its path
         return project;
