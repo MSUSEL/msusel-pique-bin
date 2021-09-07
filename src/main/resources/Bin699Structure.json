@@ -597,6 +597,8 @@
         "eval_strategy" : "evaluator.WeightedAverageEvaluator",
         "children" : {
           "CWE-119 Weakness Measure" : { },
+		  "CWE-125 Weakness Measure" : { },
+		  "CWE-787 Weakness Measure" : { },
           "CVE-CWE-1218 Measure" : { },
           "CVE-CWE-120 Measure" : { },
           "CVE-CWE-123 Measure" : { },
@@ -4276,8 +4278,22 @@
       "utility_function" : "evaluator.BinaryUtility",
       "description" : "",
       "children" : {
-        "CWE-119 Weakness Diagnostic" : { },
-        "CWE-125 Weakness Diagnostic" : { },
+        "CWE-119 Weakness Diagnostic" : { }
+      }
+    },
+	"CWE-125 Weakness Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
+        "CWE-125 Weakness Diagnostic" : { }
+      }
+    },
+	"CWE-787 Weakness Measure" : {
+      "positive" : false,
+      "utility_function" : "evaluator.BinaryUtility",
+      "description" : "",
+      "children" : {
         "CWE-787 Weakness Diagnostic" : { }
       }
     },

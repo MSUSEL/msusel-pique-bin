@@ -63,6 +63,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		 */
 		@Override
 		public Path analyze(Path projectLocation) {
+			System.out.println(this.getName() + " Running...");
 			File tempResults = new File(System.getProperty("user.dir") + "/out/cve-bin-tool.json");
 			tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 			tempResults.getParentFile().mkdirs();
@@ -71,7 +72,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 					projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
 			
 			try {
-				helperFunctions.getOutputFromProgram(cmd);
+				helperFunctions.getOutputFromProgram(cmd,true);
 
 			} catch (IOException  e) {
 				e.printStackTrace();
@@ -82,6 +83,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 		@Override
 		public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
+			System.out.println(this.getName() + " Parsing Analysis...");
 			Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
 			String results = "";
@@ -144,7 +146,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			//NOTE: the version of cve-bin-tool that is installed at the time of writing this will error when downloading CVEs
 			//However, this will be the command that should be run in the future. If this is failing, get the working
 			//version and make this cmd something unimportant. 
-			final String cmd = "cmd /c python -m pip install cve-bin-tool==2.1"; 
+			final String cmd = "cmd /c python -m pip install cve-bin-tool==2.1.post1"; 
 			
 			Process p;
 			try {

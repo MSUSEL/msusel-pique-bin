@@ -65,7 +65,7 @@ public class helperFunctions {
 		String cmd = "python " +temp + "\\src\\main\\java\\utilities\\CVEtoCWE.py " + cve;
 		System.out.println(cmd);
 		try {
-			cwe = getOutputFromProgram(cmd);
+			cwe = getOutputFromProgram(cmd,false);
 		} catch (IOException e) {
 			System.err.println("Error running CVEtoCWE.py");
 			e.printStackTrace();
@@ -81,13 +81,16 @@ public class helperFunctions {
 	  * @return the text output of the command. Includes input and error.
 	  * @throws IOException
 	  */
-	public static String getOutputFromProgram(String program) throws IOException {
+	public static String getOutputFromProgram(String program, boolean print) throws IOException {
 	    Process proc = Runtime.getRuntime().exec(program);
 	    return Stream.of(proc.getErrorStream(), proc.getInputStream()).parallel().map((InputStream isForOutput) -> {
 	        StringBuilder output = new StringBuilder();
 	        try (BufferedReader br = new BufferedReader(new InputStreamReader(isForOutput))) {
 	            String line;
 	            while ((line = br.readLine()) != null) {
+	            	if(print) {
+	            		System.out.println(line);
+	            	}
 	                output.append(line);
 	                output.append("\n");
 	            }

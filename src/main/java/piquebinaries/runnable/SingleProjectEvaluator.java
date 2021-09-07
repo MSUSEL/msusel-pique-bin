@@ -70,7 +70,7 @@ public class SingleProjectEvaluator {
         String projectRootFlag = ".txt";
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
-        Path qmLocation = Paths.get("out/BinarySecurityQualityModelCWE-699.json");
+        Path qmLocation = Paths.get(prop.getProperty("derived.qm"));
         Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
         
         ITool cveBinTool = new CVEBinToolWrapper();
@@ -152,7 +152,7 @@ public class SingleProjectEvaluator {
     }
 
 
-    /**
+    /** 
      * Run static analysis tool evaluation process:
      *   (1) run static analysis tool
      *   (2) parse: get object representation of the diagnostics described by the QM
@@ -172,7 +172,7 @@ public class SingleProjectEvaluator {
         // TODO: turn this into a temp file that always deletes on/before program exit
         Path analysisOutput = tool.analyze(projectDir);
 
-        // (2) prase output: make collection of {Key: diagnostic name, Value: diagnostic objects}
+        // (2) prase output: make collection of {Key: diagnostic name, Value: diagnostic objects}  b 
         return tool.parseAnalysis(analysisOutput);
     }
 

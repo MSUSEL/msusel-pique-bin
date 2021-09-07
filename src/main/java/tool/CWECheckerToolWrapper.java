@@ -23,9 +23,11 @@
 package tool;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -65,17 +67,17 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	 */
 
 	public Path analyze(Path projectLocation) {
-
+		System.out.println(this.getName() + " Running...");
 		File tempResults = new File(System.getProperty("user.dir") + "/out/CWECheckerOutput.json");
 		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 		tempResults.getParentFile().mkdirs();
 		String out = "";
-		String cmd = String.format("cmd /c docker run --rm -v %s:/input fkiecad/cwe_checker:latest --json --quiet /input > %s",
-				projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
-		try {
-			out = helperFunctions.getOutputFromProgram(cmd);
-			System.out.println("cwe_checker on " + projectLocation.toString() + ": "+ out);
- 		} catch (IOException e) {
+		String cmd = String.format("cmd /c docker run --rm -v %s:/input fkiecad/cwe_checker:latest --json --quiet /input",
+				projectLocation.toAbsolutePath().toString());
+		try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) {
+			out = helperFunctions.getOutputFromProgram(cmd,true);
+			writer.write(out);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		if (out.toLowerCase().contains("error") || out.toLowerCase().contains("report")) {
@@ -86,6 +88,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	}
 
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
+		System.out.println(this.getName() + " Parsing Analysis...");
 		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
 		String results = "";
