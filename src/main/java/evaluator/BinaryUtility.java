@@ -38,7 +38,7 @@ public class BinaryUtility implements IUtilityFunction {
     	//(0.5 implies it is equivalent to other projects in the benchmark repository)
     	if (bigDecimals[1].subtract(bigDecimals[0]).compareTo(new BigDecimalWithContext(0.0))==0) {
     		if (v.compareTo(new BigDecimalWithContext(0.0))==0) {
-    			return new BigDecimalWithContext(0.5);
+    			return new BigDecimalWithContext(1);
     		}
     		if(pos) return v;
     		return v.negate();

@@ -46,8 +46,6 @@ import utilities.PiqueProperties;
 
 /**
  * Behavioral class responsible for running TQI evaluation of a single project
- * in a language agnostic way.  It is the responsibility of extending projects
- * (e.g. qatch-csharp) to provide the language specific tools.
  */
 // TODO (1.0): turn into static methods (maybe unless logger problems)
 public class SingleProjectEvaluator {
@@ -71,7 +69,8 @@ public class SingleProjectEvaluator {
         Path benchmarkRepo = Paths.get(prop.getProperty("benchmark.repo"));
 
         Path qmLocation = Paths.get(prop.getProperty("derived.qm"));
-        Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
+        Path resources = Paths.get(prop.getProperty("blankqm.filepath"));
+        resources = resources.toAbsolutePath().getParent();
         
         ITool cveBinTool = new CVEBinToolWrapper();
         ITool cweCheckerTool = new CWECheckerToolWrapper();

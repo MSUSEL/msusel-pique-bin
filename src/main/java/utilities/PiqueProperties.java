@@ -34,7 +34,12 @@ public class PiqueProperties {
             prop.load(new FileReader("src/main/resources/pique-bin.properties"));
 
         }catch(Exception e){
-            e.printStackTrace();
+        	try {
+        		prop.load(new FileReader("pique-bin.properties")); // this is the case when running from the .jar version of pique
+        	}
+        	catch(Exception e2){
+        		e2.printStackTrace();
+        	}
         }
         return prop;
     }
