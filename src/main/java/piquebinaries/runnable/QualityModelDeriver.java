@@ -53,8 +53,8 @@ import utilities.PiqueProperties;
 
 /**
  * Utility driver class responsible for running the calibration module's procedure.
- * This uses a benchmark repository, quality model description, directory of comparison matrices,
- * instances of language-specific analysis tools, and the RInvoker as input to perform a 3 step process of
+ * This uses a benchmark repository, quality model description, directory of comparison matrices, and
+ * instances of language-specific analysis tools as input to perform a 3 step process of
  * (1) Derive thresholds
  * (2) Elicitate weights
  * (3) Apply these results to the quality model to generate a fully derived quality model

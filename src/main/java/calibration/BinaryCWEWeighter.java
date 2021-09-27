@@ -57,6 +57,15 @@ public class BinaryCWEWeighter implements IWeighter{
 	private int numPF;
 	
 
+	/**
+	 * This class will take a quality model as input and will create the weighting for edges from each layer to the next. 
+	 * This weighter uses averages to weight edges into each node up to the product factor level, then uses manual weighting
+	 * as specified by the .csv comparisons for Product Factor to Quality Aspects, then uses that same file to find comparisons 
+	 * for weighting the Quality Aspects to the TQI using the AHP.
+	 * 
+	 * @param qualityModel The QualityModel to instantiate weights for
+	 * @param externalInput Not currently in use, should be used to pass in the comparison matrices csv. 
+	 */
 	@Override
 	public Set<WeightResult> elicitateWeights(QualityModel qualityModel, Path... externalInput) {
 		numQA = qualityModel.getQualityAspects().size();
@@ -144,6 +153,13 @@ public class BinaryCWEWeighter implements IWeighter{
         return this.getClass().getCanonicalName();
 	}
 
+	/**
+	 * This class will take a name and prefix and add the prefix to the name, as well as "CWE-". This is to convert the node name from the comparison
+	 * file to the specific strings that are used in the quality model as of right now. This could easily break if the file or quality model changes.
+	 * @param name The name of the model node as given in the comparison file. 
+	 * @param pfPrefix The common prefix for all categories
+	 * @return The Category in the model based upon the given name.
+	 */
 	private String getCategoryName(String name, String pfPrefix) {
 		if (name.replaceAll("[\\D]", "").length() == 0) {
 			//no numbers in the name
@@ -154,6 +170,11 @@ public class BinaryCWEWeighter implements IWeighter{
 		}
 	}
 	
+	/**
+	 * Sets the incoming weights for a node to evaluate the average value of children. 
+	 * @param values Nodes to set weights for
+	 * @param weights A set to keep track of weights
+	 */
 	private void averageWeights(Collection<ModelNode> values, Set<WeightResult> weights) {
 		values.forEach(node -> {
 			WeightResult weightResult = new WeightResult(node.getName());
@@ -162,11 +183,21 @@ public class BinaryCWEWeighter implements IWeighter{
 		});
 	}
 
+	/**
+	 * Calculates 1/(number of children) for the current node.
+	 * @param currentNode 
+	 * @return 1/currentNode.numberOfChildren
+	 */
 	private BigDecimal averageWeight(ModelNode currentNode) {
         return new BigDecimalWithContext(1.0).divide(new BigDecimalWithContext(currentNode.getChildren().size()));
     }
 	
-	//weight based on AHP
+
+	/**
+	 * This sets the incoming weights for a node based on AHP.
+	 * @param tqi The TQI node of the model, or the node for which to calculate the incoming edges. 
+	 * @param weights A set to keep track of weights.
+	 */
 	private void ahpWeights(ModelNode tqi, Set<WeightResult> weights) {
 		BigDecimal[] ahpVec = new BigDecimal[numQA];
 		//normalize by column sums
@@ -181,6 +212,9 @@ public class BinaryCWEWeighter implements IWeighter{
         weights.add(weightResult);
 	}
 	
+	/**
+	 * Normalize a 2d array by column sum such that every value is that value divided by the sum of the column.
+	 */
 	private BigDecimal[][] normalizeByColSum(BigDecimal[][] mat) {
 		BigDecimal[][] norm = new BigDecimal[mat.length][mat[0].length];
 		for (int i= 0; i < mat.length; i++) {
@@ -191,6 +225,9 @@ public class BinaryCWEWeighter implements IWeighter{
 		return norm;
 	}
 	
+	/**
+	 * Normalize a 2d array by row sum such that every value is that value divided by the sum of the row.
+	 */
 	private BigDecimal[][] normalizeByRowSum(BigDecimal[][] mat) {
 		BigDecimal[][] norm = new BigDecimal[mat.length][mat[0].length];
 		for (int i= 0; i < mat.length; i++) {
@@ -224,7 +261,11 @@ public class BinaryCWEWeighter implements IWeighter{
 		return (sumCol);
 	}
 	
-	//weights based on manual entry
+	/**
+	 * Weight edges based on manual decisions from the comparisons
+	 * @param nodes nodes to set weights for
+	 * @param weights Set to keep track of weights
+	 */
 	private void manualWeights(Collection<ModelNode> nodes, Set<WeightResult> weights) {
 		BigDecimal[][] normMat = normalizeByColSum(manWeights);
 		

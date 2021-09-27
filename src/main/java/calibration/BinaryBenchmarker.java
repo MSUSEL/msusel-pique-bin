@@ -65,16 +65,15 @@ import pique.model.QualityModel;
 public class BinaryBenchmarker implements IBenchmarker {
     /**
      * Derive thesholds for all {@link Measure} nodes using a naive approach:
-     * (1) threshold[0] = the lowest value seen for the {@link Measure}
-     * (2) threshold[1] = the highest value seen for the {@link Measure}
+     * (1) threshold[0] = the mean value minus the standard deviation for the {@link Measure}
+     * (2) threshold[1] = the mean value plus the standard deviation for the {@link Measure}
      *
      * @param benchmarkRepository The root directory containing the items to be used for benchmarking
      * @param qmDescription       The quality model description file
      * @param tools               The collection of static analysis tools needed to audio the benchmark repository
      * @param projectRootFlag     Option flag to target the static analysis tools, not used in binary case
      * @return A dictionary of [ Key: {@link pique.model.ModelNode} name, Value: thresholds ] where
-     * thresholds is a size = 2 array of BigDecimal[] containing the lowest and highest value
-     * seen for the given measure (after normalization).
+     * thresholds is a size = 2 array of BigDecimal[] containing the calculated thresholds.
      */
     @Override
     public Map<String, BigDecimal[]> deriveThresholds(Path benchmarkRepository, QualityModel qmDescription, Set<ITool> tools,
@@ -175,6 +174,11 @@ public class BinaryBenchmarker implements IBenchmarker {
         return measureThresholds;
     }
     
+    /**
+     * Take mean of a BigDecimal ArrayList
+     * @param measureValues The ArrayList<BigDecimal> to take the mean of
+     * @return mean value of the passed parameter
+     */
     private static BigDecimal mean(ArrayList<BigDecimal> measureValues) {
     	BigDecimal sum = new BigDecimal("0.0");
         for (int i = 0; i < measureValues.size(); i++) {
@@ -183,6 +187,12 @@ public class BinaryBenchmarker implements IBenchmarker {
         return sum.divide(new BigDecimal(""+measureValues.size())); 
     }
     
+    /**
+     * Finds the percentiles of an ArrayList<BigDecimal>. 
+     * @param values The values in which to find percentiles
+     * @param percentiles The desired percentiles; i.e. [0.25,0.5,0.75] will return the 25th, 50th, and 75th percentiles.
+     * @return the percentiles of the passed values, as specified by the percentiles passed in
+     */
     private static BigDecimal[] getPercentiles(ArrayList<BigDecimal> values, BigDecimal[] percentiles) {
     	BigDecimal[] tempVals= new BigDecimal[values.size()];
     	tempVals = values.toArray(tempVals);
@@ -195,6 +205,11 @@ public class BinaryBenchmarker implements IBenchmarker {
         return percentiles;
       }
 
+    /**
+     * Calculates the standard deviation of an ArrayList<BigDecimal>.
+     * @param measureValues values of BigDecimals
+     * @return Standard deviation of the passed BigDecimals
+     */
     private static BigDecimal calculateSD(ArrayList<BigDecimal> measureValues)
     {
     	BigDecimal sum = new BigDecimal("0.0"), standardDeviation = new BigDecimal("0.0");

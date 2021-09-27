@@ -29,6 +29,13 @@ import pique.evaluation.Evaluator;
 import pique.model.ModelNode;
 import pique.utility.BigDecimalWithContext;
 
+/**
+ * Incomplete version of an evaluator still in the works. The idea is that we want to be able to evaluate a node but not lose sensitivity in the model due to 
+ * nodes that don't have any findings in the benchmark or binary under analysis. This is not currently (as of writing this) in use in PIQUE-Bin or any other PIQUE
+ * model. This is primarily because it has the unfortunate consequence of potentially raising the TQI when we encounter a new vulnerability in some cases. Perhaps
+ * that should be an edge case, but for now, this will remain here, not being used. 
+ *
+ */
 public class WeightedAverageOfValuedNodesEvaluator extends Evaluator {
 
     @Override

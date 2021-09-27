@@ -48,10 +48,13 @@ import pique.model.QualityModelImport;
 import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
-/**
- * ITool implementation static analysis tool class.
- */
 
+/**
+ * This tool automates the installation and running of the cwe_checker tool. Installation is handled by running docker from the command line, and analysis is
+ * performed by running the docker container. 
+ * @author Andrew
+ *
+ */
 public class CWECheckerToolWrapper extends Tool implements ITool {
 
 

@@ -47,12 +47,18 @@ import pique.model.QualityModelImport;
 import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
+/**
+ * This tool wrapper will install CVE-Bin-Tool through the command line and Python. It will then run and analyze the output of the tool.
+ * When parsing the output of the tool, a command line call to run a Python script is made. This script is responsible for translating from 
+ * CVE number to the CWE it is categorized as by the NVD.
+ * @author Andrew Johnson
+ *
+ */
 public class CVEBinToolWrapper extends Tool implements ITool  {
 	
 			
 	public CVEBinToolWrapper() {
 		super("cve-bin-tool", null);
-		
 	}
 
 	// Methods
@@ -143,9 +149,6 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 		@Override
 		public Path initialize(Path toolRoot) {
-			//NOTE: the version of cve-bin-tool that is installed at the time of writing this will error when downloading CVEs
-			//However, this will be the command that should be run in the future. If this is failing, get the working
-			//version and make this cmd something unimportant. 
 			final String cmd = "cmd /c python -m pip install cve-bin-tool==2.1.post1"; 
 			
 			Process p;

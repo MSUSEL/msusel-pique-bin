@@ -30,6 +30,9 @@ import pique.utility.BigDecimalWithContext;
 public class BinaryNormalizer extends Normalizer {
 
 
+	/**
+	 * We do not normalize, hence this returns a value of 1 always, resulting in no normalization.
+	 */
     @Override
     public BigDecimal normalize(BigDecimal v) {
         return new BigDecimalWithContext(1.0);

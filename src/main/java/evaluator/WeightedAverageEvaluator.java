@@ -28,6 +28,9 @@ import pique.evaluation.Evaluator;
 import pique.model.ModelNode;
 import pique.utility.BigDecimalWithContext;
 
+/**
+ * Evaluates a node as the sum of children multiplied by their edge weight.
+ */
 public class WeightedAverageEvaluator extends Evaluator {
 
     @Override

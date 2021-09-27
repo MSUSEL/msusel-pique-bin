@@ -18,6 +18,14 @@ import pique.model.Diagnostic;
 import pique.model.Finding;
 import utilities.helperFunctions;
 
+/**
+ * This class is responsible for that automatic analysis using YARA and an associated set of rules which are packaged into the PIQUE-Bin repository. 
+ * This solution is not desirable - perhaps the YARA executable could be automatically downloaded along with the git repository of rules. 
+ * One common issue with this tool is the rules themselves being quarantined by anti-virus due to containing the patterns of some common malware.
+ * 
+ * @author Andrew Johnson
+ *
+ */
 public class YaraRulesToolWrapper extends Tool implements ITool {
 	
 	private ArrayList<String> ruleCategories;

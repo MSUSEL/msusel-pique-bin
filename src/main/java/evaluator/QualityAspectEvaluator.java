@@ -28,6 +28,11 @@ import pique.evaluation.Evaluator;
 import pique.model.ModelNode;
 import pique.utility.BigDecimalWithContext;
 
+/**
+ * Evaluator for Quality Aspects. Evaluates as a sum of nodes*weights but limits the score to [0,1]
+ * @author Andrew
+ *
+ */
 public class QualityAspectEvaluator extends Evaluator {
 
     @Override

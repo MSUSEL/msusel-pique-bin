@@ -42,8 +42,16 @@ import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
 
-
+/**
+ * Collection of common helper functions used across the project
+ *
+ */
 public class helperFunctions {
+	/**
+	 * Adds a "-" to a CWE name.
+	 * @param cwe String of CWE in style "CWE125"
+	 * @return String of CWE with dash, for example "CWE-125"
+	 */
 	public static String addDashtoCWEName(String cwe) {
 		String dashed = cwe;
 		if (!cwe.contains("-")) {
@@ -51,7 +59,7 @@ public class helperFunctions {
 			String cweNum = cwe.substring(3);
 			dashed = cweName + "-" + cweNum;
 		}
-			return dashed;
+		return dashed;
 	}
 	
 	/**
@@ -124,7 +132,12 @@ public class helperFunctions {
         return contentBuilder.toString();
     }
 	
-	// Creates and returns a set of CWE diagnostics without findings
+	/**
+	 * This function finds all diagnostics associated with a certain toolName and returns them in a Map with the diagnostic name as the key.
+	 * This is used common to initialize the diagnostics for tools.
+	 * @param toolName The desired tool name
+	 * @return All diagnostics in the model structure with tool equal to toolName
+	 */
 	public static Map<String, Diagnostic> initializeDiagnostics(String toolName) {
 		// load the qm structure
 		Properties prop = PiqueProperties.getProperties();

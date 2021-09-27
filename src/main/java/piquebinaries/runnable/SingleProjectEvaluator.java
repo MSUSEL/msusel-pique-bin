@@ -86,7 +86,7 @@ public class SingleProjectEvaluator {
     }
 
     /**
-     * Entry point for running single project evaluation. The library assumes the user has extended Qatch
+     * Entry point for running single project evaluation. The library assumes the user has extended PIQUE
      * by implementing ITool with language-specific functionality.
      *
      * This method then evaluates the measures, properties, characteristics, and TQI according to the provided

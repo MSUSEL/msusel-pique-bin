@@ -30,7 +30,14 @@ import pique.utility.BigDecimalWithContext;
 public class BinaryUtility implements IUtilityFunction {
 
 
-    @Override
+    /**
+     * Apply the unbounded utility function 
+     * @param v the value to input to the utility function
+     * @param bigDecimals the thresholds to interpolate between.
+     * @param pos a boolean that determines if measure is a positive or negative measure
+     * @return v (or 1 if v==0) if thresholds are equal, or the value interpolated between the thresholds otherwise. 
+     */
+	@Override
     public BigDecimal utilityFunction(BigDecimal v, BigDecimal[] bigDecimals, boolean pos) {
     	if (bigDecimals == null) return new BigDecimalWithContext(0.0);
     	
@@ -41,13 +48,20 @@ public class BinaryUtility implements IUtilityFunction {
     			return new BigDecimalWithContext(1);
     		}
     		if(pos) return v;
-    		return v.negate();
+    		return (new BigDecimalWithContext(1).subtract(v));
     	}
     	return linearInterpolationTwoPoints(v,bigDecimals, pos);
 
     	
     }
 
+	/**
+	 * Linear interpolation between two points
+	 * @param inValue value to input 
+	 * @param thresholds lower and upper values to interpolate between
+	 * @param pos reverses ordering of thresholds if negative 
+	 * @return Value of interpolating inValue between thresholds
+	 */
     private BigDecimal linearInterpolationTwoPoints(BigDecimal inValue, BigDecimal[] thresholds, boolean pos) {
     	//reverse the slope if measure is negative
     	int upper = 1;
