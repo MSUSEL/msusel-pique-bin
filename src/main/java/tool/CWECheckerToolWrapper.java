@@ -102,11 +102,13 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 			}
 			else {
 				System.err.println("CWE_Checker failed to run");
+				return null;
 			}
 
 		} catch (IOException e) {
 			System.err.println("Error when reading CWEChecker tool results.");
 			e.printStackTrace();
+			return null;
 		}
 			
 		try {

@@ -103,7 +103,7 @@ public class QualityModelDeriver {
 
     public static QualityModel deriveModel(QualityModel qmDesign, Set<ITool> tools,
                                            Path benchmarkRepository, String projectRootFlag) {
-
+ 
         // (1) Derive thresholds
         IBenchmarker benchmarker = qmDesign.getBenchmarker();
         Map<String, BigDecimal[]> measureNameThresholdMappings = benchmarker.deriveThresholds(

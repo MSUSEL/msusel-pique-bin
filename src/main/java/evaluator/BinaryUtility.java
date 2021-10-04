@@ -33,24 +33,25 @@ public class BinaryUtility implements IUtilityFunction {
     /**
      * Apply the unbounded utility function 
      * @param v the value to input to the utility function
-     * @param bigDecimals the thresholds to interpolate between.
+     * @param thresholds the thresholds to interpolate between.
      * @param pos a boolean that determines if measure is a positive or negative measure
      * @return v (or 1 if v==0) if thresholds are equal, or the value interpolated between the thresholds otherwise. 
      */
 	@Override
-    public BigDecimal utilityFunction(BigDecimal v, BigDecimal[] bigDecimals, boolean pos) {
-    	if (bigDecimals == null) return new BigDecimalWithContext(0.0);
-    	
+    public BigDecimal utilityFunction(BigDecimal v, BigDecimal[] thresholds, boolean pos) {
+		// If no thresholds yet, currently dealing with a non-derived model. Just return 0.
+        if (thresholds == null) return new BigDecimalWithContext("0.0");
+        
     	//if upper and lower threshold are equal, return the value or 0.5 if no findings 
     	//(0.5 implies it is equivalent to other projects in the benchmark repository)
-    	if (bigDecimals[1].subtract(bigDecimals[0]).compareTo(new BigDecimalWithContext(0.0))==0) {
+    	if (thresholds[1].subtract(thresholds[0]).compareTo(new BigDecimalWithContext(0.0))==0) {
     		if (v.compareTo(new BigDecimalWithContext(0.0))==0) {
     			return new BigDecimalWithContext(1);
     		}
     		if(pos) return v;
     		return (new BigDecimalWithContext(1).subtract(v));
     	}
-    	return linearInterpolationTwoPoints(v,bigDecimals, pos);
+    	return linearInterpolationTwoPoints(v,thresholds, pos);
 
     	
     }

@@ -51,8 +51,8 @@ import pique.utility.BigDecimalWithContext;
 public class BinaryCWEWeighter implements IWeighter{
 	private String[] qaNames;
 	private String[] pfNames;
-	private BigDecimal[][] manWeights;
-	private BigDecimal[][] comparisonMat;
+	private BigDecimalWithContext[][] manWeights;
+	private BigDecimalWithContext[][] comparisonMat;
 	private int numQA;
 	private int numPF;
 	
@@ -64,7 +64,7 @@ public class BinaryCWEWeighter implements IWeighter{
 	 * for weighting the Quality Aspects to the TQI using the AHP.
 	 * 
 	 * @param qualityModel The QualityModel to instantiate weights for
-	 * @param externalInput Not currently in use, should be used to pass in the comparison matrices csv. 
+	 * @param externalInput Used to pass in path to comparison matrix in the case of non-standard location, for example when testing 
 	 */
 	@Override
 	public Set<WeightResult> elicitateWeights(QualityModel qualityModel, Path... externalInput) {
@@ -72,8 +72,8 @@ public class BinaryCWEWeighter implements IWeighter{
 		numPF = qualityModel.getProductFactors().size();
 		qaNames = new String[numQA];
 		pfNames = new String[numPF];
-		manWeights = new BigDecimal[numPF][numQA];
-		comparisonMat = new BigDecimal[numQA][numQA];
+		manWeights = new BigDecimalWithContext[numPF][numQA];
+		comparisonMat = new BigDecimalWithContext[numQA][numQA];
 		
 		List<String> modelQANames = new ArrayList<String>();
 		List<String> modelPFNames = new ArrayList<String>();
@@ -82,8 +82,9 @@ public class BinaryCWEWeighter implements IWeighter{
 		
 		
 		
-		
 		String pathToCsv = "src/main/resources/comparisons.csv";
+		if (externalInput!=null) pathToCsv = externalInput[0].toString();
+		
 		String pfPrefix = "Category ";
 		BufferedReader csvReader;
 		int lineCount = 0;
@@ -219,7 +220,7 @@ public class BinaryCWEWeighter implements IWeighter{
 		BigDecimal[][] norm = new BigDecimal[mat.length][mat[0].length];
 		for (int i= 0; i < mat.length; i++) {
 			for (int j= 0; j < mat[0].length; j++) {
-				norm[i][j] = (mat[i][j].divide(colSum(mat,j)));
+				norm[i][j] = (mat[i][j].divide(colSum(mat,j),BigDecimalWithContext.getMC()));
 			}	
 		}
 		return norm;
@@ -232,7 +233,7 @@ public class BinaryCWEWeighter implements IWeighter{
 		BigDecimal[][] norm = new BigDecimal[mat.length][mat[0].length];
 		for (int i= 0; i < mat.length; i++) {
 			for (int j= 0; j < mat[0].length; j++) {
-				norm[i][j] = (mat[i][j].divide(rowSum(mat,i)));
+				norm[i][j] = (mat[i][j].divide(rowSum(mat,i),BigDecimalWithContext.getMC()));
 			}	
 		}
 		return norm;

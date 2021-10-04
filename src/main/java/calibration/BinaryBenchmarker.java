@@ -155,20 +155,17 @@ public class BinaryBenchmarker implements IBenchmarker {
 
         
         // Identify the mean+-sd of each measure value
-        BigDecimal[] percentiles = new BigDecimal[2];
-        percentiles[0]=new BigDecimal("0.25");
-        percentiles[1]=new BigDecimal("0.75");
         Map<String, BigDecimal[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
-            measureThresholds.putIfAbsent(measureName, new BigDecimal[2]);
+        	BigDecimal[] values = new BigDecimal[2];
             
-            measureThresholds.get(measureName)[0] = mean(measureValues).subtract(calculateSD(measureValues));
-            measureThresholds.get(measureName)[1] = mean(measureValues).subtract(calculateSD(measureValues));
+        	values[0] = mean(measureValues).subtract(calculateSD(measureValues));
+            values[1] = mean(measureValues).add(calculateSD(measureValues));
             
-            if (measureThresholds.get(measureName)[0].compareTo(new BigDecimal("0.0")) < 0) { //measureThresholds.get(measureName)[0] < 0.0
-            	measureThresholds.get(measureName)[0] = new BigDecimal("0.0");
+            if (values[0].compareTo(new BigDecimal("0.0")) < 0) { //measureThresholds.get(measureName)[0] < 0.0
+            	values[0] = new BigDecimal("0.0");
             }
-
+            measureThresholds.put(measureName, values);
         });
 
         return measureThresholds;
@@ -182,7 +179,7 @@ public class BinaryBenchmarker implements IBenchmarker {
     private static BigDecimal mean(ArrayList<BigDecimal> measureValues) {
     	BigDecimal sum = new BigDecimal("0.0");
         for (int i = 0; i < measureValues.size(); i++) {
-            sum.add(measureValues.get(i));
+            sum = sum.add(measureValues.get(i));
         }
         return sum.divide(new BigDecimal(""+measureValues.size())); 
     }

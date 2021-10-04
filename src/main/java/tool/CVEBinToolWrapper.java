@@ -99,7 +99,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 
 			} catch (IOException e) {
 				System.err.println("No results to read from cve-bin-tool.");
-				return diagnostics;
+				return null;
 			}
 			
 			ArrayList<String> cveList = new ArrayList<String>();
