@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package piquebinaries.runnable;
+package experiment;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -90,12 +90,6 @@ public class ModelSensTest {
         Collection<ModelNode> diagnostics = evaluatedQM.getDiagnostics().values();
         boolean check = false;
         for (ModelNode d : diagnostics) {
-        	if (!check) {
-        		//if (d.getName().equals("CWE-134 Weakness Diagnostic")) {
-        			check = true;
-        		//}
-        	}
-        	else {
         	cweCheckerTool = new CWECheckerToolWrapper();
             yaraRulesWrapper = new YaraRulesToolWrapper(resources);
             cveBinTool = new CVEBinToolWrapper();
@@ -122,7 +116,6 @@ public class ModelSensTest {
             System.out.println("New tqi: " + tqi);
             
             appendln(dataFile,strToAppend);
-        	}
         }
         
         

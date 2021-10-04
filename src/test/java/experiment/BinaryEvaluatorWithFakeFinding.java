@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package piquebinaries.runnable;
+package experiment;
 
 import java.math.BigDecimal;
 import java.nio.file.Path;

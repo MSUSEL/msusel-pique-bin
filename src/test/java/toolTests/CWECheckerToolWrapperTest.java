@@ -27,26 +27,31 @@ import static org.junit.Assert.fail;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
 import tool.CVEBinToolWrapper;
+import tool.CWECheckerToolWrapper;
 
-public class cveBinToolWrapperTest {
+public class CWECheckerToolWrapperTest {
 	
 	
 	@Test
-	public void ToolShouldHaveFindingsOnBinaryWithCVEs() {
-		Tool cveBinTool = new CVEBinToolWrapper();
+	public void ToolShouldHaveFindingsOnBinaryWithCWEs() {
+		Tool cwechecker = new CWECheckerToolWrapper();
 
         Path testBin = Paths.get("src/test/resources/benchmark/systemd-hwdb");
         
-        Path analysisOutput = cveBinTool.analyze(testBin);
+        Path analysisOutput = cwechecker.analyze(testBin);
 
-        Map<String,Diagnostic> output = cveBinTool.parseAnalysis(analysisOutput);
+        Map<String,Diagnostic> output = cwechecker.parseAnalysis(analysisOutput);
         
         assertTrue(output!=null);
         assertTrue(output.size()>0);
@@ -63,23 +68,25 @@ public class cveBinToolWrapperTest {
 	
 	@Test
 	public void ToolShouldReturnNullIfNoBinariesExist() {
-		Tool cveBinTool = new CVEBinToolWrapper();
+		Tool cwechecker = new CWECheckerToolWrapper();
+        
+		Path testBin = Paths.get("src/test/resources/emptyDir/");
 		
-        Path testBin = Paths.get("src/test/resources/benchmark/emptyDir");
-    	Path analysisOutput = cveBinTool.analyze(testBin);
-    	Map<String,Diagnostic> output = cveBinTool.parseAnalysis(analysisOutput);
-    	assert(output==null);
+        Path analysisOutput = cwechecker.analyze(testBin);
+        Map<String,Diagnostic> output = cwechecker.parseAnalysis(analysisOutput);
+
+        assert(output==null);
 	}
 	
 	@Test
 	public void ToolShouldHaveNoFindingsOnSimpleCleanBinary() {
-		Tool cveBinTool = new CVEBinToolWrapper();
+		Tool cwechecker = new CWECheckerToolWrapper();
 
         Path testBin = Paths.get("src/test/resources/HelloWorld");
         
-        Path analysisOutput = cveBinTool.analyze(testBin);
+        Path analysisOutput = cwechecker.analyze(testBin);
 
-        Map<String,Diagnostic> output = cveBinTool.parseAnalysis(analysisOutput);
+        Map<String,Diagnostic> output = cwechecker.parseAnalysis(analysisOutput);
         
         assertTrue(output!=null);
         assertTrue(output.size()>0);
@@ -87,7 +94,33 @@ public class cveBinToolWrapperTest {
         for (Diagnostic diag : output.values()) {
         	if (diag.getChildren().size()>0) {
         		//if we hit this, we've found at least one finding
-        		fail();        	}
+        		fail();        	
+    		}
+        }
+	}
+	
+	@Test
+	public void ToolShouldHaveConsistentFindings() {
+		Tool cwechecker = new CWECheckerToolWrapper();
+
+        Path testBin = Paths.get("src/test/resources/benchmark/systemd-hwdb");
+        
+        //Analyze several times
+        Path analysisOutput = cwechecker.analyze(testBin);
+        Map<String,Diagnostic> output1 = cwechecker.parseAnalysis(analysisOutput);
+        analysisOutput = cwechecker.analyze(testBin);
+        Map<String,Diagnostic> output2 = cwechecker.parseAnalysis(analysisOutput);
+        analysisOutput = cwechecker.analyze(testBin);
+        Map<String,Diagnostic> output3 = cwechecker.parseAnalysis(analysisOutput);
+        
+        //for each diagnostic, check that the same number of findings appear in each run
+        for (String x : output1.keySet()) {
+        	Diagnostic d1 = output1.get(x);
+        	Diagnostic d2 = output2.get(x);
+        	Diagnostic d3 = output3.get(x);
+        	
+        	assert(d1.getChildren().size())==(d2.getChildren().size());         	
+            assert(d2.getChildren().size())==(d3.getChildren().size());
         }
 	}
 }
