@@ -87,6 +87,12 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			return tempResults.toPath();
 		}
 
+		/**
+		 * parses output of tool from analyze().
+		 * 
+		 * @param toolResults location of the results, output by analyze() 
+		 * @return A Map<String,Diagnostic> with findings from the tool attached. Returns null if tool failed to run.
+		 */
 		@Override
 		public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 			System.out.println(this.getName() + " Parsing Analysis...");
@@ -147,6 +153,9 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			return diagnostics;
 		}
 
+		/**
+		 * Initializes the tool by installing it through python pip from the command line.
+		 */
 		@Override
 		public Path initialize(Path toolRoot) {
 			final String cmd = "cmd /c python -m pip install cve-bin-tool==2.1.post1"; 

@@ -28,25 +28,30 @@ import static org.junit.Assert.fail;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Properties;
 
 import org.junit.Test;
 
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
 import tool.CWECheckerToolWrapper;
+import tool.YaraRulesToolWrapper;
+import utilities.PiqueProperties;
 
-public class CWECheckerToolWrapperTest {
+public class YaraRulesToolWrapperTest {
 	
 	
 	@Test
-	public void ToolShouldHaveFindingsOnBinaryWithCWEs() {
-		Tool cwechecker = new CWECheckerToolWrapper();
+	public void ToolShouldHaveFindingsOnBinaryWithRuleViolations() {
+		Properties prop = PiqueProperties.getProperties();
+        Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
+		Tool yara = new YaraRulesToolWrapper(resources);
 
         Path testBin = Paths.get("src/test/resources/benchmark/systemd-hwdb");
         
-        Path analysisOutput = cwechecker.analyze(testBin);
+        Path analysisOutput = yara.analyze(testBin);
 
-        Map<String,Diagnostic> output = cwechecker.parseAnalysis(analysisOutput);
+        Map<String,Diagnostic> output = yara.parseAnalysis(analysisOutput);
         
         assertTrue(output!=null);
         assertTrue(output.size()>0);
@@ -63,25 +68,29 @@ public class CWECheckerToolWrapperTest {
 	
 	@Test
 	public void ToolShouldReturnNullIfNoBinariesExist() {
-		Tool cwechecker = new CWECheckerToolWrapper();
+		Properties prop = PiqueProperties.getProperties();
+        Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
+		Tool yara = new YaraRulesToolWrapper(resources);
         
-		Path testBin = Paths.get("src/test/resources/emptyDir/");
+		Path testBin = Paths.get("src/test/resources/emptyDir/fake");
 		
-        Path analysisOutput = cwechecker.analyze(testBin);
-        Map<String,Diagnostic> output = cwechecker.parseAnalysis(analysisOutput);
+        Path analysisOutput = yara.analyze(testBin);
+        Map<String,Diagnostic> output = yara.parseAnalysis(analysisOutput);
 
         assert(output==null);
 	}
 	
 	@Test
 	public void ToolShouldHaveNoFindingsOnSimpleCleanBinary() {
-		Tool cwechecker = new CWECheckerToolWrapper();
+		Properties prop = PiqueProperties.getProperties();
+        Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
+		Tool yara = new YaraRulesToolWrapper(resources);
 
         Path testBin = Paths.get("src/test/resources/HelloWorld");
         
-        Path analysisOutput = cwechecker.analyze(testBin);
+        Path analysisOutput = yara.analyze(testBin);
 
-        Map<String,Diagnostic> output = cwechecker.parseAnalysis(analysisOutput);
+        Map<String,Diagnostic> output = yara.parseAnalysis(analysisOutput);
         
         assertTrue(output!=null);
         assertTrue(output.size()>0);
@@ -96,17 +105,19 @@ public class CWECheckerToolWrapperTest {
 	
 	@Test
 	public void ToolShouldHaveConsistentFindings() {
-		Tool cwechecker = new CWECheckerToolWrapper();
+		Properties prop = PiqueProperties.getProperties();
+        Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
+		Tool yara = new YaraRulesToolWrapper(resources);
 
         Path testBin = Paths.get("src/test/resources/benchmark/systemd-hwdb");
         
         //Analyze several times
-        Path analysisOutput = cwechecker.analyze(testBin);
-        Map<String,Diagnostic> output1 = cwechecker.parseAnalysis(analysisOutput);
-        analysisOutput = cwechecker.analyze(testBin);
-        Map<String,Diagnostic> output2 = cwechecker.parseAnalysis(analysisOutput);
-        analysisOutput = cwechecker.analyze(testBin);
-        Map<String,Diagnostic> output3 = cwechecker.parseAnalysis(analysisOutput);
+        Path analysisOutput = yara.analyze(testBin);
+        Map<String,Diagnostic> output1 = yara.parseAnalysis(analysisOutput);
+        analysisOutput = yara.analyze(testBin);
+        Map<String,Diagnostic> output2 = yara.parseAnalysis(analysisOutput);
+        analysisOutput = yara.analyze(testBin);
+        Map<String,Diagnostic> output3 = yara.parseAnalysis(analysisOutput);
         
         //for each diagnostic, check that the same number of findings appear in each run
         for (String x : output1.keySet()) {

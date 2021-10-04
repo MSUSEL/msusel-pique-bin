@@ -68,7 +68,6 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	 *             analyze
 	 * @return The path to the analysis results file
 	 */
-
 	public Path analyze(Path projectLocation) {
 		System.out.println(this.getName() + " Running...");
 		File tempResults = new File(System.getProperty("user.dir") + "/out/CWECheckerOutput.json");
@@ -90,6 +89,12 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		return tempResults.toPath();
 	}
 
+	/**
+	 * parses output of tool from analyze().
+	 * 
+	 * @param toolResults location of the results, output by analyze() 
+	 * @return A Map<String,Diagnostic> with findings from the tool attached. Returns null if tool failed to run.
+	 */
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 		System.out.println(this.getName() + " Parsing Analysis...");
 		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
@@ -141,6 +146,9 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		return diagnostics;
 	}
 
+	/**
+	 * Initializes the tool by installing through docker from the command line.
+	 */
 	public Path initialize(Path toolRoot) {
 		final String cmd = "cmd /c docker pull fkiecad/cwe_checker:latest\"";
 		Process p;

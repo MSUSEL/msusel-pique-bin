@@ -36,6 +36,11 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @param path The path to a binary file for the desired solution of project to
+	 *             analyze
+	 * @return The path to the analysis results file
+	 */
 	@Override
 	public Path analyze(Path projectLocation) {
 		System.out.println(this.getName() + " Running...");
@@ -54,17 +59,26 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 		{
 		    for (String rule : ruleCategories) {
 				String ruleResults = runYaraRules(rule,projectLocation);
+				if (ruleResults.contains("error scanning")) {
+					throw new IOException();
+				}
 				writer.write(ruleCatPrefix+rule+"\n");
 				writer.write(ruleResults+"\n");
 			}
 		} catch (IOException e) {
 			System.err.println("error when analyzing with Yara");
-			e.printStackTrace();
+			tempResults.delete();
 		}
 
 		return tempResults.toPath();
 	}
 
+	/**
+	 * parses output of tool from analyze().
+	 * 
+	 * @param toolResults location of the results, output by analyze() 
+	 * @return A Map<String,Diagnostic> with findings from the tool attached. Returns null if tool failed to run.
+	 */
 	@Override
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 		System.out.println(this.getName() + " Parsing Analysis...");
@@ -78,7 +92,7 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 
 		} catch (IOException e) {
 			System.err.println("Error reading results of YaraRulesToolWrapper");
-			return diagnostics;
+			return null;
 		}
 		
 		String findingCategory = "";
@@ -99,6 +113,10 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 		return diagnostics;
 	}
 
+	/**
+	 * In the current state of things, no initialization is needed for this tool, as the executable and rules are 
+	 * included in the repository.
+	 */
 	@Override
 	public Path initialize(Path toolRoot) {
 		return null;
