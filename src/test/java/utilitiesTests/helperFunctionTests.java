@@ -58,6 +58,17 @@ public class helperFunctionTests {
 	}
 	
 	@Test
+	public void testFileFormatting() {
+		String exampleFile = "/usr/Andrew Johnson/example";
+		exampleFile = helperFunctions.formatFileWithSpaces(exampleFile);
+		assert(exampleFile.equals("/usr/'Andrew Johnson'/example"));
+		
+		exampleFile = "\\usr\\Andrew Johnson\\example";
+		exampleFile = helperFunctions.formatFileWithSpaces(exampleFile);
+		assert(exampleFile.equals("\\usr\\'Andrew Johnson'\\example"));
+	}
+	
+	@Test
 	public void testInitializeDiagnostics() {
 		//this is hard-coded to look at the main/resources files, so we will use a real tool in this case.
 		Map<String,Diagnostic> map = helperFunctions.initializeDiagnostics("not a tool");
