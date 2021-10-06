@@ -48,7 +48,7 @@ import pique.model.QualityModelImport;
  */
 public class helperFunctions {
 	/**
-	 * Adds a "-" to a CWE name.
+	 * Adds a "-" to a CWE name. If a dash is already in the string, will return the string.
 	 * @param cwe String of CWE in style "CWE125"
 	 * @return String of CWE with dash, for example "CWE-125"
 	 */
@@ -158,5 +158,9 @@ public class helperFunctions {
        
 		return diagnostics;
 	}	
+	
+	public static String formatFileWithSpaces(String pathWithSpace) {
+		return pathWithSpace.replace(" ", "\\ ");
+	}
 
 }

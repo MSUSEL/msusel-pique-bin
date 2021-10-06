@@ -75,7 +75,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			tempResults.getParentFile().mkdirs();
 
 			String cmd = String.format("python -m cve_bin_tool.cli -f json %s -o %s",
-					projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
+					helperFunctions.formatFileWithSpaces(projectLocation.toAbsolutePath().toString()), helperFunctions.formatFileWithSpaces(tempResults.toPath().toAbsolutePath().toString()));
 			
 			try {
 				helperFunctions.getOutputFromProgram(cmd,true);

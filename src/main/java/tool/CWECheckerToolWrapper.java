@@ -75,7 +75,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		tempResults.getParentFile().mkdirs();
 		String out = "";
 		String cmd = String.format("docker run --rm -v %s:/input fkiecad/cwe_checker:latest --json --quiet /input",
-				projectLocation.toAbsolutePath().toString());
+				helperFunctions.formatFileWithSpaces(projectLocation.toAbsolutePath().toString()));
 		try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) {
 			out = helperFunctions.getOutputFromProgram(cmd,true);
 			writer.write(out);
