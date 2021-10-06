@@ -160,7 +160,7 @@ public class helperFunctions {
 	}	
 	
 	public static String formatFileWithSpaces(String pathWithSpace) {
-		return pathWithSpace.replace(" ", "\\ ");
+		return pathWithSpace.replaceAll("/([A-z]*) ([A-z]*)/", "/'$1 $2'/");
 	}
 
 }
