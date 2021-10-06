@@ -74,7 +74,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 			tempResults.getParentFile().mkdirs();
 
-			String cmd = String.format("cmd /c python -m cve_bin_tool.cli -f json %s -o %s",
+			String cmd = String.format("python -m cve_bin_tool.cli -f json %s -o %s",
 					projectLocation.toAbsolutePath().toString(), tempResults.toPath().toAbsolutePath().toString());
 			
 			try {
@@ -158,7 +158,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		 */
 		@Override
 		public Path initialize(Path toolRoot) {
-			final String cmd = "cmd /c python -m pip install cve-bin-tool==2.1.post1"; 
+			final String cmd = "python -m pip install cve-bin-tool==2.1.post1"; 
 			
 			Process p;
 			try {

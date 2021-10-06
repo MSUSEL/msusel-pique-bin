@@ -74,7 +74,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 		tempResults.getParentFile().mkdirs();
 		String out = "";
-		String cmd = String.format("cmd /c docker run --rm -v %s:/input fkiecad/cwe_checker:latest --json --quiet /input",
+		String cmd = String.format("docker run --rm -v %s:/input fkiecad/cwe_checker:latest --json --quiet /input",
 				projectLocation.toAbsolutePath().toString());
 		try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) {
 			out = helperFunctions.getOutputFromProgram(cmd,true);
@@ -150,7 +150,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	 * Initializes the tool by installing through docker from the command line.
 	 */
 	public Path initialize(Path toolRoot) {
-		final String cmd = "cmd /c docker pull fkiecad/cwe_checker:latest\"";
+		final String cmd = "docker pull fkiecad/cwe_checker:latest\"";
 		Process p;
 		try {
 			p = Runtime.getRuntime().exec(cmd);
