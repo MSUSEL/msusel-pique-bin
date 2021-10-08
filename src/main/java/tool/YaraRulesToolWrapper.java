@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.SystemUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -125,8 +126,16 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 	private String runYaraRules(String ruleName, Path projectLocation) {
 		String ruleFileName = this.getToolRoot().toAbsolutePath().toString() + "\\rules\\" + ruleName + "_index.yar";
 		// command to call yara on the target file with give rules
+		
 		String cmd = String.format("%s\\yara64.exe -w %s  %s",
  				helperFunctions.formatFileWithSpaces(this.getToolRoot().toAbsolutePath().toString()), helperFunctions.formatFileWithSpaces(ruleFileName), helperFunctions.formatFileWithSpaces(projectLocation.toAbsolutePath().toString()));
+		
+		if (!SystemUtils.IS_OS_WINDOWS) {
+			ruleFileName = this.getToolRoot().toAbsolutePath().toString() + "/rules/" + ruleName + "_index.yar";
+			cmd = String.format("%s/yara64.exe -w %s  %s",
+	 				helperFunctions.formatFileWithSpaces(this.getToolRoot().toAbsolutePath().toString()), helperFunctions.formatFileWithSpaces(ruleFileName), helperFunctions.formatFileWithSpaces(projectLocation.toAbsolutePath().toString()));
+		}
+		
 		String output = "";
 		try {
 			output = helperFunctions.getOutputFromProgram(cmd,true);
