@@ -39,3 +39,7 @@ First the model must be configured in the `src/main/resources/pique-bin.properti
 
 ### Binary Analysis
 Finally, the `src/main/java/piquebinaries/runnable/SingleProjectEvaluator.java` file may be run to analyze a binary. This will produce output in the `/out` folder. This can also be done through running the .jar file produced when the project is built. 
+
+
+## Notes
+Currently, we have not done testing to ensure that this will run on Linux or Mac. Additionally, a space in the path at any point appears to break the system, so if you are running into trouble that could be the cause.
