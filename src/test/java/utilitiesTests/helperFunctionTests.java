@@ -29,17 +29,17 @@ public class helperFunctionTests {
 		String cve = "notacve";
 		String cwe = helperFunctions.getCWE(cve)[0];
 		System.out.print(cwe);
-		assert(cwe.contains("CVE not found")); //based off https://nvd.nist.gov/vuln/detail/CVE-2018-1010
+		assert(cwe.contains("CVE not found"));
 	}
 	
 	@Test
 	public void testCMDLineOutput() {
 		try {
-			String[] cmd1 = {"pwd"};
+			String[] cmd1 = {"cd"};
 			helperFunctions.getOutputFromProgram(cmd1,false); //windows
 		} catch (IOException e) {
 			try {
-				String[] cmd2 = {"echo","working"};
+				String[] cmd2 = {"pwd"};
 				helperFunctions.getOutputFromProgram(cmd2,false); //non-windows
 			}
 			catch (IOException e2) {

@@ -69,7 +69,8 @@ public class helperFunctions {
 	 */
 	public static String[] getCWE(String cve) {
 		String cwe = "";
-		String[] cmd = {"python ", "\\src\\main\\java\\utilities\\CVEtoCWE.py ", cve};
+		String pathToScript = System.getProperty("user.dir")+"/src/main/java/utilities/CVEtoCWE.py";
+		String[] cmd = {"python", pathToScript, cve};
 		
 		
 		try {
