@@ -55,22 +55,28 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 		
 		File tempResults = new File(System.getProperty("user.dir") + "\\out\\yaraRulesOutput.txt");
 		tempResults.delete(); // clear out the last output file. May want to change this to rename rather than delete.
-		tempResults.getParentFile().mkdirs();
-		try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) 
-		{
-		    for (String rule : ruleCategories) {
-				String ruleResults = runYaraRules(rule,projectLocation);
-				if (ruleResults.contains("error scanning")) {
-					throw new IOException();
-				}
-				writer.write(ruleCatPrefix+rule+"\n");
-				writer.write(ruleResults+"\n");
-			}
-		} catch (IOException e) {
-			System.err.println("error when analyzing with Yara");
-			tempResults.delete();
-		}
 
+		//check if file to be analyzed exists, only run analysis if it does.
+		if (projectLocation.toFile().exists()) {
+			tempResults.getParentFile().mkdirs();
+			try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) 
+			{
+			    for (String rule : ruleCategories) {
+					String ruleResults = runYaraRules(rule,projectLocation);
+					if (ruleResults.contains("error scanning")) {
+						throw new IOException();
+					}
+					writer.write(ruleCatPrefix+rule+"\n");
+					writer.write(ruleResults+"\n");
+				}
+			} catch (IOException e) {
+				System.err.println("error when analyzing with Yara");
+				tempResults.delete();
+			}
+
+		} 
+		else System.err.println("Error running YARA. " +projectLocation.toString() + " does not exist.");
+		
 		return tempResults.toPath();
 	}
 
@@ -120,27 +126,28 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 	 */
 	@Override
 	public Path initialize(Path toolRoot) {
-		return null;
+		final String cmd[] = {"docker", 
+				"pull",
+				"blacktop/yara"};
+		try {
+			helperFunctions.getOutputFromProgram(cmd, true);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return toolRoot;
 	}
 	
 	private String runYaraRules(String ruleName, Path projectLocation) {
-		String ruleFileName = this.getToolRoot().toAbsolutePath().toString() + "\\rules\\" + ruleName + "_index.yar";
-		// command to call yara on the target file with give rules
 		
-		String[] cmd = {this.getToolRoot().toAbsolutePath().toString()+"\\yara64.exe", 
-				"-w",
-				ruleFileName, 
-				projectLocation.toAbsolutePath().toString()};
-		
-		if (!SystemUtils.IS_OS_WINDOWS) {
-			ruleFileName = this.getToolRoot().toAbsolutePath().toString() + "/rules/" + ruleName + "_index.yar";
-			String[] temp = {this.getToolRoot().toAbsolutePath().toString()+"/yara64.exe", 
-					"-w "+ruleFileName, 
-					projectLocation.toAbsolutePath().toString()};
-			cmd = temp;
-		}
-		
-		String output = "";
+		String[] cmd = {"docker", "run", "--rm", 
+				"-v", projectLocation.toAbsolutePath().toString()+":/input", 
+				"-v", this.getToolRoot().toAbsolutePath().toString() + "\\rules\\"+":/rule",
+				"blacktop/yara", "-w",
+				"/rule/"+ruleName + "_index.yar",
+				"/input"};
+		String output = null;
 		try {
 			output = helperFunctions.getOutputFromProgram(cmd,true);
 		} catch (IOException  e) {
