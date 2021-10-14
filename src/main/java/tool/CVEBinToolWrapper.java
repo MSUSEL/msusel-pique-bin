@@ -74,8 +74,11 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 			tempResults.getParentFile().mkdirs();
 
-			String cmd = String.format("python -m cve_bin_tool.cli -f json %s -o %s",
-					helperFunctions.formatFileWithSpaces(projectLocation.toAbsolutePath().toString()), helperFunctions.formatFileWithSpaces(tempResults.toPath().toAbsolutePath().toString()));
+			String[] cmd = {"python", 
+					"-m", "cve_bin_tool.cli", 
+					"-f", "json", 
+					projectLocation.toAbsolutePath().toString(),
+					"-o",tempResults.toPath().toAbsolutePath().toString(),};
 			
 			try {
 				helperFunctions.getOutputFromProgram(cmd,true);
@@ -158,20 +161,11 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		 */
 		@Override
 		public Path initialize(Path toolRoot) {
-			final String cmd = "python -m pip install cve-bin-tool==2.1.post1"; 
+			final String[] cmd = {"python", "-m", "pip", "install", "cve-bin-tool==2.1.post1"}; 
 			
-			Process p;
 			try {
-				p = Runtime.getRuntime().exec(cmd);
-	            BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-				String line;
-				
-				while ((line = stdInput.readLine()) != null) {
-					System.out.println("cve-bin-tool install: " + line);
-				}
-				stdInput.close();
-				p.waitFor();
-			} catch (IOException | InterruptedException e) {
+				helperFunctions.getOutputFromProgram(cmd, true);
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 

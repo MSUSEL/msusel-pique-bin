@@ -35,10 +35,12 @@ public class helperFunctionTests {
 	@Test
 	public void testCMDLineOutput() {
 		try {
-			helperFunctions.getOutputFromProgram("cmd /c pwd",false); //windows
+			String[] cmd1 = {"pwd"};
+			helperFunctions.getOutputFromProgram(cmd1,false); //windows
 		} catch (IOException e) {
 			try {
-				helperFunctions.getOutputFromProgram("echo working",false); //non-windows
+				String[] cmd2 = {"echo","working"};
+				helperFunctions.getOutputFromProgram(cmd2,false); //non-windows
 			}
 			catch (IOException e2) {
 				fail();

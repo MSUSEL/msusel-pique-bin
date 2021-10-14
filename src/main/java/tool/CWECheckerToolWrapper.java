@@ -74,8 +74,11 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 		tempResults.getParentFile().mkdirs();
 		String out = "";
-		String cmd = String.format("docker run --rm -v %s:/input fkiecad/cwe_checker:latest --json --quiet /input",
-				helperFunctions.formatFileWithSpaces(projectLocation.toAbsolutePath().toString()));
+		String[] cmd = {"docker", "run", "--rm", "-v",
+				projectLocation.toAbsolutePath().toString()+":/input", 
+				"fkiecad/cwe_checker:latest", 
+				"--json", "--quiet", 
+				"/input"};
 		try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) {
 			out = helperFunctions.getOutputFromProgram(cmd,true);
 			writer.write(out);
@@ -150,18 +153,13 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	 * Initializes the tool by installing through docker from the command line.
 	 */
 	public Path initialize(Path toolRoot) {
-		final String cmd = "docker pull fkiecad/cwe_checker:latest\"";
-		Process p;
+		final String cmd[] = {"docker", 
+				"pull",
+				"fkiecad/cwe_checker:latest"};
 		try {
-			p = Runtime.getRuntime().exec(cmd);
-			BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-			String line;
-
-			while ((line = stdInput.readLine()) != null) {
-				System.out.println("cwe_checker install: " + line);
-			}
-			p.waitFor();
-		} catch (IOException | InterruptedException e) {
+			helperFunctions.getOutputFromProgram(cmd, true);
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 

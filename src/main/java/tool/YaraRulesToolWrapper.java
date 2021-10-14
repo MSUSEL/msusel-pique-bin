@@ -127,13 +127,17 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 		String ruleFileName = this.getToolRoot().toAbsolutePath().toString() + "\\rules\\" + ruleName + "_index.yar";
 		// command to call yara on the target file with give rules
 		
-		String cmd = String.format("%s\\yara64.exe -w %s  %s",
- 				helperFunctions.formatFileWithSpaces(this.getToolRoot().toAbsolutePath().toString()), helperFunctions.formatFileWithSpaces(ruleFileName), helperFunctions.formatFileWithSpaces(projectLocation.toAbsolutePath().toString()));
+		String[] cmd = {this.getToolRoot().toAbsolutePath().toString()+"\\yara64.exe", 
+				"-w",
+				ruleFileName, 
+				projectLocation.toAbsolutePath().toString()};
 		
 		if (!SystemUtils.IS_OS_WINDOWS) {
 			ruleFileName = this.getToolRoot().toAbsolutePath().toString() + "/rules/" + ruleName + "_index.yar";
-			cmd = String.format("%s/yara64.exe -w %s  %s",
-	 				helperFunctions.formatFileWithSpaces(this.getToolRoot().toAbsolutePath().toString()), helperFunctions.formatFileWithSpaces(ruleFileName), helperFunctions.formatFileWithSpaces(projectLocation.toAbsolutePath().toString()));
+			String[] temp = {this.getToolRoot().toAbsolutePath().toString()+"/yara64.exe", 
+					"-w "+ruleFileName, 
+					projectLocation.toAbsolutePath().toString()};
+			cmd = temp;
 		}
 		
 		String output = "";
