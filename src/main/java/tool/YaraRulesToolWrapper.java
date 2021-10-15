@@ -126,15 +126,31 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 	 */
 	@Override
 	public Path initialize(Path toolRoot) {
-		final String cmd[] = {"docker", 
-				"pull",
-				"blacktop/yara"};
+		
+		//check if docker image has been built already
+		final String[] imageCheck = {"docker", "image", "inspect", this.getName()};
+		String check = "";
 		try {
-			helperFunctions.getOutputFromProgram(cmd, true);
+			check = helperFunctions.getOutputFromProgram(imageCheck, false);
 		}
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		if (check.contains("Error: No such image")) { //we haven't built the image yet, need to build
+			final String cmd[] = {"docker", 
+					"build",
+					"-t", this.getName(),
+					toolRoot.toAbsolutePath().toString()};
+			try {
+				helperFunctions.getOutputFromProgram(cmd, true);
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
 
 		return toolRoot;
 	}
@@ -142,10 +158,9 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 	private String runYaraRules(String ruleName, Path projectLocation) {
 		
 		String[] cmd = {"docker", "run", "--rm", 
-				"-v", projectLocation.toAbsolutePath().toString()+":/input", 
-				"-v", this.getToolRoot().toAbsolutePath().toString() + "\\rules\\"+":/rule",
-				"blacktop/yara", "-w",
-				"/rule/"+ruleName + "_index.yar",
+				"-v", projectLocation.toAbsolutePath().toString()+":/input",
+				this.getName(), "-w",
+				"rules/"+ruleName + "_index.yar",
 				"/input"};
 		String output = null;
 		try {
