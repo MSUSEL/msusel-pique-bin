@@ -150,8 +150,6 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 			}
 		}
 		
-		
-
 		return toolRoot;
 	}
 	

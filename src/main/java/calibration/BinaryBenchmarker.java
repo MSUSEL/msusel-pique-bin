@@ -55,106 +55,20 @@ import java.util.Map;
 import java.util.Set;
 
 import pique.analysis.ITool;
+import pique.calibration.AbstractBenchmarker;
 import pique.calibration.IBenchmarker;
 import pique.evaluation.BenchmarkMeasureEvaluator;
 import pique.evaluation.Project;
 import pique.model.Diagnostic;
 import pique.model.Measure;
 import pique.model.QualityModel;
+import pique.utility.BigDecimalWithContext;
 
-public class BinaryBenchmarker implements IBenchmarker {
-    /**
-     * Derive thesholds for all {@link Measure} nodes using a naive approach:
-     * (1) threshold[0] = the mean value minus the standard deviation for the {@link Measure}
-     * (2) threshold[1] = the mean value plus the standard deviation for the {@link Measure}
-     *
-     * @param benchmarkRepository The root directory containing the items to be used for benchmarking
-     * @param qmDescription       The quality model description file
-     * @param tools               The collection of static analysis tools needed to audio the benchmark repository
-     * @param projectRootFlag     Option flag to target the static analysis tools, not used in binary case
-     * @return A dictionary of [ Key: {@link pique.model.ModelNode} name, Value: thresholds ] where
-     * thresholds is a size = 2 array of BigDecimal[] containing the calculated thresholds.
-     */
-    @Override
-    public Map<String, BigDecimal[]> deriveThresholds(Path benchmarkRepository, QualityModel qmDescription, Set<ITool> tools,
-                                                  String projectRootFlag) {
-
-        // Collect benchmark binaries
-        Set<Path> projectRoots = new HashSet<>();
-        File[] binaryFiles = benchmarkRepository.toFile().listFiles();
-        for (File file : binaryFiles) {
-            if (file.isFile()) {
-                projectRoots.add(file.toPath());
-            }
-        }
-    	ArrayList<Project> projects = new ArrayList<>();
-
-        System.out.println("* Beginning repository benchmark analysis");
-        System.out.println(projectRoots.size() + " projects to analyze.\n");
-
-        int totalProjects = projectRoots.size();
-        int counter = 0;
-
-        for (Path projectPath : projectRoots) {
-
-            counter++;
-
-            // Clone the QM
-            // TODO (1.0): Currently need to use .clone() for benchmark repository quality model sharing. This will be
-            //  confusing and problematic to people not using the default benchmarker.
-            QualityModel clonedQM = qmDescription.clone();
-
-            // Instantiate new project object
-            Project project = new Project(projectPath.getFileName().toString(), projectPath, clonedQM);
-
-            // TODO: temp fix
-            // Set measures to not use a utility function during their node evaluation
-            project.getQualityModel().getMeasures().values().forEach(measure -> {
-                measure.setEvaluatorObject(new BenchmarkMeasureEvaluator());
-            });
-
-            // Run the static analysis tools process
-            Map<String, Diagnostic> allDiagnostics = new HashMap<>();
-            tools.forEach(tool -> {
-                Path analysisOutput = tool.analyze(projectPath);
-                allDiagnostics.putAll(tool.parseAnalysis(analysisOutput));
-            });
-
-            // Would normalize here if we do so in the future
-            
-            // Apply collected diagnostics (containing findings) to the project
-            allDiagnostics.forEach((diagnosticName, diagnostic) -> {
-                project.addFindings(diagnostic);
-            });
-
-            // Evaluate project up to Measure level
-            project.evaluateMeasures();
-
-            // Add new project (with tool findings information included) to the list
-             projects.add(project);
-
-            // Print information
-            System.out.println("\n\tFinished analyzing project " + project.getName());
-            System.out.println("\t" + counter + " of " + totalProjects + " analyzed.\n");
-        }
-
-        // Map all values audited for each measure
-        Map<String, ArrayList<BigDecimal>> measureBenchmarkData = new HashMap<>();
-        projects.forEach(p -> {
-            p.getQualityModel().getMeasures().values().forEach(m -> {
-                        if (!measureBenchmarkData.containsKey(m.getName())) {
-                             measureBenchmarkData.put(m.getName(), new ArrayList<BigDecimal>() {{
-                                add(m.getValue());
-                            }});
-                        } else {
-                            measureBenchmarkData.get(m.getName()).add(m.getValue());
-                        }
-                    }
-            );
-        });
-
-        
-        // Identify the mean+-sd of each measure value
+public class BinaryBenchmarker extends AbstractBenchmarker implements IBenchmarker {
+	
+	@Override
+	public Map<String, BigDecimal[]> calculateThresholds(Map<String, ArrayList<BigDecimal>> measureBenchmarkData) {
+		// Identify the mean+-sd of each measure value
         Map<String, BigDecimal[]> measureThresholds = new HashMap<>();
         measureBenchmarkData.forEach((measureName, measureValues) -> {
         	BigDecimal[] values = new BigDecimal[2];
@@ -169,7 +83,7 @@ public class BinaryBenchmarker implements IBenchmarker {
         });
 
         return measureThresholds;
-    }
+	}
     
     /**
      * Take mean of a BigDecimal ArrayList
@@ -185,7 +99,7 @@ public class BinaryBenchmarker implements IBenchmarker {
     }
     
     /**
-     * Finds the percentiles of an ArrayList<BigDecimal>. 
+     * Finds the percentiles of an ArrayList<BigDecimal>. Currently not in use.
      * @param values The values in which to find percentiles
      * @param percentiles The desired percentiles; i.e. [0.25,0.5,0.75] will return the 25th, 50th, and 75th percentiles.
      * @return the percentiles of the passed values, as specified by the percentiles passed in
@@ -213,20 +127,36 @@ public class BinaryBenchmarker implements IBenchmarker {
         int length = measureValues.size();
 
         for(BigDecimal num : measureValues) {
-            sum.add(num);
+            sum = sum.add(num);
         }
 
         BigDecimal mean = sum.divide(new BigDecimal(""+length));
 
         for(BigDecimal num: measureValues) {
-            standardDeviation.add(num.subtract(mean).pow(2));
+            standardDeviation = standardDeviation.add(num.subtract(mean).pow(2));
         }
-
-        return (standardDeviation.divide(new BigDecimal(length)));
+        //divide by n-1 degrees of freedom
+        standardDeviation = standardDeviation.divide(new BigDecimal(length).subtract(new BigDecimal("1")),BigDecimalWithContext.getMC());
+        standardDeviation = sqrt(standardDeviation,BigDecimalWithContext.getMC().getPrecision());
+        return standardDeviation;
     }
     
     @Override
     public String getName() {
         return this.getClass().getCanonicalName();
     }
+    
+    private static BigDecimal sqrt(BigDecimal A, final int SCALE) {
+        BigDecimal x0 = new BigDecimal("0");
+        BigDecimal x1 = new BigDecimal(Math.sqrt(A.doubleValue()));
+        while (!x0.equals(x1)) {
+            x0 = x1;
+            x1 = A.divide(x0, SCALE, BigDecimal.ROUND_HALF_UP);
+            x1 = x1.add(x0);
+            x1 = x1.divide(new BigDecimal("2"), SCALE, BigDecimal.ROUND_HALF_UP);
+        }
+        return x1;
+    }
+
+
 }

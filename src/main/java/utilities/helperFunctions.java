@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,6 +48,24 @@ import pique.model.QualityModelImport;
  *
  */
 public class helperFunctions {
+	
+	/**
+	 * A method to check for equality up to some error bounds
+	 * @param x The first number
+	 * @param y	The second number
+	 * @param eps The error bounds
+	 * @return True if |x-y|<|eps|, or in other words, if x is within eps of y.
+	 */
+	public static boolean EpsilonEquality(BigDecimal x, BigDecimal y, BigDecimal eps) {
+		BigDecimal val = x.subtract(y).abs();
+		int comparisonResult = val.compareTo(eps.abs());
+		if (comparisonResult==1) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
 	/**
 	 * Adds a "-" to a CWE name. If a dash is already in the string, will return the string.
 	 * @param cwe String of CWE in style "CWE125"
