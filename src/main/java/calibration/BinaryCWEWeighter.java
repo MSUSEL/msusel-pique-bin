@@ -83,7 +83,7 @@ public class BinaryCWEWeighter implements IWeighter{
 		
 		
 		String pathToCsv = "src/main/resources/comparisons.csv";
-		if (externalInput!=null) pathToCsv = externalInput[0].toString();
+		if (externalInput.length>0) pathToCsv = externalInput[0].toString();
 		
 		String pfPrefix = "Category ";
 		BufferedReader csvReader;
@@ -190,7 +190,9 @@ public class BinaryCWEWeighter implements IWeighter{
 	 * @return 1/currentNode.numberOfChildren
 	 */
 	private BigDecimal averageWeight(ModelNode currentNode) {
-        return new BigDecimalWithContext(1.0).divide(new BigDecimalWithContext(currentNode.getChildren().size()));
+        return new BigDecimalWithContext(1.0).divide(
+        		new BigDecimalWithContext(currentNode.getChildren().size()),
+        		BigDecimalWithContext.getMC());
     }
 	
 
@@ -241,7 +243,7 @@ public class BinaryCWEWeighter implements IWeighter{
 
 	private BigDecimal rowMean(BigDecimal[][] mat, int row) {
 		int cols = mat[0].length;  
-		return (rowSum(mat,row)).divide(new BigDecimalWithContext(cols));
+		return (rowSum(mat,row)).divide(new BigDecimalWithContext(cols), BigDecimalWithContext.getMC());
 	}
 	
 	private BigDecimal rowSum(BigDecimal[][] mat, int row) {

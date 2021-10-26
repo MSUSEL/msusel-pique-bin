@@ -95,7 +95,7 @@ public class BinaryBenchmarker extends AbstractBenchmarker implements IBenchmark
         for (int i = 0; i < measureValues.size(); i++) {
             sum = sum.add(measureValues.get(i));
         }
-        return sum.divide(new BigDecimal(""+measureValues.size())); 
+        return sum.divide(new BigDecimal(""+measureValues.size()),BigDecimalWithContext.getMC()); 
     }
     
     /**
@@ -109,7 +109,7 @@ public class BinaryBenchmarker extends AbstractBenchmarker implements IBenchmark
     	tempVals = values.toArray(tempVals);
         Arrays.sort(tempVals, 0, tempVals.length);
         for (int i = 0; i < percentiles.length; i++) {
-          int index =  percentiles[i].multiply(new BigDecimal(""+tempVals.length)).intValue(); //could cause an issue.
+          int index =  percentiles[i].multiply(new BigDecimal(""+tempVals.length),BigDecimalWithContext.getMC()).intValue(); //could cause an issue.
           percentiles[i] = tempVals[index];
         }
         
@@ -130,13 +130,20 @@ public class BinaryBenchmarker extends AbstractBenchmarker implements IBenchmark
             sum = sum.add(num);
         }
 
-        BigDecimal mean = sum.divide(new BigDecimal(""+length));
+        BigDecimal mean = sum.divide(new BigDecimal(""+length),BigDecimalWithContext.getMC());
 
         for(BigDecimal num: measureValues) {
             standardDeviation = standardDeviation.add(num.subtract(mean).pow(2));
         }
         //divide by n-1 degrees of freedom
-        standardDeviation = standardDeviation.divide(new BigDecimal(length).subtract(new BigDecimal("1")),BigDecimalWithContext.getMC());
+        BigDecimal df = new BigDecimal(length).subtract(new BigDecimal("1"));
+        if (df.compareTo(BigDecimal.ZERO)<=0) {
+        	return BigDecimal.ZERO; 
+        	//this is the case where we have 0 or -1 degrees of freedom, meaning n=0 or 1, in which 
+        	//case the sd is zero, so we may return zero. If we don't do this here, we get an
+        	//ArithmeticException in the next line.
+        }
+        standardDeviation = standardDeviation.divide(df,BigDecimalWithContext.getMC());
         standardDeviation = sqrt(standardDeviation,BigDecimalWithContext.getMC().getPrecision());
         return standardDeviation;
     }
