@@ -155,7 +155,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	public Path initialize(Path toolRoot) {
 		final String cmd[] = {"docker", 
 				"pull",
-				"fkiecad/cwe_checker:latest"};
+				"fkiecad/cwe_checker:stable"};
 		try {
 			helperFunctions.getOutputFromProgram(cmd, true);
 		}

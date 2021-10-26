@@ -48,6 +48,7 @@ public class BinaryUtility implements IUtilityFunction {
     		if (v.compareTo(new BigDecimalWithContext(0.0))==0) {
     			return new BigDecimalWithContext(1);
     		}
+    		System.err.println("Finding reported with [0,0] thresholds.");
     		if(pos) return v;
     		return (new BigDecimalWithContext(1).subtract(v));
     	}
