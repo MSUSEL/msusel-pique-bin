@@ -43,11 +43,11 @@ import pique.model.Diagnostic;
 import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
+import pique.utility.PiqueProperties;
 import tool.CVEBinToolWrapper;
 import tool.CWECheckerToolWrapper;
 import tool.FakeFindingWrapper;
 import tool.YaraRulesToolWrapper;
-import utilities.PiqueProperties;
 
 /**
  * Behavioral class responsible for running TQI evaluation of a single project

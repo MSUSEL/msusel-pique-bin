@@ -22,29 +22,22 @@
  */
 package tool;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import pique.analysis.ITool;
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
 import pique.model.Finding;
-import pique.model.ModelNode;
-import pique.model.QualityModel;
-import pique.model.QualityModelImport;
-import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
 /**
@@ -55,7 +48,7 @@ import utilities.helperFunctions;
  *
  */
 public class CVEBinToolWrapper extends Tool implements ITool  {
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(CVEBinToolWrapper.class);
 			
 	public CVEBinToolWrapper() {
 		super("cve-bin-tool", null);
@@ -69,7 +62,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		 */
 		@Override
 		public Path analyze(Path projectLocation) {
-			System.out.println(this.getName() + " Running...");
+			LOGGER.info(this.getName() + "  Analyzing "+ projectLocation.toString());
 			File tempResults = new File(System.getProperty("user.dir") + "/out/cve-bin-tool.json");
 			tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 			tempResults.getParentFile().mkdirs();
@@ -81,9 +74,10 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 					"-o",tempResults.toPath().toAbsolutePath().toString(),};
 			
 			try {
-				helperFunctions.getOutputFromProgram(cmd,true);
-
+				helperFunctions.getOutputFromProgram(cmd,LOGGER);
 			} catch (IOException  e) {
+				LOGGER.error("Failed to run CVE-Bin-Tool");
+				LOGGER.error(e.toString());
 				e.printStackTrace();
 			}
 
@@ -99,15 +93,17 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 		@Override
 		public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 			System.out.println(this.getName() + " Parsing Analysis...");
+			LOGGER.debug(this.getName() + " Parsing Analysis...");
+			
 			Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
 			String results = "";
 
 			try {
 				results = helperFunctions.readFileContent(toolResults);
-
 			} catch (IOException e) {
-				System.err.println("No results to read from cve-bin-tool.");
+				System.out.println("No results to read from cve-bin-tool.");
+				LOGGER.info("No results to read from cve-bin-tool.");
 				return null;
 			}
 			
@@ -142,6 +138,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 						//this means that either it is unknown, mapped to a CWE outside of the expected results, or is not assigned a CWE
 						//We may want to treat this in another way.
 						diag = diagnostics.get("CVE-Unknown-Other Diagnostic");
+						LOGGER.warn("CVE with no CWE found.");
 					}
 					Finding finding = new Finding("",0,0,severityList.get(i));
 					finding.setName(cveList.get(i));
@@ -164,9 +161,11 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			final String[] cmd = {"python", "-m", "pip", "install", "cve-bin-tool==2.1.post1"}; 
 			
 			try {
-				helperFunctions.getOutputFromProgram(cmd, true);
+				helperFunctions.getOutputFromProgram(cmd, LOGGER);
 			} catch (IOException e) {
 				e.printStackTrace();
+				LOGGER.error("Failed to initialize " + this.getName());
+				LOGGER.error(e.getStackTrace().toString());
 			}
 
 			return toolRoot;

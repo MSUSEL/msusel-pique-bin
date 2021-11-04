@@ -3,10 +3,11 @@ package calibrationTests;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-import calibration.BinaryBenchmarker;
+import pique.calibration.MeanSDBenchmarker;
 import utilities.PiqueTestProperties;
-
+import utilities.helperFunctions;
 import pique.analysis.ITool;
+import pique.calibration.AdvancedBenchmarker;
 import pique.calibration.IBenchmarker;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
@@ -17,6 +18,7 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -71,5 +73,28 @@ public class BinaryBenchmarkerTests {
 		for (BigDecimal[] x : thresholds.values()) {
 			assert(x[1].compareTo(new BigDecimal(severity))==0); //mean is severity and sd is 0, thresholds should be [severity,severity]
 		}
+	}
+	
+	@Test
+	public void BasicMeanPlusMinusSDTest() {
+		MeanSDBenchmarker bm = new MeanSDBenchmarker();
+		
+		Map<String, ArrayList<BigDecimal>> measureBenchmarkData = new HashMap<String,ArrayList<BigDecimal>>();
+
+		ArrayList<BigDecimal> t1 = new ArrayList<BigDecimal>();
+		t1.add(new BigDecimal("0"));
+		t1.add(new BigDecimal("1"));
+		t1.add(new BigDecimal("2"));
+		t1.add(new BigDecimal("3"));
+		
+		measureBenchmarkData.put("t1",t1);
+		
+		Map<String,BigDecimal[]> results = bm.calculateThresholds(measureBenchmarkData);
+		
+		BigDecimal[] temp = results.get("t1");
+		
+		//mean should be 1.5, sd should be 1.290994
+		assert(helperFunctions.EpsilonEquality(temp[0], new BigDecimal("0.209"), new BigDecimal("0.001")));
+		assert(helperFunctions.EpsilonEquality(temp[1], new BigDecimal("2.79"), new BigDecimal("0.001")));
 	}
 }

@@ -34,9 +34,9 @@ import org.junit.Test;
 
 import pique.analysis.Tool;
 import pique.model.Diagnostic;
+import pique.utility.PiqueProperties;
 import tool.CWECheckerToolWrapper;
 import tool.YaraRulesToolWrapper;
-import utilities.PiqueProperties;
 
 public class YaraRulesToolWrapperTest {
 	

@@ -20,10 +20,10 @@ import com.google.common.collect.Lists;
 import pique.analysis.ITool;
 import pique.model.Diagnostic;
 import pique.model.ModelNode;
+import pique.utility.PiqueProperties;
 import tool.CVEBinToolWrapper;
 import tool.CWECheckerToolWrapper;
 import tool.YaraRulesToolWrapper;
-import utilities.PiqueProperties;
 
 public class ToolRunner {
 

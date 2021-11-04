@@ -37,6 +37,8 @@ import java.util.Properties;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import pique.analysis.ITool;
 import pique.analysis.Tool;
@@ -45,7 +47,6 @@ import pique.model.Finding;
 import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
-import utilities.PiqueProperties;
 import utilities.helperFunctions;
 
 
@@ -56,7 +57,7 @@ import utilities.helperFunctions;
  *
  */
 public class CWECheckerToolWrapper extends Tool implements ITool {
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(CWECheckerToolWrapper.class);
 
 	public CWECheckerToolWrapper() {
 		super("cwe_checker", null);
@@ -70,6 +71,8 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	 */
 	public Path analyze(Path projectLocation) {
 		System.out.println(this.getName() + " Running...");
+		LOGGER.info(this.getName() + "  Analyzing "+ projectLocation.toString());
+		
 		File tempResults = new File(System.getProperty("user.dir") + "/out/CWECheckerOutput.json");
 		tempResults.delete(); // clear out the last output. May want to change this to rename rather than delete.
 		tempResults.getParentFile().mkdirs();
@@ -80,12 +83,14 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 				"--json", "--quiet", 
 				"/input"};
 		try (BufferedWriter writer = Files.newBufferedWriter(tempResults.toPath())) {
-			out = helperFunctions.getOutputFromProgram(cmd,true);
+			out = helperFunctions.getOutputFromProgram(cmd,LOGGER);
 			writer.write(out);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if (out.toLowerCase().contains("error") || out.toLowerCase().contains("report")) {
+		if (out.toLowerCase().contains("error") || out.toLowerCase().contains("report") || out.toLowerCase().contains("panic")) {
+			LOGGER.error("CWE-checker failed to run");
+			LOGGER.error(out);
 			tempResults.delete();
 		}
 
@@ -100,21 +105,17 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 	 */
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 		System.out.println(this.getName() + " Parsing Analysis...");
+		LOGGER.debug(this.getName() + " Parsing Analysis...");
+		
 		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
 		String results = "";
 
 		try {
-			if (toolResults.toFile().isFile()) {
-				results = helperFunctions.readFileContent(toolResults);
-			}
-			else {
-				System.err.println("CWE_Checker failed to run");
-				return null;
-			}
+			results = helperFunctions.readFileContent(toolResults);
 
 		} catch (IOException e) {
-			System.err.println("Error when reading CWEChecker tool results.");
+			LOGGER.error("Error when reading CWEChecker tool results.");
 			e.printStackTrace();
 			return null;
 		}
@@ -130,7 +131,8 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 					Finding finding = new Finding("",i,0,1); //might need to change. Passing 'i' as line number to ensure findings have different names
 					Diagnostic relDiag = diagnostics.get(findingName);
 					if (relDiag == null) {
-						System.err.println("Error finding diagnostic for CWE_Checker finding. Check to ensure all CWEs are in the model. Ignoring this finding.");
+						String msg = "Error finding diagnostic for CWE_Checker finding. Check to ensure all CWEs are in the model. Ignoring this finding.";
+						LOGGER.error(msg); 
 					}
 					else {
 						relDiag.setChild(finding);
@@ -138,7 +140,7 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 				}
 			}
 			else {
-				System.err.println("No findings from cwe_checker");
+				LOGGER.warn("No findings from cwe_checker");
 			}
 			
 
@@ -157,9 +159,11 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 				"pull",
 				"fkiecad/cwe_checker:stable"};
 		try {
-			helperFunctions.getOutputFromProgram(cmd, true);
+			helperFunctions.getOutputFromProgram(cmd, LOGGER);
 		}
 		catch (IOException e) {
+			LOGGER.error("Failed to initialize cwe_checker");
+			LOGGER.error(e.toString());
 			e.printStackTrace();
 		}
 

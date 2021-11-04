@@ -24,12 +24,16 @@ package evaluator;
 
 import java.math.BigDecimal;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import pique.evaluation.IUtilityFunction;
 import pique.utility.BigDecimalWithContext;
+import tool.CVEBinToolWrapper;
 
 public class BinaryUtility implements IUtilityFunction {
 
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(BinaryUtility.class);
     /**
      * Apply the unbounded utility function 
      * @param v the value to input to the utility function
@@ -48,7 +52,7 @@ public class BinaryUtility implements IUtilityFunction {
     		if (v.compareTo(new BigDecimalWithContext(0.0))==0) {
     			return new BigDecimalWithContext(1);
     		}
-    		System.err.println("Finding reported with [0,0] thresholds.");
+    		LOGGER.error("Finding reported with [0,0] thresholds.");
     		if(pos) return v;
     		return (new BigDecimalWithContext(1).subtract(v));
     	}

@@ -12,6 +12,8 @@ import java.util.Map;
 import org.apache.commons.lang.SystemUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import pique.analysis.ITool;
 import pique.analysis.Tool;
@@ -28,13 +30,13 @@ import utilities.helperFunctions;
  *
  */
 public class YaraRulesToolWrapper extends Tool implements ITool {
+	private static final Logger LOGGER = LoggerFactory.getLogger(YaraRulesToolWrapper.class);
 	
 	private ArrayList<String> ruleCategories;
 	private final String ruleCatPrefix = "RULE CATEGORY ";
 	
 	public YaraRulesToolWrapper(Path toolRoot) {
 		super("yara-rules", toolRoot);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -45,6 +47,7 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 	@Override
 	public Path analyze(Path projectLocation) {
 		System.out.println(this.getName() + " Running...");
+		LOGGER.info(this.getName() + "  Analyzing "+ projectLocation.toString());
 		
 		ruleCategories = new ArrayList<String>();
 		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
@@ -64,18 +67,20 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 			    for (String rule : ruleCategories) {
 					String ruleResults = runYaraRules(rule,projectLocation);
 					if (ruleResults.contains("error scanning")) {
-						throw new IOException();
+						LOGGER.error("Yara failed to scan a file. Yara output: " + ruleResults);
+						throw new IOException(ruleResults);
 					}
 					writer.write(ruleCatPrefix+rule+"\n");
 					writer.write(ruleResults+"\n");
 				}
 			} catch (IOException e) {
-				System.err.println("error when analyzing with Yara");
+				LOGGER.error("error when analyzing with Yara");
+				LOGGER.error(e.toString());
 				tempResults.delete();
 			}
 
 		} 
-		else System.err.println("Error running YARA. " +projectLocation.toString() + " does not exist.");
+		else LOGGER.error("Error running YARA. " +projectLocation.toString() + " does not exist.");
 		
 		return tempResults.toPath();
 	}
@@ -89,6 +94,8 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 	@Override
 	public Map<String, Diagnostic> parseAnalysis(Path toolResults) {
 		System.out.println(this.getName() + " Parsing Analysis...");
+		LOGGER.debug(this.getName() + " Parsing Analysis...");
+		
 		Map<String, Diagnostic> diagnostics = helperFunctions.initializeDiagnostics(this.getName());
 
 		//get contents output file
@@ -98,7 +105,7 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 			results = helperFunctions.readFileContent(toolResults);
 
 		} catch (IOException e) {
-			System.err.println("Error reading results of YaraRulesToolWrapper");
+			LOGGER.error("Error reading results of YaraRulesToolWrapper");
 			return null;
 		}
 		
@@ -131,9 +138,11 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 		final String[] imageCheck = {"docker", "image", "inspect", this.getName()};
 		String check = "";
 		try {
-			check = helperFunctions.getOutputFromProgram(imageCheck, false);
+			check = helperFunctions.getOutputFromProgram(imageCheck, LOGGER);
 		}
 		catch (IOException e) {
+			LOGGER.error("Error initializing yara.");
+			LOGGER.error(e.toString());
 			e.printStackTrace();
 		}
 		
@@ -143,9 +152,11 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 					"-t", this.getName(),
 					toolRoot.toAbsolutePath().toString()};
 			try {
-				helperFunctions.getOutputFromProgram(cmd, true);
+				helperFunctions.getOutputFromProgram(cmd, LOGGER);
 			}
 			catch (IOException e) {
+				LOGGER.error("Error building docker image for yara.");
+				LOGGER.error(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -162,8 +173,10 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 				"/input"};
 		String output = null;
 		try {
-			output = helperFunctions.getOutputFromProgram(cmd,true);
+			output = helperFunctions.getOutputFromProgram(cmd,LOGGER);
 		} catch (IOException  e) {
+			LOGGER.error("Failed to run Yara rule " + ruleName + ".");
+			LOGGER.error(e.toString());
 			e.printStackTrace();
 		}
 		return output;

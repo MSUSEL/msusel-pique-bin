@@ -38,17 +38,22 @@ import java.util.Properties;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import pique.model.Diagnostic;
 import pique.model.ModelNode;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
+import pique.utility.PiqueProperties;
+import tool.CVEBinToolWrapper;
 
 /**
  * Collection of common helper functions used across the project
  *
  */
 public class helperFunctions {
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(helperFunctions.class);
 	/**
 	 * A method to check for equality up to some error bounds
 	 * @param x The first number
@@ -93,7 +98,7 @@ public class helperFunctions {
 		
 		
 		try {
-			cwe = getOutputFromProgram(cmd,false);
+			cwe = getOutputFromProgram(cmd,LOGGER);
 		} catch (IOException e) {
 			System.err.println("Error running CVEtoCWE.py");
 			e.printStackTrace();
@@ -109,20 +114,23 @@ public class helperFunctions {
 	  * @return the text output of the command. Includes input and error.
 	  * @throws IOException
 	  */
-	public static String getOutputFromProgram(String[] program, boolean print) throws IOException {
+	public static String getOutputFromProgram(String[] program, Logger logger) throws IOException {
+		logger.debug("Executing: " + String.join(" ", program));
 	    Process proc = Runtime.getRuntime().exec(program);
 	    return Stream.of(proc.getErrorStream(), proc.getInputStream()).parallel().map((InputStream isForOutput) -> {
 	        StringBuilder output = new StringBuilder();
 	        try (BufferedReader br = new BufferedReader(new InputStreamReader(isForOutput))) {
 	            String line;
 	            while ((line = br.readLine()) != null) {
-	            	if(print) {
+	            	if(logger!=null) {
+	            		logger.debug(line);
 	            		System.out.println(line);
 	            	}
 	                output.append(line);
 	                output.append("\n");
 	            }
 	        } catch (IOException e) {
+	        	logger.error("Failed to get output of execution.");
 	            throw new RuntimeException(e);
 	        }
 	        return output;

@@ -36,11 +36,11 @@ public class helperFunctionTests {
 	public void testCMDLineOutput() {
 		try {
 			String[] cmd1 = {"cd"};
-			helperFunctions.getOutputFromProgram(cmd1,false); //windows
+			helperFunctions.getOutputFromProgram(cmd1,null); //windows
 		} catch (IOException e) {
 			try {
 				String[] cmd2 = {"pwd"};
-				helperFunctions.getOutputFromProgram(cmd2,false); //non-windows
+				helperFunctions.getOutputFromProgram(cmd2,null); //non-windows
 			}
 			catch (IOException e2) {
 				fail();
