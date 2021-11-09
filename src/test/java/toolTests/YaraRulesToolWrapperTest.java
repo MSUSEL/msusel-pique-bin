@@ -67,7 +67,7 @@ public class YaraRulesToolWrapperTest {
 	}
 	
 	@Test
-	public void ToolShouldReturnNullIfNoBinariesExist() {
+	public void ToolShouldReturnNoFindingsIfNoBinariesExist() {
 		Properties prop = PiqueProperties.getProperties();
         Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
 		Tool yara = new YaraRulesToolWrapper(resources);
@@ -77,7 +77,12 @@ public class YaraRulesToolWrapperTest {
         Path analysisOutput = yara.analyze(testBin);
         Map<String,Diagnostic> output = yara.parseAnalysis(analysisOutput);
 
-        assert(output==null);
+        for (Diagnostic diag : output.values()) {
+        	if (diag.getChildren().size()>0) {
+        		//if we hit this, we've found at least one finding
+        		fail();        	
+    		}
+        }
 	}
 	
 	@Test
@@ -86,7 +91,7 @@ public class YaraRulesToolWrapperTest {
         Path resources = Paths.get(prop.getProperty("blankqm.filepath")).getParent();
 		Tool yara = new YaraRulesToolWrapper(resources);
 
-        Path testBin = Paths.get("src/test/resources/HelloWorld");
+        Path testBin = Paths.get("src/test/resources/basicBinary");
         
         Path analysisOutput = yara.analyze(testBin);
 

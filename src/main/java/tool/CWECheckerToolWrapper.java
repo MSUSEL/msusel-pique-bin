@@ -117,7 +117,6 @@ public class CWECheckerToolWrapper extends Tool implements ITool {
 		} catch (IOException e) {
 			LOGGER.error("Error when reading CWEChecker tool results.");
 			e.printStackTrace();
-			return null;
 		}
 			
 		try {

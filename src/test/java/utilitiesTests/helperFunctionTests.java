@@ -33,19 +33,34 @@ public class helperFunctionTests {
 	}
 	
 	@Test
-	public void testCMDLineOutput() {
-		try {
-			String[] cmd1 = {"cd"};
-			helperFunctions.getOutputFromProgram(cmd1,null); //windows
-		} catch (IOException e) {
+	public void testCMDLineOutputAndDependencies() {
+			String[] cmd1 = {"python", "--version"};
+			String out = "";
 			try {
-				String[] cmd2 = {"pwd"};
-				helperFunctions.getOutputFromProgram(cmd2,null); //non-windows
-			}
-			catch (IOException e2) {
+				out = helperFunctions.getOutputFromProgram(cmd1,null);
+			} catch (IOException e) {
 				fail();
-			}
-		}
+			} 
+			
+			//This is not a clean way of doing this, but it should work. 
+			//Verify python version 3.6+
+			assert(out.contains("3."));
+			assert(!out.contains("1."));
+			assert(!out.contains("2."));
+			assert(!out.contains("3.1"));
+			assert(!out.contains("3.2"));
+			assert(!out.contains("3.3"));
+			assert(!out.contains("3.4"));
+			assert(!out.contains("3.5"));
+			
+			String[] cmd2 = {"docker", "--version"};
+			String out2 = "";
+			try {
+				out2 = helperFunctions.getOutputFromProgram(cmd2,null);
+			} catch (IOException e) {
+				fail();
+			} 
+			assert(out2.contains("Docker"));
 	}
 	
 	@Test

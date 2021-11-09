@@ -76,7 +76,6 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 			} catch (IOException e) {
 				LOGGER.error("error when analyzing with Yara");
 				LOGGER.error(e.toString());
-				tempResults.delete();
 			}
 
 		} 
@@ -106,7 +105,6 @@ public class YaraRulesToolWrapper extends Tool implements ITool {
 
 		} catch (IOException e) {
 			LOGGER.error("Error reading results of YaraRulesToolWrapper");
-			return null;
 		}
 		
 		String findingCategory = "";

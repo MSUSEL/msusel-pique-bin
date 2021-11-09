@@ -2,8 +2,8 @@
   "name" : "Binary Security Quality Model CWE-699",
   "additionalData" : { },
   "global_config" : {
-    "benchmark_strategy" : "calibration.BinaryBenchmarker",
-    "normalizer" : "evaluator.NoNormalizer",
+    "benchmark_strategy" : "pique.calibration.MeanSDBenchmarker",
+    "normalizer" : "pique.evaluation.NoNormalizer",
     "weights_strategy" : "calibration.BinaryCWEWeighter"
   },
   "factors" : {

@@ -62,20 +62,26 @@ public class cveBinToolWrapperTest {
 	}
 	
 	@Test
-	public void ToolShouldReturnNullIfNoBinariesExist() {
+	public void ToolShouldReturnNoFindingsIfNoBinariesExist() {
 		Tool cveBinTool = new CVEBinToolWrapper();
 		
         Path testBin = Paths.get("src/test/resources/benchmark/emptyDir");
     	Path analysisOutput = cveBinTool.analyze(testBin);
     	Map<String,Diagnostic> output = cveBinTool.parseAnalysis(analysisOutput);
-    	assert(output==null);
+
+    	for (Diagnostic diag : output.values()) {
+        	if (diag.getChildren().size()>0) {
+        		//if we hit this, we've found at least one finding
+        		fail();        	
+    		}
+        }
 	}
 	
 	@Test
 	public void ToolShouldHaveNoFindingsOnSimpleCleanBinary() {
 		Tool cveBinTool = new CVEBinToolWrapper();
 
-        Path testBin = Paths.get("src/test/resources/HelloWorld");
+        Path testBin = Paths.get("src/test/resources/basicBinary");
         
         Path analysisOutput = cveBinTool.analyze(testBin);
 

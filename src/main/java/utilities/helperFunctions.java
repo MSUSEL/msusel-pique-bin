@@ -115,7 +115,7 @@ public class helperFunctions {
 	  * @throws IOException
 	  */
 	public static String getOutputFromProgram(String[] program, Logger logger) throws IOException {
-		logger.debug("Executing: " + String.join(" ", program));
+		if(logger!=null) logger.debug("Executing: " + String.join(" ", program));
 	    Process proc = Runtime.getRuntime().exec(program);
 	    return Stream.of(proc.getErrorStream(), proc.getInputStream()).parallel().map((InputStream isForOutput) -> {
 	        StringBuilder output = new StringBuilder();

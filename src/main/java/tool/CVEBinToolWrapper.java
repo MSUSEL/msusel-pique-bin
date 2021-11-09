@@ -102,9 +102,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 			try {
 				results = helperFunctions.readFileContent(toolResults);
 			} catch (IOException e) {
-				System.out.println("No results to read from cve-bin-tool.");
 				LOGGER.info("No results to read from cve-bin-tool.");
-				return null;
 			}
 			
 			ArrayList<String> cveList = new ArrayList<String>();
@@ -147,7 +145,7 @@ public class CVEBinToolWrapper extends Tool implements ITool  {
 				
 
 			} catch (JSONException e) {
-				e.printStackTrace();
+				LOGGER.warn("Unable to read results form cve-bin-tool");
 			}
 			
 			return diagnostics;

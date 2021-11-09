@@ -62,7 +62,7 @@ public class CWECheckerToolWrapperTest {
 	}
 	
 	@Test
-	public void ToolShouldReturnNullIfNoBinariesExist() {
+	public void ToolShouldReturnNoFindingsIfNoBinariesExist() {
 		Tool cwechecker = new CWECheckerToolWrapper();
         
 		Path testBin = Paths.get("src/test/resources/emptyDir/");
@@ -70,14 +70,19 @@ public class CWECheckerToolWrapperTest {
         Path analysisOutput = cwechecker.analyze(testBin);
         Map<String,Diagnostic> output = cwechecker.parseAnalysis(analysisOutput);
 
-        assert(output==null);
+        for (Diagnostic diag : output.values()) {
+        	if (diag.getChildren().size()>0) {
+        		//if we hit this, we've found at least one finding
+        		fail();        	
+    		}
+        }
 	}
 	
 	@Test
 	public void ToolShouldHaveNoFindingsOnSimpleCleanBinary() {
 		Tool cwechecker = new CWECheckerToolWrapper();
 
-        Path testBin = Paths.get("src/test/resources/HelloWorld");
+        Path testBin = Paths.get("src/test/resources/basicBinary");
         
         Path analysisOutput = cwechecker.analyze(testBin);
 
