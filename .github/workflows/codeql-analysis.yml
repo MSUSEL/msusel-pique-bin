@@ -39,6 +39,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      
+    # Build PIQUE
+    - name: Build PIQUE-Core
+      run: git pull https://github.com/MSUSEL/msusel-pique.git
+       cd msusel-pique/
+       mvn clean package
+       cd ../
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
