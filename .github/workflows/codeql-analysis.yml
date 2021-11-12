@@ -23,7 +23,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
     permissions:
       actions: read
       contents: read
@@ -44,7 +44,7 @@ jobs:
       run: |
        git clone https://github.com/MSUSEL/msusel-pique.git
        cd msusel-pique/
-       mvn clean install -DskipTests
+       mvn clean install -DskipTests -Dlicense.skip
        cd ../
        
     - name: Checkout repository
@@ -62,13 +62,14 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: autobuild python
-      if: ${{matrix.language=='python'}}
+    #  if: ${{matrix.language=='python'}}
+    
+    - name: autobuild
       uses: github/codeql-action/autobuild@v1
       
-    - name: build java
-      if: ${{matrix.language=='java'}}
-      run: mvn clean package -DskipTests
+    #- name: build java
+    #  if: ${{matrix.language=='java'}}
+    #  run: mvn clean package -DskipTests
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
