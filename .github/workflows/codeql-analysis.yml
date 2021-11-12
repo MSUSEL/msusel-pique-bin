@@ -42,7 +42,8 @@ jobs:
       
     # Build PIQUE
     - name: Build PIQUE-Core
-      run: git pull https://github.com/MSUSEL/msusel-pique.git
+      run: |
+       git clone https://github.com/MSUSEL/msusel-pique.git
        cd msusel-pique/
        mvn clean package
        cd ../
