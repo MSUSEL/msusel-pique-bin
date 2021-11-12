@@ -40,6 +40,7 @@ jobs:
     
     # Build PIQUE
     - name: Build PIQUE-Core
+      if: ${{matrix.language=='java'}}
       run: |
        git clone https://github.com/MSUSEL/msusel-pique.git
        cd msusel-pique/
@@ -61,8 +62,11 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
+    - name: build
+      if: ${{matrix.language=='python'}}
       uses: github/codeql-action/autobuild@v1
+      if: ${{matrix.language=='java'}}
+      run: mvn clean package -DskipTests
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
