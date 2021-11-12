@@ -23,7 +23,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     permissions:
       actions: read
       contents: read
@@ -44,7 +44,7 @@ jobs:
       run: |
        git clone https://github.com/MSUSEL/msusel-pique.git
        cd msusel-pique/
-       mvn clean package -DskipTests
+       mvn clean install -DskipTests
        cd ../
        
     - name: Checkout repository
@@ -69,17 +69,6 @@ jobs:
     - name: build java
       if: ${{matrix.language=='java'}}
       run: mvn clean package -DskipTests
-
-    # ℹ️ Command-line programs to run using the OS shell.
-    # 📚 https://git.io/JvXDl
-
-    # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
-    #    and modify them (or add more) to build your code if your project
-    #    uses a compiled language
-
-    #- run: |
-    #   make bootstrap
-    #   make release
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
