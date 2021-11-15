@@ -42,8 +42,9 @@ jobs:
     - name: Build PIQUE-Core
       if: ${{matrix.language=='java'}}
       run: |
+       cd ../
        git clone https://github.com/MSUSEL/msusel-pique.git
-       cd ../msusel-pique/
+       cd ./msusel-pique/
        mvn clean install -DskipTests -Dlicense.skip
        cd ../msusel-pique-bin/
        
