@@ -1,19 +1,15 @@
 package calibrationTests;
 
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import pique.calibration.MeanSDBenchmarker;
 import utilities.PiqueTestProperties;
 import utilities.helperFunctions;
 import pique.analysis.ITool;
-import pique.calibration.AdvancedBenchmarker;
 import pique.calibration.IBenchmarker;
 import pique.model.QualityModel;
 import pique.model.QualityModelImport;
-import tool.YaraRulesToolWrapper;
 
-import java.io.FileReader;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;

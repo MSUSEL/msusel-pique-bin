@@ -39,13 +39,13 @@ jobs:
     steps:
     
     # Build PIQUE
-    #- name: Build PIQUE-Core
-    #  if: ${{matrix.language=='java'}}
-    #  run: |
-    #   git clone https://github.com/MSUSEL/msusel-pique.git
-    #   cd msusel-pique/
-    #   mvn clean install -DskipTests -Dlicense.skip
-    #   cd ../
+    - name: Build PIQUE-Core
+      if: ${{matrix.language=='java'}}
+      run: |
+       git clone https://github.com/MSUSEL/msusel-pique.git
+       cd ../msusel-pique/
+       mvn clean install -DskipTests -Dlicense.skip
+       cd ../msusel-pique-bin/
        
     - name: Checkout repository
       uses: actions/checkout@v2
