@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/MSUSEL/msusel-pique-bin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/MSUSEL/msusel-pique-bin/actions/workflows/codeql-analysis.yml)
+
 # msusel-pique-bin
 ## Introduction
 This project is an operationalized PIQUE model for the assessment of security quality in binary files. 
