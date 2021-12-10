@@ -22,6 +22,7 @@
  */
 package piquebinaries.runnable;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -55,18 +56,23 @@ import tool.YaraRulesToolWrapper;
 public class QualityModelDeriver extends AQualityModelDeriver {
 	private static final Logger LOGGER = LoggerFactory.getLogger(QualityModelDeriver.class);
 
-    public static void main(String[] args){
-        new QualityModelDeriver();
+    public QualityModelDeriver(String propertiesPath){ 	
+    	init(propertiesPath);
     }
-
-    public QualityModelDeriver(){
-        init();
+    
+    public QualityModelDeriver(){ 	
+    	init(null);
     }
-
-    private void init(){
+    
+    private void init(String propertiesPath){
     	LOGGER.info("Beginning deriver");
     	
-        Properties prop = PiqueProperties.getProperties();
+        Properties prop = null;
+		try {
+			prop = propertiesPath==null ? PiqueProperties.getProperties() : PiqueProperties.getProperties(propertiesPath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
         Path blankqmFilePath = Paths.get(prop.getProperty("blankqm.filepath"));
         Path derivedModelFilePath = Paths.get(prop.getProperty("results.directory"));

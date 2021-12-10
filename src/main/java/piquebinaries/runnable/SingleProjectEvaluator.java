@@ -22,6 +22,7 @@
  */
 package piquebinaries.runnable;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -50,17 +51,27 @@ import tool.YaraRulesToolWrapper;
 // TODO (1.0): turn into static methods (maybe unless logger problems)
 public class SingleProjectEvaluator extends ASingleProjectEvaluator {
 	private static final Logger LOGGER = LoggerFactory.getLogger(SingleProjectEvaluator.class);
-	
-    public static void main(String[] args){
-        new SingleProjectEvaluator();
-    }
 
     private Project project;
 
+    public SingleProjectEvaluator(String propertiesPath){ 	
+    	init(propertiesPath);
+    }
+    
+    public SingleProjectEvaluator(){ 	
+    	init(null);
+    }
 
-    public SingleProjectEvaluator(){
+    public void init(String propertiesPath){
     	LOGGER.info("Starting Analysis");
-        Properties prop = PiqueProperties.getProperties();
+    	Properties prop = null;
+		try {
+			prop = propertiesPath==null ? PiqueProperties.getProperties() : PiqueProperties.getProperties(propertiesPath);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 
         Path projectRoot = Paths.get(prop.getProperty("project.root"));
         Path resultsDir = Paths.get(prop.getProperty("results.directory"));
