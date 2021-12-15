@@ -93,8 +93,18 @@ public class helperFunctions {
 	 */
 	public static String[] getCWE(String cve) {
 		String cwe = "";
-		String pathToScript = System.getProperty("user.dir")+"/src/main/java/utilities/CVEtoCWE.py";
-		String[] cmd = {"python", pathToScript, cve};
+		String[] cves = cve.split(" ");
+		
+		Properties prop = PiqueProperties.getProperties();
+		String pathToScript = prop.getProperty("cveTocwe.location");
+
+		String[] cmd = new String[cves.length+1];
+ 		cmd[0] = "python";
+		cmd[1] = pathToScript;
+		for (int i = 2;i<cves.length+1;i++) {
+			cmd[i] = cves[i-1];
+		}
+		//String[] cmd = {"python", pathToScript, cves};
 		
 		
 		try {
